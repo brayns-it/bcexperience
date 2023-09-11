@@ -8,15 +8,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4142854161 - Method 3796592595 - NamedType 1539131716" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cannot arrange entries of %1 %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Method Reload - NamedType CannotArrangeErr</note>
+        </trans-unit>
         <trans-unit id="Page 4142854161 - Control 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Remaining Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Control Amount - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2173028780 - Action 989000910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+        <trans-unit id="Page 4142854161 - Control 245426702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Control Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2370094057 - Action 989000910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Arrange Entries</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSPageExtension60000 - Action YNSArrangeEntries - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSCustomerLedgerEntries - Action YNSArrangeEntries - Property Caption</note>
         </trans-unit>
       </group>
     </body>

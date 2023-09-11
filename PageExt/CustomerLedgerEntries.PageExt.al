@@ -1,4 +1,4 @@
-pageextension 60000 YNSPageExtension60000 extends "Customer Ledger Entries"
+pageextension 60000 YNSCustomerLedgerEntries extends "Customer Ledger Entries"
 {
     actions
     {

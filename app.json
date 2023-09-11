@@ -2,7 +2,7 @@
   "id": "7937ece2-4881-45ee-8c55-aec9e91ad468",
   "name": "Experience",
   "publisher": "Brayns", 
-  "version": "22.0.30901.3",
+  "version": "22.0.30901.5",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -33,5 +33,13 @@
   "preprocessorSymbols": [
     "ALL",
     "LOCALE-IT"
+  ],
+  "suppressWarnings": [
+    "AA0072",
+    "AA0218",
+    "AA0470",
+    "AS0092",
+    "AS0084",
+    "AS0051"
   ]
 }

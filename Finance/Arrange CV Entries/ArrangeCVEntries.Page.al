@@ -11,8 +11,10 @@ page 60000 "YNS Arrange CV Entries"
     {
         area(Content)
         {
-            repeater(Control1)
+            group(document)
             {
+                ShowCaption = false;
+
                 field("Source No."; Rec."Source No.")
                 {
                     ApplicationArea = All;
@@ -38,6 +40,15 @@ page 60000 "YNS Arrange CV Entries"
                     ApplicationArea = All;
                     Editable = false;
                 }
+                field("Total"; Total)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    Caption = 'Total';
+                }
+            }
+            repeater(Control1)
+            {
                 field(Amount; Rec.Amount)
                 {
                     Caption = 'Remaining Amount';
@@ -58,15 +69,18 @@ page 60000 "YNS Arrange CV Entries"
     var
         OrigCustLedg: Record "Cust. Ledger Entry";
         DataSource: Option Customer,Vendor;
+        Total: Decimal;
 
     local procedure Reload()
     var
         CustLedg2: Record "Cust. Ledger Entry";
         LineNo: Integer;
+        CannotArrangeErr: Label 'Cannot arrange entries of %1 %2';
     begin
         Rec.Reset();
         Rec.DeleteAll();
         LineNo := 10000;
+        Total := 0;
 
         case DataSource of
             DataSource::Customer:
@@ -78,6 +92,9 @@ page 60000 "YNS Arrange CV Entries"
                     CustLedg2.SetRange("Posting Date", OrigCustLedg."Posting Date");
                     CustLedg2.SetRange(Open, true);
                     CustLedg2.SetAutoCalcFields("Remaining Amount");
+                    if CustLedg2.IsEmpty then
+                        Error(CannotArrangeErr, OrigCustLedg."Document Type", OrigCustLedg."Document No.");
+
                     if CustLedg2.FindSet() then
                         repeat
                             Rec.Init();
@@ -93,6 +110,7 @@ page 60000 "YNS Arrange CV Entries"
                             Rec."Payment Method Code" := CustLedg2."Payment Method Code";
                             Rec.Insert();
                             LineNo += 10000;
+                            Total += CustLedg2."Remaining Amount";
                         until CustLedg2.Next() = 0;
                 end;
         end;

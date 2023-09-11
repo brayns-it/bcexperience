@@ -1,4 +1,5 @@
 *.app
 .alpackages
 .snapshots
-.vscode
+.vscode/rad.json
+.vscode/launch.json
