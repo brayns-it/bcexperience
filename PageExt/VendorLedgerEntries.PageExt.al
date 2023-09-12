@@ -1,4 +1,4 @@
-pageextension 60000 YNSCustomerLedgerEntries extends "Customer Ledger Entries"
+pageextension 60001 YNSVendorLedgerEntries extends "Vendor Ledger Entries"
 {
     actions
     {
@@ -16,7 +16,7 @@ pageextension 60000 YNSCustomerLedgerEntries extends "Customer Ledger Entries"
                 var
                     ArrangePage: Page "YNS Arrange CV Entries";
                 begin
-                    ArrangePage.LoadFromCustomerEntry(Rec);
+                    ArrangePage.LoadFromVendorEntry(Rec);
                     ArrangePage.Run();
                 end;
             }

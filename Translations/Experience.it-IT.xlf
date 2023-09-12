@@ -1,56 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en-US" target-language="en-US" original="Experience">
+  <file datatype="xml" source-language="en-US" target-language="it-IT" original="Experience">
     <body>
       <group id="body">
         <trans-unit id="Codeunit 3960575409 - Method 3157451606 - NamedType 2867664679" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Installments amount must be %1</source>
+          <source>Installments amount must be %1</source><target>Importo rate deve essere %1</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Finance Management - Method ApplyArrangedCustomerEntries - NamedType AmountMismatchErr</note>
         </trans-unit>
         <trans-unit id="Page 4142854161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Arrange Customer/Vendor Entries</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Arrange Customer/Vendor Entries</source><target>Sistema movimenti clienti/fornitori</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4142854161 - Method 3796592595 - NamedType 1539131716" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cannot arrange entries of %1 %2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Cannot arrange entries of %1 %2</source><target>Impossibile sistemare movimenti di %1 %2</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Method Reload - NamedType CannotArrangeErr</note>
         </trans-unit>
         <trans-unit id="Page 4142854161 - Control 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remaining Amount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Remaining Amount</source><target>Importo residuo</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Control Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4142854161 - Control 4188104753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document Amount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Document Amount</source><target>Importo documento</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Control DocumentAmt - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4142854161 - Control 690876748 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Installments Amount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Installments Amount</source><target>Importo rate</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Control InstallmentsAmt - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4142854161 - Action 157630099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apply</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Apply</source><target>Applica</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Action applyentr - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4142854161 - Action 157630099 - Method 1377591017 - NamedType 1965247518" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apply arranged entries?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Apply arranged entries?</source><target>Applicare i movimenti sistemati?</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Action applyentr - Method OnAction - NamedType ApplyQst</note>
         </trans-unit>
         <trans-unit id="PageExtension 2370094057 - Action 989000910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
-          <source>Arrange Entries</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Arrange Entries</source><target>Sistema movimenti</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSCustomerLedgerEntries - Action YNSArrangeEntries - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1114400321 - Action 989000910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1567633909">
-          <source>Arrange Entries</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Arrange Entries</source><target>Sistema movimenti</target>
+          <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSVendorLedgerEntries - Action YNSArrangeEntries - Property Caption</note>
         </trans-unit>
       </group>

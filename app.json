@@ -2,13 +2,14 @@
   "id": "7937ece2-4881-45ee-8c55-aec9e91ad468",
   "name": "Experience",
   "publisher": "Brayns", 
-  "version": "22.0.30901.5",
+  "version": "22.0.30903.0",
   "brief": "",
   "description": "",
   "privacyStatement": "",
   "EULA": "",
-  "help": "",
+  "help": "https://github.com/brayns-it/bcexperience",
   "url": "https://github.com/brayns-it/bcexperience",
+  "contextSensitiveHelpUrl": "https://kb.brayns.it/books/experience",
   "logo": "",
   "dependencies": [],
   "screenshots": [],
@@ -31,7 +32,7 @@
     "TranslationFile"
   ],
   "preprocessorSymbols": [
-    "ALL",
+    "FN0001A",
     "LOCALE-IT"
   ],
   "suppressWarnings": [
@@ -40,6 +41,7 @@
     "AA0470",
     "AS0092",
     "AS0084",
-    "AS0051"
+    "AS0051",
+    "AA0210"
   ]
 }
