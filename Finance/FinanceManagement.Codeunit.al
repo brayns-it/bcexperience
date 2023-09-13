@@ -4,7 +4,42 @@ codeunit 60000 "YNS Finance Management"
         tabledata "Cust. Ledger Entry" = rimd,
         tabledata "Detailed Cust. Ledg. Entry" = rimd;
 
-#if FN0001A
+#if ITXX001A
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterSetOperationType', '', false, false)]
+    local procedure OnSalesHeaderAfterSetOperationType(var SalesHeader: Record "Sales Header")
+    var
+        CompInfo: Record "Company Information";
+    begin
+        if SalesHeader."Activity Code" = '' then
+            if CompInfo.Get() then
+                if CompInfo."Activity Code" > '' then
+                    SalesHeader."Activity Code" := CompInfo."Activity Code";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Header", 'OnAfterSetOperationType', '', false, false)]
+    local procedure OnPurchaseHeaderAfterSetOperationType(var PurchaseHeader: Record "Purchase Header")
+    var
+        CompInfo: Record "Company Information";
+    begin
+        if PurchaseHeader."Activity Code" = '' then
+            if CompInfo.Get() then
+                if CompInfo."Activity Code" > '' then
+                    PurchaseHeader."Activity Code" := CompInfo."Activity Code";
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Finance Charge Memo Header", 'OnValidateCustomerNoOnAfterAssignCustomerValues', '', false, false)]
+    local procedure OnFinanceChargeHeaderValidateCustomerNoOnAfterAssignCustomerValues(var FinanceChargeMemoHeader: Record "Finance Charge Memo Header"; Customer: Record "Customer")
+    var
+        CompInfo: Record "Company Information";
+    begin
+        if FinanceChargeMemoHeader."Activity Code" = '' then
+            if CompInfo.Get() then
+                if CompInfo."Activity Code" > '' then
+                    FinanceChargeMemoHeader."Activity Code" := CompInfo."Activity Code";
+    end;
+#endif
+
+#if W1FN001A
     procedure ApplyArrangedCustomerEntries(var TempEntries: record "Gen. Journal Line" temporary)
     var
         xCustLedg2: Record "Cust. Ledger Entry";

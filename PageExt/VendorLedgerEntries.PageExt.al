@@ -4,7 +4,7 @@ pageextension 60001 YNSVendorLedgerEntries extends "Vendor Ledger Entries"
     {
         addlast("F&unctions")
         {
-#if FN0001A
+#if W1FN001A
             action(YNSArrangeEntries)
             {
                 ApplicationArea = All;

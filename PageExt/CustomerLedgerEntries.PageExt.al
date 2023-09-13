@@ -4,7 +4,7 @@ pageextension 60000 YNSCustomerLedgerEntries extends "Customer Ledger Entries"
     {
         addlast("F&unctions")
         {
-#if FN0001A
+#if W1FN001A
             action(YNSArrangeEntries)
             {
                 ApplicationArea = All;

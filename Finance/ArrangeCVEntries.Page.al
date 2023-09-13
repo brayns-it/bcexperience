@@ -1,4 +1,4 @@
-#if FN0001A
+#if W1FN001A
 page 60000 "YNS Arrange CV Entries"
 {
     PageType = List;

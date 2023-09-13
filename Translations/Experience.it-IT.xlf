@@ -53,6 +53,226 @@
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSVendorLedgerEntries - Action YNSArrangeEntries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4182830877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Repayment Header</source><target>Testata piano rientro emesso</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 925376238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source><target>Nr.</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Repayment No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Repayment Line</source><target>Riga piano rientro emesso</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source><target>Nr. riga</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 925376238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source><target>Nr.</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Repayment No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment Header</source><target>Testata piano rientro</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 261671151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Bank Account Code</source><target>Cod. C/C bancario società</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Company Bank Account Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source><target>Cod. valuta</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Currency Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source><target>Descrizione</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source><target>Data documento</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Prod. Posting Group</source><target>Cat. reg. art. servizio</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Gen. Prod. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source><target>Nr.</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 1351594800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Series</source><target>Nr. serie</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field No. Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source><target>Data di registrazione</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 1927595893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Address</source><target>Indirizzo origine</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 4127290398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source City</source><target>Città origine</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 1785563553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country/Region Code</source><target>Cod. paese</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source Country/Region Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 3740588097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source County</source><target>Provincia origine</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source County - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 1343707150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Name</source><target>Nome origine</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 1882905478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source No.</source><target>Nr. origine</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 1882905478 - Method 2126772001 - NamedType 3351010013" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment plan for %1</source><target>Piano rientro per %1</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source No. - Method OnValidate - NamedType DefDescriptionLbl</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 2744212116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Post Code</source><target>CAP origine</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source Post Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 1753214751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source><target>Tipo origine</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 1753214751 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer,Vendor</source><target>Cliente,Fornitore</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Source Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 236064653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Prod. Posting Group</source><target>Cat. reg. IVA art. servizio</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field VAT Prod. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1568193449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment Line</source><target>Riga piano rientro</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source><target>Nr. riga</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 925376238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source><target>Nr.</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Repayment No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 325497354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment Setup</source><target>Setup piano rientro</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 325497354 - Field 405790109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Gen. Prod. Posting Group</source><target>Cat. reg. art. servizio default</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Setup - Field Def. Gen. Prod. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 325497354 - Field 1650197670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default VAT Prod. Posting Group</source><target>Cat. reg. IVA art. servizio default</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Setup - Field Def. VAT Prod. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 325497354 - Field 4166547160 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Repayment No. Series</source><target>Nr. serie piano rientro emesso</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Setup - Field Issued Repayment No. Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 325497354 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source><target>Chiave primaria</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Setup - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 325497354 - Field 2637140995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment No. Series</source><target>Nr. serie piano rientor</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Setup - Field Repayment No. Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1635558339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment</source><target>Piano rientro</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1635558339 - Control 872480034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source><target>Generale</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Control general - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1635558339 - Control 3906556071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source><target>Righe</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Control lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1635558339 - Control 660159852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting</source><target>Registrazione</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Control posting - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2377938432 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment Lines</source><target>Righe piano rientro</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 325497354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment Setup</source><target>Setup piano rientro</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 325497354 - Control 872480034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source><target>Generale</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment Setup - Control general - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3598888480 - Field 2607307984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
+          <source>Company Bank Account</source><target>C/C bancario società</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSCustLedgerEntry - Field YNS Company Bank Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1828516444 - Field 2607307984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Company Bank Account</source><target>C/C bancario società</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSCustomer - Field YNS Company Bank Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 1196510414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brayns Experience</source><target />
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet YNSExperience - Property Caption</note>
+        </trans-unit>
       </group>
     </body>
   </file>
