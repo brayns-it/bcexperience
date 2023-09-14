@@ -3,7 +3,11 @@ page 60003 "YNS Repayment Lines"
 {
     PageType = ListPart;
     SourceTable = "YNS Repayment Line";
+    AutoSplitKey = true;
+    SourceTableView = where("Line Type" = const(Entry));
     Caption = 'Repayment Lines';
+    InsertAllowed = false;
+    ModifyAllowed = false;
 
     layout
     {
@@ -11,6 +15,40 @@ page 60003 "YNS Repayment Lines"
         {
             repeater(control1)
             {
+                field("Document Type"; Rec."Document Type")
+                {
+                    ApplicationArea = All;
+                }
+                field("Document No."; Rec."Document No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Posting Date"; Rec."Posting Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Document Date"; Rec."Document Date")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("External Document No."; Rec."External Document No.")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field(Description; Rec.Description)
+                {
+                    ApplicationArea = All;
+                }
+                field(Amount; Rec.Amount)
+                {
+                    ApplicationArea = All;
+                }
+                field("Due Date"; Rec."Due Date")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

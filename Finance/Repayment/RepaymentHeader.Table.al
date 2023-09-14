@@ -27,6 +27,23 @@ table 60000 "YNS Repayment Header"
             Caption = 'Source Type';
             OptionMembers = Customer,Vendor;
             OptionCaption = 'Customer,Vendor';
+
+            trigger OnValidate()
+            begin
+                if xRec."Source Type" <> "Source Type" then
+                    TestNoLineExists();
+
+                "Source No." := '';
+                "Source Name" := '';
+                "Source Address" := '';
+                "Source City" := '';
+                "Source Post Code" := '';
+                "Source County" := '';
+                "Source Country/Region Code" := '';
+                "Currency Code" := '';
+                "Company Bank Account Code" := '';
+                "Payment Method Code" := '';
+            end;
         }
         field(3; "Source No."; Code[20])
         {
@@ -41,6 +58,9 @@ table 60000 "YNS Repayment Header"
                 Cust: Record Customer;
                 DefDescriptionLbl: Label 'Repayment plan for %1';
             begin
+                if xRec."Source No." <> "Source No." then
+                    TestNoLineExists();
+
                 if "Source No." > '' then
                     case "Source Type" of
                         "Source Type"::Customer:
@@ -54,6 +74,7 @@ table 60000 "YNS Repayment Header"
                                 "Source Country/Region Code" := Cust."Country/Region Code";
                                 "Currency Code" := Cust."Currency Code";
                                 "Company Bank Account Code" := Cust."YNS Company Bank Account";
+                                "Payment Method Code" := Cust."Payment Method Code";
                             end;
                         "Source Type"::Vendor:
                             Error('TODO');
@@ -62,7 +83,7 @@ table 60000 "YNS Repayment Header"
                 if "Document Date" = 0D then
                     "Document Date" := WorkDate();
                 if "Posting Date" = 0D then
-                    "Posting Date" := "Posting Date";
+                    "Posting Date" := WorkDate();
 
                 RepaSetup.Get();
                 if "Gen. Prod. Posting Group" = '' then
@@ -131,6 +152,18 @@ table 60000 "YNS Repayment Header"
             TableRelation = "Bank Account" where("Currency Code" = FIELD("Currency Code"));
             DataClassification = CustomerContent;
         }
+        field(31; "Payment Method Code"; code[10])
+        {
+            Caption = 'Payment Method Code';
+            TableRelation = "Payment Method";
+            DataClassification = CustomerContent;
+        }
+        field(32; "Finance Charge Terms"; Code[10])
+        {
+            Caption = 'Finance Charge Terms';
+            TableRelation = "Finance Charge Terms";
+            DataClassification = CustomerContent;
+        }
         field(40; "Gen. Prod. Posting Group"; Code[20])
         {
             Caption = 'Gen. Prod. Posting Group';
@@ -148,6 +181,21 @@ table 60000 "YNS Repayment Header"
             Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
+            DataClassification = CustomerContent;
+        }
+        field(100; "Interest Amount"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Interest Amount';
+            BlankZero = true;
+            Editable = false;
+        }
+        field(101; "Principal Amount"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Principal Amount';
+            BlankZero = true;
+            Editable = false;
         }
     }
     keys
@@ -179,6 +227,17 @@ table 60000 "YNS Repayment Header"
         RepaLine.SetRange("Repayment No.", "No.");
         if not RepaLine.IsEmpty() then
             RepaLine.DeleteAll();
+    end;
+
+    procedure TestNoLineExists()
+    var
+        RepaLine: Record "YNS Repayment Line";
+        RepaMustBeEmptyErr: Label 'Repayment %1 must be empty';
+    begin
+        RepaLine.Reset();
+        RepaLine.SetRange("Repayment No.", "No.");
+        if not RepaLine.IsEmpty() then
+            Error(RepaMustBeEmptyErr, "No.");
     end;
 }
 #endif

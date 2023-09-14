@@ -10,5 +10,12 @@ tableextension 60001 YNSCustLedgerEntry extends "Cust. Ledger Entry"
             TableRelation = "Bank Account";
         }
 #endif
+#if W1FN004A
+        field(60001; "YNS Original Due Date"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Original Due Date';
+        }
+#endif
     }
 }

@@ -4,6 +4,40 @@ codeunit 60000 "YNS Finance Management"
         tabledata "Cust. Ledger Entry" = rimd,
         tabledata "Detailed Cust. Ledg. Entry" = rimd;
 
+    local procedure InstallAndUpgrade()
+    var
+#if W1FN004A       
+        CustLedg: Record "Cust. Ledger Entry";
+        UpgradeTagMgt: Codeunit "Upgrade Tag";
+#endif
+    begin
+#if W1FN004A        
+        if not UpgradeTagMgt.HasUpgradeTag('YNS-W1FN004A-Install-20230914') then begin
+            CustLedg.Reset();
+            if CustLedg.FindSet() then
+                repeat
+                    CustLedg."YNS Original Due Date" := CustLedg."Due Date";
+                    CustLedg.Modify();
+                until CustLedg.Next() = 0;
+
+            UpgradeTagMgt.SetUpgradeTag('YNS-W1FN004A-Install-20230914');
+            Commit();
+        end;
+#endif
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"YNS Experience Install", 'OnAfterInstallAppPerCompany', '', false, false)]
+    local procedure OnAfterInstallAppPerCompany()
+    begin
+        InstallAndUpgrade();
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"YNS Experience Upgrade", 'OnAfterUpgradePerCompany', '', false, false)]
+    local procedure OnAfterUpgradePerCompany()
+    begin
+        InstallAndUpgrade();
+    end;
+
 #if ITXX001A
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterSetOperationType', '', false, false)]
     local procedure OnSalesHeaderAfterSetOperationType(var SalesHeader: Record "Sales Header")
@@ -278,4 +312,21 @@ codeunit 60000 "YNS Finance Management"
         end;
     end;
 #endif
+
+#if W1FN003A
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Cust. Entry-Edit", 'OnBeforeCustLedgEntryModify', '', false, false)]
+    local procedure OnCustEntryEditBeforeCustLedgEntryModify(var CustLedgEntry: Record "Cust. Ledger Entry"; FromCustLedgEntry: Record "Cust. Ledger Entry")
+    begin
+        CustLedgEntry."YNS Company Bank Account" := FromCustLedgEntry."YNS Company Bank Account";
+    end;
+#endif
+
+#if W1FN004A
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnPostCustOnBeforeResetCustLedgerEntryAppliesToFields', '', false, false)]
+    local procedure OnGenJnlPostLinePostCustOnBeforeResetCustLedgerEntryAppliesToFields(var CustLedgEntry: Record "Cust. Ledger Entry"; var IsHandled: Boolean)
+    begin
+        CustLedgEntry."YNS Original Due Date" := CustLedgEntry."Due Date";
+    end;
+#endif
+
 }

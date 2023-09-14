@@ -2,7 +2,7 @@
   "id": "7937ece2-4881-45ee-8c55-aec9e91ad468",
   "name": "Experience",
   "publisher": "Brayns", 
-  "version": "22.0.30903.8",
+  "version": "22.0.30903.17",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -35,6 +35,7 @@
     "W1FN001A",
     "W1FN002A",
     "W1FN003A",
+    "W1FN004A",
     "ITXX001A",
     "LOCALEIT"
   ],
