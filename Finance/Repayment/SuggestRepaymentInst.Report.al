@@ -29,7 +29,7 @@ report 60000 "YNS Suggest Repayment Inst."
                     field(InstallmentAmountCtl; InstallmentAmount)
                     {
                         ApplicationArea = All;
-                        Caption = 'Maximum Amount';
+                        Caption = 'Installment Amount';
                         BlankZero = true;
                     }
                 }

@@ -88,13 +88,13 @@ page 60000 "YNS Arrange CV Entries"
                 Caption = 'Apply';
 
                 trigger OnAction()
-                var
-                    ApplyQst: Label 'Apply arranged entries?';
                 begin
-                    if Confirm(ApplyQst) then begin
-                        FinMgmt.ApplyArrangedCustomerEntries(Rec);
-                        Close();
+                    case DataSource of
+                        DataSource::Customer:
+                            FinMgmt.ApplyArrangedCustomerEntriesYesNo(Rec, CustLedgNoFilter);
                     end;
+
+                    Close();
                 end;
             }
         }
@@ -107,6 +107,7 @@ page 60000 "YNS Arrange CV Entries"
         DataSource: Option Customer,Vendor;
         DocumentAmt: Decimal;
         InstallmentsAmt: Decimal;
+        CustLedgNoFilter: Text;
 
     local procedure Reload()
     var
@@ -118,6 +119,7 @@ page 60000 "YNS Arrange CV Entries"
         Rec.DeleteAll();
         LineNo := 0;
         DocumentAmt := 0;
+        CustLedgNoFilter := '';
 
         case DataSource of
             DataSource::Customer:
@@ -153,6 +155,9 @@ page 60000 "YNS Arrange CV Entries"
                             end;
 
                             DocumentAmt += CustLedg2."Remaining Amount";
+
+                            if CustLedgNoFilter > '' then CustLedgNoFilter += '|';
+                            CustLedgNoFilter += Format(CustLedg2."Entry No.", 0, 9);
                         until CustLedg2.Next() = 0;
                 end;
         end;

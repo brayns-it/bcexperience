@@ -1,11 +1,12 @@
 #if W1FN002A
-page 60004 "YNS Repayment Installments"
+page 60011 "YNS Issued Repayment Inst."
 {
     PageType = ListPart;
-    SourceTable = "YNS Repayment Line";
+    SourceTable = "YNS Issued Repayment Line";
     AutoSplitKey = true;
     SourceTableView = where("Line Type" = const(Installment));
     Caption = 'Repayment Installments';
+    Editable = false;
 
     layout
     {

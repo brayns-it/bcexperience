@@ -1,9 +1,10 @@
 #if W1FN002A
-page 60002 "YNS Repayment"
+page 60008 "YNS Issued Repayment"
 {
     PageType = Document;
-    SourceTable = "YNS Repayment Header";
-    Caption = 'Repayment';
+    SourceTable = "YNS Issued Repayment Header";
+    Caption = 'Issued Repayment';
+    Editable = false;
     ContextSensitiveHelpPage = '/page/repayments';
 
     layout
@@ -65,24 +66,19 @@ page 60002 "YNS Repayment"
                 field("Charges Amount"; Rec."Charges Amount")
                 {
                     ApplicationArea = All;
-
-                    trigger OnDrillDown()
-                    begin
-                        Rec.OpenCharges();
-                    end;
                 }
             }
-            part(lines; "YNS Repayment Lines")
+            part(lines; "YNS Issued Repayment Lines")
             {
                 Caption = 'Lines';
                 ApplicationArea = All;
-                SubPageLink = "Repayment No." = field("No.");
+                SubPageLink = "Issued Repayment No." = field("No.");
             }
-            part(inst; "YNS Repayment Installments")
+            part(inst; "YNS Issued Repayment Inst.")
             {
                 Caption = 'Installments';
                 ApplicationArea = All;
-                SubPageLink = "Repayment No." = field("No.");
+                SubPageLink = "Issued Repayment No." = field("No.");
             }
             group(posting)
             {
@@ -118,68 +114,6 @@ page 60002 "YNS Repayment"
 
     actions
     {
-        area(Processing)
-        {
-            action(getentries)
-            {
-                Caption = 'Get Entries';
-                Image = GetEntries;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-                    RepaMgmt.GetEntries(Rec);
-                end;
-            }
-            action(suggest)
-            {
-                Caption = 'Suggest Installments';
-                Image = Suggest;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ApplicationArea = All;
-
-                trigger OnAction()
-                var
-                    SuggRep: Report "YNS Suggest Repayment Inst.";
-                begin
-                    SuggRep.SetRepaymentHeader(Rec);
-                    SuggRep.RunModal();
-                end;
-            }
-            action(calculate)
-            {
-                Caption = 'Calculate';
-                Image = Calculate;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-                    RepaMgmt.Calculate(Rec);
-                end;
-            }
-            action(issue)
-            {
-                Caption = 'Issue';
-                Image = IssueFinanceCharge;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-                    RepaMgmt.IssueRepaymentYesNo(Rec);
-                end;
-            }
-        }
         area(Reporting)
         {
             action(summary)
@@ -216,10 +150,21 @@ page 60002 "YNS Repayment"
                     Rec.OpenCharges();
                 end;
             }
+            action(finchg)
+            {
+                Caption = 'Issued Finance Charge Memo';
+                Image = FinChargeMemo;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.OpenIssuedFinCharge();
+                end;
+            }
         }
     }
-
-    var
-        RepaMgmt: Codeunit "YNS Repayment Management";
 }
 #endif

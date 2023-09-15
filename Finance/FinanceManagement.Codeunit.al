@@ -73,8 +73,18 @@ codeunit 60000 "YNS Finance Management"
     end;
 #endif
 
-#if W1FN001A
-    procedure ApplyArrangedCustomerEntries(var TempEntries: record "Gen. Journal Line" temporary)
+#if W1FN001A or W1FN002A
+    procedure ApplyArrangedCustomerEntriesYesNo(var TempEntries: record "Gen. Journal Line" temporary; CustLedgNoFilter: Text)
+    var
+        ApplyQst: Label 'Apply arranged entries?';
+    begin
+        if not Confirm(ApplyQst) then
+            Error('');
+
+        ApplyArrangedCustomerEntries(TempEntries, CustLedgNoFilter);
+    end;
+
+    procedure ApplyArrangedCustomerEntries(var TempEntries: record "Gen. Journal Line" temporary; CustLedgNoFilter: Text)
     var
         xCustLedg2: Record "Cust. Ledger Entry";
         CustLedg2: Record "Cust. Ledger Entry";
@@ -87,6 +97,7 @@ codeunit 60000 "YNS Finance Management"
         InstAmt: Decimal;
         NewAmt: Decimal;
         AmountMismatchErr: Label 'Installments amount must be %1';
+        InvalidFilterErr: Label 'Invalid customer entries filter';
         GLEntryNo: Integer;
         DetEntryNo: Integer;
         LastTransNo: Integer;
@@ -101,18 +112,24 @@ codeunit 60000 "YNS Finance Management"
             InstAmt += TempEntries.Amount;
         until TempEntries.Next() = 0;
 
+        if StrLen(CustLedgNoFilter.Trim()) = 0 then
+            Error(InvalidFilterErr);
+
         CustLedg2.Reset();
         CustLedg2.LockTable();
-        CustLedg2.SetRange("Customer No.", TempEntries."Source No.");
-        CustLedg2.SetRange("Document Type", TempEntries."Document Type");
-        CustLedg2.SetRange("Document No.", TempEntries."Document No.");
-        CustLedg2.SetRange("Posting Date", TempEntries."Posting Date");
-        CustLedg2.SetRange("Currency Code", TempEntries."Currency Code");
-        CustLedg2.SetRange(Open, true);
+        CustLedg2.SetFilter("Entry No.", CustLedgNoFilter);
         CustLedg2.SetAutoCalcFields("Remaining Amount", "Remaining Amt. (LCY)", Amount, "Amount (LCY)");
         CustLedg2.FindSet();
         xCustLedg2 := CustLedg2;
         repeat
+            CustLedg2.TestField(Open, true);
+            CustLedg2.TestField("Original Currency Factor", xCustLedg2."Original Currency Factor");
+            CustLedg2.TestField("Customer No.", xCustLedg2."Customer No.");
+            CustLedg2.TestField("Document Type", xCustLedg2."Document Type");
+            CustLedg2.TestField("Document No.", xCustLedg2."Document No.");
+            CustLedg2.TestField("Posting Date", xCustLedg2."Posting Date");
+            CustLedg2.TestField("Currency Code", xCustLedg2."Currency Code");
+
             TempSumCustLedg2."Remaining Amount" += CustLedg2."Remaining Amount";
             TempSumCustLedg2."Remaining Amt. (LCY)" += CustLedg2."Remaining Amt. (LCY)";
             TempSumCustLedg2.Amount += CustLedg2.Amount;
@@ -120,8 +137,6 @@ codeunit 60000 "YNS Finance Management"
             TempSumCustLedg2."Sales (LCY)" += CustLedg2."Sales (LCY)";
             TempSumCustLedg2."Profit (LCY)" += CustLedg2."Profit (LCY)";
             TempSumCustLedg2."Inv. Discount (LCY)" += CustLedg2."Inv. Discount (LCY)";
-
-            CustLedg2.TestField("Original Currency Factor", xCustLedg2."Original Currency Factor");
         until CustLedg2.Next() = 0;
 
         if InstAmt <> TempSumCustLedg2."Remaining Amount" then
@@ -239,6 +254,8 @@ codeunit 60000 "YNS Finance Management"
                 CustLedg2."Payment Method Code" := TempEntries."Payment Method Code";
                 CustLedg2.Insert();
 
+                CustLedgNoFilter += '|' + Format(GLEntryNo, 0, 9);
+
                 DetCustLedg2 := xDetCustLedg2;
                 DetCustLedg2."Entry No." := DetEntryNo;
                 DetCustLedg2."Cust. Ledger Entry No." := GLEntryNo;
@@ -257,6 +274,7 @@ codeunit 60000 "YNS Finance Management"
                 end;
                 DetCustLedg2."Initial Entry Due Date" := TempEntries."Due Date";
                 DetCustLedg2.Insert();
+                DetEntryNo += 1;
 
                 GLEntry := xGLEntry;
                 GLEntry."Entry No." := GLEntryNo;
@@ -268,6 +286,7 @@ codeunit 60000 "YNS Finance Management"
                 GLEntryNo += 1;
             until TempEntries.Next() = 0;
 
+        CustLedg2.SetFilter("Entry No.", CustLedgNoFilter);
         CustLedg2.FindSet();
         repeat
             TempSumCustLedg2."Amount (LCY)" -= CustLedg2."Amount (LCY)";

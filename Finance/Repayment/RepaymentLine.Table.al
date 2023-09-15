@@ -15,8 +15,8 @@ table 60001 "YNS Repayment Line"
         {
             DataClassification = CustomerContent;
             Caption = 'Line Type';
-            OptionCaption = 'Entry,Installment,Calculation';
-            OptionMembers = Entry,Installment,Calculation;
+            OptionCaption = 'Entry,Installment,Calculation,Charge';
+            OptionMembers = Entry,Installment,Calculation,Charge;
         }
         field(3; "Line No."; Integer)
         {
@@ -37,6 +37,11 @@ table 60001 "YNS Repayment Line"
         {
             DataClassification = CustomerContent;
             Caption = 'Entry No.';
+        }
+        field(8; "Charge Line No."; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Charge Line No.';
         }
         field(10; "Posting Date"; Date)
         {
@@ -99,11 +104,17 @@ table 60001 "YNS Repayment Line"
         {
             DataClassification = CustomerContent;
             Caption = 'Additional Amount';
+            BlankZero = true;
         }
         field(27; "Interest Overflow"; Decimal)
         {
             DataClassification = CustomerContent;
             Caption = 'Interest Overflow';
+        }
+        field(28; "Remaining Principal Amount"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Remaining Principal Amount';
         }
         field(30; "Principal Amount Base"; Boolean)
         {
@@ -116,6 +127,45 @@ table 60001 "YNS Repayment Line"
             Caption = 'Installment Line No.';
             BlankZero = true;
         }
+        field(41; "Charges Application"; Option)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Charges Application';
+            OptionMembers = "First Installment","Last Installment","Divide";
+            OptionCaption = 'First Installment,Last Installment,Divide';
+        }
+        field(42; "Charge Account No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Charge Account No.';
+            TableRelation = "G/L Account";
+
+            trigger OnValidate()
+            var
+                GLAcc: Record "G/L Account";
+                RepaHead: Record "YNS Repayment Header";
+            begin
+                if (xRec."Charge Account No." <> Rec."Charge Account No.") and (Rec."Charge Account No." > '') then begin
+                    RepaHead.Get("Repayment No.");
+                    GLAcc.Get(Rec."Charge Account No.");
+                    Description := GLAcc.Name;
+                    "Gen. Prod. Posting Group" := RepaHead."Gen. Prod. Posting Group";
+                    "VAT Prod. Posting Group" := RepaHead."VAT Prod. Posting Group";
+                end;
+            end;
+        }
+        field(50; "Gen. Prod. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Prod. Posting Group';
+            TableRelation = "Gen. Product Posting Group";
+            DataClassification = CustomerContent;
+        }
+        field(51; "VAT Prod. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Prod. Posting Group';
+            TableRelation = "VAT Product Posting Group";
+            DataClassification = CustomerContent;
+        }
     }
 
     keys
@@ -123,6 +173,10 @@ table 60001 "YNS Repayment Line"
         key(PK; "Repayment No.", "Line Type", "Line No.")
         {
             Clustered = true;
+        }
+        key(S1; "Repayment No.", "Line Type")
+        {
+            SumIndexFields = Amount;
         }
     }
 

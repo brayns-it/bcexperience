@@ -10,6 +10,7 @@ table 60000 "YNS Repayment Header"
         {
             DataClassification = CustomerContent;
             Caption = 'No.';
+            TableRelation = "YNS Repayment Header";
 
             trigger OnValidate()
             begin
@@ -183,6 +184,19 @@ table 60000 "YNS Repayment Header"
             TableRelation = "No. Series";
             DataClassification = CustomerContent;
         }
+        field(51; "Posting No. Series"; Code[20])
+        {
+            Caption = 'Posting No. Series';
+            Editable = false;
+            TableRelation = "No. Series";
+            DataClassification = CustomerContent;
+        }
+        field(52; "Posting No."; Code[20])
+        {
+            Caption = 'Posting No.';
+            Editable = false;
+            DataClassification = CustomerContent;
+        }
         field(100; "Interest Amount"; Decimal)
         {
             DataClassification = CustomerContent;
@@ -194,6 +208,14 @@ table 60000 "YNS Repayment Header"
         {
             DataClassification = CustomerContent;
             Caption = 'Principal Amount';
+            BlankZero = true;
+            Editable = false;
+        }
+        field(102; "Charges Amount"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = sum("YNS Repayment Line".Amount where("Repayment No." = field("No."), "Line Type" = const(Charge)));
+            Caption = 'Charges Amount';
             BlankZero = true;
             Editable = false;
         }
@@ -212,11 +234,15 @@ table 60000 "YNS Repayment Header"
 
     trigger OnInsert()
     begin
+        RepaSetup.Get();
+
         if "No." = '' then begin
-            RepaSetup.Get();
             RepaSetup.TestField("Repayment No. Series");
             NoSeriesMgt.InitSeries(RepaSetup."Repayment No. Series", xRec."No. Series", "Posting Date", "No.", "No. Series");
         end;
+
+        if "Posting No. Series" = '' then
+            "Posting No. Series" := RepaSetup."Issued Repayment No. Series";
     end;
 
     trigger OnDelete()
@@ -238,6 +264,18 @@ table 60000 "YNS Repayment Header"
         RepaLine.SetRange("Repayment No.", "No.");
         if not RepaLine.IsEmpty() then
             Error(RepaMustBeEmptyErr, "No.");
+    end;
+
+    procedure OpenCharges()
+    var
+        RepaLine2: Record "YNS Repayment Line";
+    begin
+        RepaLine2.Reset();
+        RepaLine2.FilterGroup(2);
+        RepaLine2.SetRange("Repayment No.", Rec."No.");
+        RepaLine2.SetRange("Line Type", RepaLine2."Line Type"::Charge);
+        RepaLine2.FilterGroup(0);
+        Page.Run(page::"YNS Repayment Charges", RepaLine2);
     end;
 }
 #endif

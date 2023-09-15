@@ -8,25 +8,280 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 4182830877 - Field 925376238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 4182830877 - Field 3348318151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charges Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Charges Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 261671151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Bank Account Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Company Bank Account Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Currency Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1826021201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Finance Charge Terms</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Finance Charge Terms - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Gen. Prod. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1682473398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interest Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Interest Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 3609918695 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Fin. Charge Memo No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Issued Fin. Charge Memo No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Repayment No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1351594800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field No. Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 3855271124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Method Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Payment Method Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1878897450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Principal Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Principal Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 832289975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Repayment Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1927595893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 4127290398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source City</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source City - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1785563553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source Country/Region Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 3740588097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source County</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source County - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1343707150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1882905478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 2744212116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Post Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source Post Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1753214751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 1753214751 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer,Vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field Source Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 4182830877 - Field 236064653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Header - Field VAT Prod. Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3971474166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Issued Repayment Line</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3594977407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Additional Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Additional Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3646948048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charge Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Charge Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 2755453133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charge Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Charge Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3332167501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charges Application</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Charges Application - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3332167501 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Installment,Last Installment,Divide</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Charges Application - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3212203982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delay Days</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Delay Days - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Document Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 4085727052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 1527563463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field External Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Gen. Prod. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 2485918393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Installment Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Installment Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3459261662 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Installment Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Installment Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 1682473398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interest Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Interest Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 747360126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interest Overflow</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Interest Overflow - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 2449949577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Issued Repayment No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3971474166 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Line No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Line No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3971474166 - Field 925376238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No.</source>
+        <trans-unit id="Table 3971474166 - Field 158172202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Repayment No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Line Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 158172202 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry,Installment,Calculation,Charge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Line Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3855271124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Method Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Payment Method Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 1878897450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Principal Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Principal Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 3446401157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Principal Amount Base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Principal Amount Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 1865985766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Principal Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field Remaining Principal Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3971474166 - Field 236064653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Issued Repayment Line - Field VAT Prod. Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1257674914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Repayment Header</source>
@@ -37,6 +292,11 @@
           <source>Repayment %1 must be empty</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Method TestNoLineExists - NamedType RepaMustBeEmptyErr</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 3348318151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charges Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Charges Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1257674914 - Field 261671151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Company Bank Account Code</source>
@@ -92,6 +352,16 @@
           <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 514695969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Posting No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1257674914 - Field 103924864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Header - Field Posting No. Series - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1257674914 - Field 1878897450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Principal Amount</source>
@@ -168,6 +438,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Amount - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 3646948048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charge Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Charge Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 2755453133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charge Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Charge Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 3332167501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charges Application</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Charges Application - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 3332167501 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Installment,Last Installment,Divide</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Charges Application - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 1568193449 - Field 3212203982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delay Days</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -208,6 +498,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field External Document No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Gen. Prod. Posting Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1568193449 - Field 2485918393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Installment Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -239,7 +534,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Line Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1568193449 - Field 158172202 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Entry,Installment,Calculation</source>
+          <source>Entry,Installment,Calculation,Charge</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Line Type - Property OptionCaption</note>
         </trans-unit>
@@ -263,10 +558,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Principal Amount Base - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 1865985766 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Principal Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Remaining Principal Amount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1568193449 - Field 925376238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field Repayment No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1568193449 - Field 236064653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Repayment Line - Field VAT Prod. Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 325497354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Repayment Setup</source>
@@ -303,10 +608,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Finance Management - Method ApplyArrangedCustomerEntries - NamedType AmountMismatchErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3960575409 - Method 3157451606 - NamedType 880984256" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid customer entries filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Finance Management - Method ApplyArrangedCustomerEntries - NamedType InvalidFilterErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3960575409 - Method 391261656 - NamedType 1965247518" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply arranged entries?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Finance Management - Method ApplyArrangedCustomerEntriesYesNo - NamedType ApplyQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3009261414 - Method 2554927447 - NamedType 3189741196" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insufficient remaining amount %1 for charge %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Repayment Management - Method AddChargeLine - NamedType NoInstSpaceErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3009261414 - Method 1592581304 - NamedType 2932411483" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document %1 posting date cannot be greater than %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Repayment Management - Method Calculate - NamedType PostingDateErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3009261414 - Method 1971010925 - NamedType 2838545272" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interest repayment %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Repayment Management - Method IssueFinanceCharge - NamedType InterestLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3009261414 - Method 4147795966 - NamedType 1765724753" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issue repayment %1?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Repayment Management - Method IssueRepaymentYesNo - NamedType IssueQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3009261414 - Method 4147795966 - NamedType 1992212793" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment %1 has been issued</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Repayment Management - Method IssueRepaymentYesNo - NamedType IssuedLbl</note>
         </trans-unit>
         <trans-unit id="Page 4142854161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Arrange Customer/Vendor Entries</source>
@@ -338,10 +673,75 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Action applyentr - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 4142854161 - Action 157630099 - Method 1377591017 - NamedType 1965247518" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Apply arranged entries?</source>
+        <trans-unit id="Page 310152448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Repayment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Action applyentr - Method OnAction - NamedType ApplyQst</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 310152448 - Control 872480034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment - Control general - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 310152448 - Control 760808484 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Installments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment - Control inst - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 310152448 - Control 3906556071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment - Control lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 310152448 - Control 660159852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment - Control posting - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 310152448 - Action 1817909779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charges</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment - Action charges - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 310152448 - Action 3789927711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Finance Charge Memo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment - Action finchg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 310152448 - Action 18701264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Summary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment - Action summary - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 828885767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Repayment Charges</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment Charges - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 807233054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment Installments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment Inst. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 375836707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Repayment Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2309425650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Repayments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2309425650 - Action 3789927711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issued Finance Charge Memo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment List - Action finchg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2309425650 - Action 18701264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Summary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Issued Repayment List - Action summary - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1635558339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Repayment</source>
@@ -363,15 +763,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Control lines - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1635558339 - Control 1198121158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Payment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Control payment - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1635558339 - Control 660159852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Control posting - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1635558339 - Action 1817909779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Charges</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Action charges - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1635558339 - Action 2216958424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Calculate</source>
@@ -383,6 +783,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Action getentries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1635558339 - Action 3358742299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Issue</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Action issue - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1635558339 - Action 4063161056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Suggest Installments</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -393,8 +798,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment - Action summary - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 312182284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Repayment Charges</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment Charges - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1363375395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Repayment Lines</source>
+          <source>Repayment Installments</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment Installments - Property Caption</note>
         </trans-unit>
@@ -438,6 +848,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report YNS Repayment Summary - NamedType TitleLbl</note>
         </trans-unit>
+        <trans-unit id="Report 2721258919 - Control 198641044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Repayment Summary - Control options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2721258919 - Control 1531885325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Repayment Summary - Control TableCaptCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2721258919 - Control 805966548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Repayment Summary - Control TableRecNoCtl - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 4268503445 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Suggest Repayment Installments</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -479,7 +904,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report YNS Suggest Repayment Inst. - Control DueDateFmlaCtl - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4268503445 - Control 4068348928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Maximum Amount</source>
+          <source>Installment Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report YNS Suggest Repayment Inst. - Control InstallmentAmountCtl - Property Caption</note>
         </trans-unit>

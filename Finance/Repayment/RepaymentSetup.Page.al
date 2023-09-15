@@ -6,6 +6,7 @@ page 60001 "YNS Repayment Setup"
     Caption = 'Repayment Setup';
     ApplicationArea = All;
     UsageCategory = Administration;
+    ContextSensitiveHelpPage = '/page/repayments';
 
     layout
     {

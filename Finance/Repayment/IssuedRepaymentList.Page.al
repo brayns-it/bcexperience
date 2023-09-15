@@ -1,14 +1,13 @@
 #if W1FN002A
-page 60005 "YNS Repayment List"
+page 60007 "YNS Issued Repayment List"
 {
     PageType = List;
-    SourceTable = "YNS Repayment Header";
-    Caption = 'Repayments';
+    SourceTable = "YNS Issued Repayment Header";
+    Caption = 'Issued Repayments';
     ApplicationArea = All;
-    UsageCategory = Lists;
-    CardPageId = "YNS Repayment";
+    UsageCategory = History;
+    CardPageId = "YNS Issued Repayment";
     Editable = false;
-    ContextSensitiveHelpPage = '/page/repayments';
 
     layout
     {
@@ -54,6 +53,23 @@ page 60005 "YNS Repayment List"
 
     actions
     {
+        area(Navigation)
+        {
+            action(finchg)
+            {
+                Caption = 'Issued Finance Charge Memo';
+                Image = FinChargeMemo;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.OpenIssuedFinCharge();
+                end;
+            }
+        }
         area(Reporting)
         {
             action(summary)

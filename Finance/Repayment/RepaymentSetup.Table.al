@@ -15,11 +15,13 @@ table 60004 "YNS Repayment Setup"
         {
             DataClassification = CustomerContent;
             Caption = 'Repayment No. Series';
+            TableRelation = "No. Series";
         }
         field(11; "Issued Repayment No. Series"; Code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Issued Repayment No. Series';
+            TableRelation = "No. Series";
         }
         field(20; "Def. Gen. Prod. Posting Group"; Code[20])
         {

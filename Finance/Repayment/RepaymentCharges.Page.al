@@ -1,11 +1,12 @@
 #if W1FN002A
-page 60004 "YNS Repayment Installments"
+page 60006 "YNS Repayment Charges"
 {
-    PageType = ListPart;
+    PageType = List;
     SourceTable = "YNS Repayment Line";
     AutoSplitKey = true;
-    SourceTableView = where("Line Type" = const(Installment));
-    Caption = 'Repayment Installments';
+    SourceTableView = where("Line Type" = const(Charge));
+    Caption = 'Repayment Charges';
+    ContextSensitiveHelpPage = '/page/repayments';
 
     layout
     {
@@ -13,6 +14,10 @@ page 60004 "YNS Repayment Installments"
         {
             repeater(control1)
             {
+                field("Charge Account No."; Rec."Charge Account No.")
+                {
+                    ApplicationArea = All;
+                }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
@@ -21,15 +26,16 @@ page 60004 "YNS Repayment Installments"
                 {
                     ApplicationArea = All;
                 }
-                field("Additional Amount"; Rec."Additional Amount")
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Due Date"; Rec."Due Date")
-                {
-                    ApplicationArea = All;
-                }
-                field("Payment Method Code"; Rec."Payment Method Code")
+                field("Charges Application"; Rec."Charges Application")
                 {
                     ApplicationArea = All;
                 }
