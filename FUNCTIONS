@@ -1,3 +1,8 @@
+W1XX001A    Common          Generic API Page                            deps: W1XX002A
+W1XX002A    Common          Various functions
+W1XX003A    Common          Bulk importer                               deps: W1XX002A
+W1XX004A    Common          Data Exchange                   
+
 W1FN001A    Finance	        Arrange Customer/Vendor Entries	
 W1FN002A	Finance	        Repayments	
 W1FN003A	Finance	        Company Bank Account	

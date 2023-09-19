@@ -20,6 +20,12 @@ permissionset 60000 YNSExperience
         table "YNS Repayment Setup" = X,
         codeunit "YNS Repayment Management" = X,
 #endif
+#if W1XX004A
+        tabledata "YNS Data Exchange Reference" = RIMD,
+        table "YNS Data Exchange Reference" = X,
+        tabledata "YNS Data Exchange Ref. Line" = RIMD,
+        table "YNS Data Exchange Ref. Line" = X,
+#endif        
         codeunit "YNS Experience Install" = X,
         codeunit "YNS Experience Upgrade" = X;
 }

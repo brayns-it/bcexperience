@@ -938,6 +938,156 @@
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Report YNS Repayment Summary - Control TableRecNoCtl - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3443239498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Exchange Reference Line</source><target>Riga riferimenti scambio dati</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source><target />
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 294023350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key 1</source><target>Chiave primaria 1</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Primary Key 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 2675900795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key 2</source><target>Chiave primaria 2</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Primary Key 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 1903965330 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reference Code</source><target>Cod. riferimento</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Reference Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 1210188005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reference Type</source><target>Tipo riferimento</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Reference Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 1210188005 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table,Value</source><target>Tabella,Valore</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Reference Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 3135334477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table ID</source><target>ID tabella</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Table ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 2146116886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value 1</source><target>Valore 1</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Value 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 233027035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value 2</source><target>Valore 2</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Value 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3443239498 - Field 401773189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value Type</source><target>Tipo valore</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Ref. Line - Field Value Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1794750616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Exchange Reference</source><target>Riferimento scambio dati</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Reference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1794750616 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source><target>Codice</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Reference - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1794750616 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source><target />
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Data Exchange Reference - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 739365586 - Method 1286838777 - NamedType 3748405772" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unsupported field type %1</source><target>Tipo campo %1 non supportato</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Bulk Importer - Method CopyJsonObjectToRecordRef - NamedType UnsupportedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 739365586 - Method 1575744537 - NamedType 3748405772" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unsupported field type %1</source><target>Tipo campo %1 non supportato</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Bulk Importer - Method CopyRecordRefToJsonObject - NamedType UnsupportedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 780260615 - Method 1286838777 - NamedType 3748405772" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unsupported field type %1</source><target />
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Functions - Method CopyJsonObjectToRecordRef - NamedType UnsupportedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 780260615 - Method 1575744537 - NamedType 3748405772" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unsupported field type %1</source><target>Tipo campo %1 non supportato</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Functions - Method CopyRecordRefToJsonObject - NamedType UnsupportedErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2359449534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Exchange References</source><target>Riferimenti scambio dati</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Data Exchange Ref. List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2359449534 - Action 3081871223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tables</source><target>Tabelle</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Data Exchange Ref. List - Action tables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2359449534 - Action 1519354996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Values</source><target>Valori</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Data Exchange Ref. List - Action values - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3177377767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Exchange Reference Tables</source><target>Riferimento tabelle scambio dati</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Data Exchange Ref. Tables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 627065540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Data Exchange Reference Values</source><target>Riferimento valori scambio dati</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Data Exchange Ref. Values - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3959139631 - Method 923936338 - NamedType 2461852735" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Missing subsystem</source><target>Sottosistema mancante</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Generic API - Method BodyValidate - NamedType NoSubsystemErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3959139631 - Method 923936338 - NamedType 2581686915" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Missing procedure name</source><target>Nome procedura mancante</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Generic API - Method BodyValidate - NamedType NoProcedureErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3959139631 - Method 923936338 - NamedType 2644481312" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Missing body</source><target>Corpo mancante</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Generic API - Method BodyValidate - NamedType NoBodyErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3959139631 - Control 1230436276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Body</source><target>Corpo</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Generic API - Control body - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3959139631 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source><target>Id</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Generic API - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3959139631 - Control 1365843430 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Procedure</source><target>Procedura</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Generic API - Control procedureName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3959139631 - Control 2346897315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Subsystem</source><target>Sottosistema</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Generic API - Control subsystem - Property Caption</note>
+        </trans-unit>
       </group>
     </body>
   </file>
