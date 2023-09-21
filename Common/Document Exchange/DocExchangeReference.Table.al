@@ -1,7 +1,7 @@
 #if W1XX004A
-table 60005 "YNS Data Exchange Reference"
+table 60005 "YNS Doc. Exchange Reference"
 {
-    Caption = 'Data Exchange Reference';
+    Caption = 'Document Exchange Reference';
     DataClassification = CustomerContent;
 
     fields
@@ -29,7 +29,7 @@ table 60005 "YNS Data Exchange Reference"
 
     trigger OnDelete()
     var
-        RefLine: Record "YNS Data Exchange Ref. Line";
+        RefLine: Record "YNS Doc. Exchange Ref. Line";
     begin
         RefLine.Reset();
         RefLine.SetRange("Reference Code", rec.Code);
@@ -39,7 +39,7 @@ table 60005 "YNS Data Exchange Reference"
 
     procedure OpenTablesPage()
     var
-        Lines: Record "YNS Data Exchange Ref. Line";
+        Lines: Record "YNS Doc. Exchange Ref. Line";
     begin
         Lines.Reset();
         Lines.FilterGroup(2);
@@ -47,12 +47,12 @@ table 60005 "YNS Data Exchange Reference"
         Lines.SetRange("Reference Type", Lines."Reference Type"::Table);
         Lines.FilterGroup(0);
 
-        Page.Run(page::"YNS Data Exchange Ref. Tables", Lines);
+        Page.Run(page::"YNS Doc. Exchange Ref. Tables", Lines);
     end;
 
     procedure OpenValuesPage()
     var
-        Lines: Record "YNS Data Exchange Ref. Line";
+        Lines: Record "YNS Doc. Exchange Ref. Line";
     begin
         Lines.Reset();
         Lines.FilterGroup(2);
@@ -60,7 +60,7 @@ table 60005 "YNS Data Exchange Reference"
         Lines.SetRange("Reference Type", Lines."Reference Type"::Value);
         Lines.FilterGroup(0);
 
-        Page.Run(page::"YNS Data Exchange Ref. Tables", Lines);
+        Page.Run(page::"YNS Doc. Exchange Ref. Tables", Lines);
     end;
 }
 #endif

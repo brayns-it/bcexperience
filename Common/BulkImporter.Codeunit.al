@@ -5,11 +5,30 @@
 /// </summary>
 codeunit 60005 "YNS Bulk Importer"
 {
-    EventSubscriberInstance = Manual;
-
     var
         Functions: Codeunit "YNS Functions";
         PropertyMap: Dictionary of [Text, Integer];
+        Tags: Dictionary of [Text, Text];
+
+    /// <summary>
+    /// Set a custom tag to identify this instance (for events)
+    /// </summary>
+    procedure SetTag(TagKey: Text; TagValue: Text)
+    begin
+        if Tags.ContainsKey(TagKey) then
+            Tags.Set(TagKey, TagValue)
+        else
+            Tags.Add(TagKey, TagValue);
+    end;
+
+    /// <summary>
+    /// Get the custom tag to identify this instance (for events)
+    /// </summary>
+    procedure GetTag(TagKey: Text) Result: Text
+    begin
+        if not Tags.Get(TagKey, Result) then
+            Result := '';
+    end;
 
     /// <summary>
     /// Add mapping from JSON object property type to table ID
@@ -20,15 +39,24 @@ codeunit 60005 "YNS Bulk Importer"
     end;
 
     /// <summary>
+    /// Remove all mapped tables
+    /// </summary>
+    procedure ClearTables()
+    begin
+        Clear(PropertyMap);
+    end;
+
+    /// <summary>
     /// Bulk import the table, doing modify if the record exists or insert.
     /// Each mapped property is searched recursively in the object and processed as array of objects.
     /// </summary>
-    procedure ImportTable(JObject: JsonObject)
+    procedure ImportTable(var JObject: JsonObject)
     var
         RecRef: RecordRef;
         JItem: JsonObject;
         PropertyName: Text;
         TableID: Integer;
+        IsHandled: Boolean;
     begin
         foreach PropertyName in PropertyMap.Keys do
             if JObject.Contains(PropertyName) then begin
@@ -41,7 +69,12 @@ codeunit 60005 "YNS Bulk Importer"
                     RecRef.SetRecFilter();
                     if RecRef.FindFirst() then begin
                         CopyJsonObjectToRecordRef(JItem, RecRef);
-                        RecRef.Modify();
+
+                        IsHandled := false;
+                        OnBeforeModifyRecord(JItem, RecRef, IsHandled);
+                        if not IsHandled then
+                            RecRef.Modify();
+
                     end else
                         RecRef.Insert();
 
@@ -61,7 +94,7 @@ codeunit 60005 "YNS Bulk Importer"
     var
         I: Integer;
         TempName: Text;
-        Parts: List of [Text];
+        ToUpper: Boolean;
         Ch: Text;
     begin
         if Name = '' then
@@ -84,18 +117,19 @@ codeunit 60005 "YNS Bulk Importer"
             end;
         end;
 
-        I := 0;
-        Parts := TempName.Split(' ');
-        foreach TempName in Parts do begin
-            TempName := TempName.ToLower();
-            if I > 0 then
-                if StrLen(TempName) > 1 then
-                    TempName := TempName.Substring(1, 1).ToUpper() + TempName.Substring(2)
-                else
-                    TempName := TempName.Substring(1, 1).ToUpper();
+        ToUpper := false;
 
-            I += 1;
-            Result += TempName;
+        for I := 1 to StrLen(TempName) do begin
+            Ch := TempName.Substring(I, 1);
+            if Ch = ' ' then
+                ToUpper := true
+            else begin
+                if ToUpper then
+                    Result += Ch.ToUpper()
+                else
+                    Result += Ch.ToLower();
+                ToUpper := false;
+            end;
         end;
     end;
 
@@ -118,6 +152,7 @@ codeunit 60005 "YNS Bulk Importer"
         TmpGuid: Guid;
         TmpBool: Boolean;
         JValue: JsonValue;
+        SkipField: Boolean;
         UnsupportedErr: Label 'Unsupported field type %1';
     begin
         for I := 1 to RecRef.FieldCount() do begin
@@ -125,6 +160,8 @@ codeunit 60005 "YNS Bulk Importer"
             JName := FormatJsonName(FldRef.Name());
 
             if FldRef.Class() = FieldClass::Normal then begin
+                SkipField := false;
+
                 case FldRef.Type() of
                     FieldType::Integer,
                     FieldType::Option:
@@ -180,12 +217,13 @@ codeunit 60005 "YNS Bulk Importer"
                         end;
                     FieldType::Media,
                     FieldType::MediaSet:
-                        TmpInt := 0;    // do nothing
+                        SkipField := true;
                     else
                         Error(UnsupportedErr, FldRef.Type());
                 end;
 
-                Result.Add(JName, JValue);
+                if not SkipField then
+                    Result.Add(JName, JValue);
             end;
         end;
     end;
@@ -193,7 +231,7 @@ codeunit 60005 "YNS Bulk Importer"
     /// <summary>
     /// Copy a JSON object to a record ref, each property equals to field
     /// </summary>
-    procedure CopyJsonObjectToRecordRef(JObject: JsonObject; var RecRef: RecordRef)
+    procedure CopyJsonObjectToRecordRef(var JObject: JsonObject; var RecRef: RecordRef)
     var
         TmpDateFmla: DateFormula;
         FldRef: FieldRef;
@@ -203,6 +241,8 @@ codeunit 60005 "YNS Bulk Importer"
         TmpGuid: Guid;
         UnsupportedErr: Label 'Unsupported field type %1';
     begin
+        OnBeforeCopyObject(JObject, RecRef.Number);
+
         for I := 1 to RecRef.FieldCount() do begin
             FldRef := RecRef.FieldIndex(I);
             JName := FormatJsonName(FldRef.Name());
@@ -217,7 +257,10 @@ codeunit 60005 "YNS Bulk Importer"
                     FieldType::Text:
                         FldRef.Value := JToken.AsValue().AsText();
                     FieldType::Date:
-                        FldRef.Value := JToken.AsValue().AsDate();      // yyyy-MM-dd
+                        if JToken.AsValue().AsText() = '' then
+                            FldRef.Value := 0D
+                        else
+                            FldRef.Value := JToken.AsValue().AsDate();      // yyyy-MM-dd
                     FieldType::Time:
                         FldRef.Value := JToken.AsValue().AsTime();      // HH:mm:ss.FFFFFFF
                     FieldType::Decimal:
@@ -242,6 +285,23 @@ codeunit 60005 "YNS Bulk Importer"
                         Error(UnsupportedErr, FldRef.Type());
                 end;
         end;
+
+        OnAfterCopyObject(JObject, RecRef);
+    end;
+
+    [InternalEvent(true)]
+    local procedure OnBeforeCopyObject(var JObject: JsonObject; TableID: Integer)
+    begin
+    end;
+
+    [InternalEvent(true)]
+    local procedure OnAfterCopyObject(var JObject: JsonObject; var RecRef: RecordRef)
+    begin
+    end;
+
+    [InternalEvent(true)]
+    local procedure OnBeforeModifyRecord(var JObject: JsonObject; var RecRef: RecordRef; var IsHandled: Boolean)
+    begin
     end;
 }
 #endif

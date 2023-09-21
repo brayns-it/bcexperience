@@ -73,6 +73,14 @@ codeunit 60000 "YNS Finance Management"
     end;
 #endif
 
+#if W1FN006A
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforePostCommitSalesDoc', '', false, false)]
+    local procedure OnBeforePostCommitSalesDoc(var SalesHeader: Record "Sales Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PreviewMode: Boolean; var ModifyHeader: Boolean; var CommitIsSuppressed: Boolean; var TempSalesLineGlobal: Record "Sales Line" temporary)
+    begin
+        CommitIsSuppressed := true;
+    end;
+#endif
+
 #if W1FN001A or W1FN002A
     procedure ApplyArrangedCustomerEntriesYesNo(var TempEntries: record "Gen. Journal Line" temporary; CustLedgNoFilter: Text)
     var
@@ -347,5 +355,4 @@ codeunit 60000 "YNS Finance Management"
         CustLedgEntry."YNS Original Due Date" := CustLedgEntry."Due Date";
     end;
 #endif
-
 }

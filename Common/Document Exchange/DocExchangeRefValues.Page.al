@@ -1,12 +1,14 @@
 #if W1XX004A
-page 60015 "YNS Data Exchange Ref. Values"
+page 60015 "YNS Doc. Exchange Ref. Values"
 {
-    Caption = 'Data Exchange Reference Values';
+    Caption = 'Document Exchange Reference Values';
     PageType = List;
     ApplicationArea = All;
     AutoSplitKey = true;
-    SourceTable = "YNS Data Exchange Ref. Line";
-    SourceTableView = sorting("Value Type", "Value 1", "Value 2") where("Reference Type" = const(Value));
+    SourceTable = "YNS Doc. Exchange Ref. Line";
+    SourceTableView = sorting("Reference Code", "Reference Type", "Value Type", "Value 1", "Value 2")
+        where("Reference Type" = const(Value));
+    ContextSensitiveHelpPage = '/page/document-exchange';
 
     layout
     {

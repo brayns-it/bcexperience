@@ -1,7 +1,7 @@
 #if W1XX004A
-table 60006 "YNS Data Exchange Ref. Line"
+table 60006 "YNS Doc. Exchange Ref. Line"
 {
-    Caption = 'Data Exchange Reference Line';
+    Caption = 'Document Exchange Reference Line';
     DataClassification = CustomerContent;
 
     fields
@@ -10,7 +10,7 @@ table 60006 "YNS Data Exchange Ref. Line"
         {
             DataClassification = CustomerContent;
             Caption = 'Reference Code';
-            TableRelation = "YNS Data Exchange Reference";
+            TableRelation = "YNS Doc. Exchange Reference";
         }
         field(2; "Reference Type"; Option)
         {
@@ -62,8 +62,8 @@ table 60006 "YNS Data Exchange Ref. Line"
         {
             Clustered = true;
         }
-        key(K1; "Table ID", "Primary Key 1", "Primary Key 2") { }
-        key(K2; "Value Type", "Value 1", "Value 2") { }
+        key(K1; "Reference Code", "Reference Type", "Table ID", "Primary Key 1", "Primary Key 2") { }
+        key(K2; "Reference Code", "Reference Type", "Value Type", "Value 1", "Value 2") { }
     }
 }
 #endif

@@ -1,11 +1,17 @@
-W1XX001A    Common          Generic API Page                            deps: W1XX002A
-W1XX002A    Common          Various functions
-W1XX003A    Common          Bulk importer                               deps: W1XX002A
-W1XX004A    Common          Data Exchange                   
+W1XX001A    Common          Generic API Page                            
+W1XX003A    Common          Bulk importer                               
+W1XX004A    Common          Document Exchange                   
+W1XX005A    Common          *File storage
+W1XX006A    Common          More field in pages
 
 W1FN001A    Finance	        Arrange Customer/Vendor Entries	
 W1FN002A	Finance	        Repayments	
 W1FN003A	Finance	        Company Bank Account	
 W1FN004A	Finance	        Original Due Date	
+W1FN005A    Finance         Edit document posting nos.
+W1FN006A    Finance         Always suppress commit
+
+W1WH001A    Warehouse       Negative bins
 
 ITXX001A	Finance	        Activity Code	
+ITXX002A    Finance         *Electronic Invoice                                      deps: W1XX004A

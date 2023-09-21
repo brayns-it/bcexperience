@@ -1,11 +1,12 @@
 #if W1XX004A
-page 60013 "YNS Data Exchange Ref. List"
+page 60013 "YNS Doc. Exchange Ref. List"
 {
-    Caption = 'Data Exchange References';
+    Caption = 'Document Exchange References';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "YNS Data Exchange Reference";
+    SourceTable = "YNS Doc. Exchange Reference";
+    ContextSensitiveHelpPage = '/page/document-exchange';
 
     layout
     {

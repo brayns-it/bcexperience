@@ -1,9 +1,25 @@
-#if W1XX002A
 /// <summary>
 /// Various utility functions
 /// </summary>
 codeunit 60004 "YNS Functions"
 {
+    #region DIALOG
+    /// <summary>
+    /// Download a text file to the client (UTF8)
+    /// </summary>
+    procedure DownloadText(Title: Text; FileFilter: Text; FileName: Text; FileContent: Text)
+    var
+        TempBlob: Codeunit "Temp Blob";
+        IStream: InStream;
+        OStream: OutStream;
+    begin
+        TempBlob.CreateOutStream(OStream, TextEncoding::UTF8);
+        OStream.WriteText(FileContent);
+        TempBlob.CreateInStream(IStream, TextEncoding::UTF8);
+        DownloadFromStream(IStream, Title, '', FileFilter, FileName);
+    end;
+    #endregion
+
     #region JSON
     /// <summary>
     /// Returns a JSON object property as text
@@ -54,4 +70,3 @@ codeunit 60004 "YNS Functions"
     end;
     #endregion
 }
-#endif
