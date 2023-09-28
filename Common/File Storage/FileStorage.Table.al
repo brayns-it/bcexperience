@@ -6,7 +6,7 @@ table 60011 "YNS File Storage"
 
     fields
     {
-        field(1; "Path"; Code[2048])
+        field(1; "Path"; Text[2048])
         {
             DataClassification = CustomerContent;
             Caption = 'Path';
@@ -62,5 +62,18 @@ table 60011 "YNS File Storage"
             Clustered = true;
         }
     }
+
+    trigger OnInsert()
+    begin
+        "Created Date/Time" := CurrentDateTime;
+        "Created by User ID" := CopyStr(UserId, 1, MaxStrLen("Created by User ID"));
+        "Modified Date/Time" := CurrentDateTime;
+    end;
+
+    trigger OnModify()
+    begin
+        "Modified Date/Time" := CurrentDateTime;
+    end;
+
 }
 #endif

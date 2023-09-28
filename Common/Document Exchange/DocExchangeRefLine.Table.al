@@ -54,6 +54,21 @@ table 60006 "YNS Doc. Exchange Ref. Line"
             DataClassification = CustomerContent;
             Caption = 'Value 2';
         }
+        field(60; "Source Type"; Option)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Source Type';
+            OptionMembers = " ",Customer,Vendor;
+            OptionCaption = ' ,Customer,Vendor';
+        }
+        field(61; "Source No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Source No.';
+            TableRelation = if ("Source Type" = const(Customer)) Customer
+            else
+            if ("Source Type" = const(Vendor)) Vendor;
+        }
     }
 
     keys

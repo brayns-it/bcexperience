@@ -40,6 +40,14 @@ page 60014 "YNS Doc. Exchange Ref. Tables"
                 {
                     ApplicationArea = All;
                 }
+                field("Source Type"; Rec."Source Type")
+                {
+                    ApplicationArea = All;
+                }
+                field("Source No."; Rec."Source No.")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

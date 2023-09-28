@@ -19,7 +19,7 @@ pageextension 60004 YNSPostedSalesInvoices extends "Posted Sales Invoices"
                 begin
                     CurrPage.SetSelectionFilter(SalesInvHead);
                     RecRef.GetTable(SalesInvHead);
-                    DocXMgmt.ManualProcessDocuments(RecRef);
+                    DocXMgmt.ManualProcessDocuments(RecRef, Page::"Posted Sales Invoices");
                 end;
             }
 #endif

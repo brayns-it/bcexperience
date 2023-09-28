@@ -3,6 +3,7 @@ W1XX003A    Common          Bulk importer
 W1XX004A    Common          Document Exchange                   
 W1XX005A    Common          *File storage
 W1XX006A    Common          More field in pages
+W1XX007A    Common          Remote Functions
 
 W1FN001A    Finance	        Arrange Customer/Vendor Entries	
 W1FN002A	Finance	        Repayments	
@@ -14,4 +15,4 @@ W1FN006A    Finance         Always suppress commit
 W1WH001A    Warehouse       Negative bins
 
 ITXX001A	Finance	        Activity Code	
-ITXX002A    Finance         *Electronic Invoice                                      deps: W1XX004A
+ITXX002A    Finance         Electronic Invoice                                      deps: W1XX004A, W1XX007A

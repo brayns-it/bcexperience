@@ -5,15 +5,25 @@
 interface "YNS Doc. Exchange Format"
 {
     /// <summary>
-    /// For the profile and the selected documents, get the available options
-    /// as choices in a List Select Page
+    /// Set working profile
     /// </summary>
-    procedure GetManualProcessOptions(var ExProfile: Record "YNS Doc. Exchange Profile"; var ListSelect: Page "YNS List Select"; var DocRefs: RecordRef)
+    procedure SetProfile(var ExProfile: Record "YNS Doc. Exchange Profile")
+
+    /// <summary>
+    /// For the profile and the selected documents and the current page, get the available options
+    /// as choices in a buffer
+    /// </summary>
+    procedure GetManualProcessOptions(var SelectedProfile: Record "YNS Doc. Exchange Profile"; var TempOptions: Record "Name/Value Buffer" temporary; var DocRefs: RecordRef; PageID: Integer)
 
     /// <summary>
     /// Execute the specified action for the selected document in exchange profile
     /// </summary>
     /// <param name="ProcessAction">The action code returned by GetManualProcessOptions</param>
-    procedure Process(var ExProfile: Record "YNS Doc. Exchange Profile"; ProcessAction: Text; var DocRefs: RecordRef)
+    procedure Process(ProcessAction: Text; var DocRefs: RecordRef)
+
+    /// <summary>
+    /// Open setup page if defined
+    /// </summary>
+    procedure OpenSetup()
 }
 #endif

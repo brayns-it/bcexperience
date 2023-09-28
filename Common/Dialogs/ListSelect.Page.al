@@ -43,11 +43,6 @@ page 60016 "YNS List Select"
         exit(Rec."Search Description");
     end;
 
-    procedure GetSelectedTag(): Text
-    begin
-        exit(rec."No. 2");
-    end;
-
     local procedure GetCaption(): Text
     begin
         exit(PageCapt);
@@ -91,14 +86,13 @@ page 60016 "YNS List Select"
         AddOption(OptNo, OptDescription, '');
     end;
 
-    procedure SetTag(Tag: Text)
-    begin
-        Rec."No. 2" := CopyStr(Tag, 1, MaxStrLen(Rec."No. 2"));
-        Rec.Modify();
-    end;
-
     procedure AddOption(OptNo: Text; OptDescription: Text; OptDescription2: Text)
     begin
+        Rec.Reset();
+        Rec.SetRange("Search Description", OptNo);
+        if not Rec.IsEmpty() then
+            exit;
+
         if ID = '' then
             ID := '000001'
         else
@@ -110,6 +104,11 @@ page 60016 "YNS List Select"
         Rec.Description := CopyStr(OptDescription, 1, MaxStrLen(Rec."Description"));
         Rec."Description 2" := CopyStr(OptDescription2, 1, MaxStrLen(Rec."Description 2"));
         Rec.Insert();
+    end;
+
+    trigger OnOpenPage()
+    begin
+        Rec.Reset();
     end;
 
     var

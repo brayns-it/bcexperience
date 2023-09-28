@@ -3,6 +3,10 @@ permissionset 60000 YNSExperience
     Caption = 'Brayns Experience', Locked = true;
     Assignable = true;
     Permissions =
+#if W1XX007A
+        tabledata "YNS Remote Functions" = RIMD,
+        table "YNS Remote Functions" = X,
+#endif       
 #if W1FN001A      
         codeunit "YNS Finance Management" = X,
         page "YNS Arrange CV Entries" = X,
@@ -24,17 +28,15 @@ permissionset 60000 YNSExperience
         tabledata "YNS Doc. Exchange Reference" = RIMD,
         tabledata "YNS Doc. Exchange Ref. Line" = RIMD,
         tabledata "YNS Doc. Exchange Profile" = RIMD,
-        tabledata "YNS Doc. Exchange Entry" = RIMD,
-        tabledata "YNS Doc. Exchange Metadata" = RIMD,
         table "YNS Doc. Exchange Reference" = X,
         table "YNS Doc. Exchange Ref. Line" = X,
         table "YNS Doc. Exchange Profile" = X,
-        table "YNS Doc. Exchange Entry" = X,
-        table "YNS Doc. Exchange Metadata" = X,
 #endif        
 #if ITXX002A
         tabledata "YNS Italy E-Invoice Setup" = RIMD,
+        tabledata "YNS Italy E-Invoice" = RIMD,
         table "YNS Italy E-Invoice Setup" = X,
+        table "YNS Italy E-Invoice" = X,
 #endif        
         tabledata "YNS File Storage" = RIMD,
         table "YNS File Storage" = X,

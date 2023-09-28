@@ -37,6 +37,39 @@ page 60017 "YNS Doc. Exchange Profiles"
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(fmtsetup)
+            {
+                Caption = 'Format Setup';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Setup;
+
+                trigger OnAction()
+                begin
+                    Rec.OpenFormatSetup();
+                end;
+            }
+            action(trasetup)
+            {
+                Caption = 'Transport Setup';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Setup;
+
+                trigger OnAction()
+                begin
+                    Rec.OpenTransportSetup();
+                end;
+            }
+        }
+    }
 }
 
 #endif
