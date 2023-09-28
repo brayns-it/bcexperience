@@ -3,3 +3,4 @@
 .snapshots
 .vscode/rad.json
 .vscode/launch.json
+devkit.json
