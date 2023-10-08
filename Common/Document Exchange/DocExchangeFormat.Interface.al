@@ -19,11 +19,16 @@ interface "YNS Doc. Exchange Format"
     /// Execute the specified action for the selected document in exchange profile
     /// </summary>
     /// <param name="ProcessAction">The action code returned by GetManualProcessOptions</param>
-    procedure Process(ProcessAction: Text; var DocRefs: RecordRef)
+    procedure Process(Parameters: List of [Text]; var DocRefs: RecordRef)
 
     /// <summary>
     /// Open setup page if defined
     /// </summary>
     procedure OpenSetup()
+
+    /// <summary>
+    /// Set current record log to append informations, warnings and errors
+    /// </summary>
+    procedure SetLog(var Log: Record "YNS Doc. Exchange Log")
 }
 #endif

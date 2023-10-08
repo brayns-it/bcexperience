@@ -23,6 +23,25 @@ pageextension 60000 YNSCustomerLedgerEntries extends "Customer Ledger Entries"
     {
         addlast("F&unctions")
         {
+#if W1XX004A            
+            action(YNSDocExchange)
+            {
+                Image = SwitchCompanies;
+                Caption = 'Document Exchange';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    CustLedg: Record "Cust. Ledger Entry";
+                    DocXMgmt: Codeunit "YNS Doc. Exchange Management";
+                    RecRef: RecordRef;
+                begin
+                    CurrPage.SetSelectionFilter(CustLedg);
+                    RecRef.GetTable(CustLedg);
+                    DocXMgmt.ManualProcessDocuments(RecRef, Page::"Customer Ledger Entries");
+                end;
+            }
+#endif            
 #if W1FN001A
             action(YNSArrangeEntries)
             {

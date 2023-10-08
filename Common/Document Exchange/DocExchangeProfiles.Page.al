@@ -40,6 +40,19 @@ page 60017 "YNS Doc. Exchange Profiles"
 
     actions
     {
+        area(Navigation)
+        {
+            action(log)
+            {
+                Caption = 'Activity Log';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Log;
+                RunObject = page "YNS Doc. Exchange Log";
+                RunPageLink = "Profile Code" = field(Code);
+            }
+        }
         area(Processing)
         {
             action(fmtsetup)

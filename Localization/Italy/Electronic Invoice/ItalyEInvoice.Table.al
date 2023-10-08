@@ -113,6 +113,16 @@ table 60009 "YNS Italy E-Invoice"
             DataClassification = CustomerContent;
             Caption = 'File Lot No.';
         }
+        field(150; "Purchase Document Type"; Enum "Purchase Document Type")
+        {
+            Caption = 'Purchase Document Type';
+            DataClassification = CustomerContent;
+        }
+        field(151; "Purchase Document No."; Code[20])
+        {
+            Caption = 'Purchase Document No.';
+            DataClassification = CustomerContent;
+        }
     }
 
     keys
@@ -128,6 +138,12 @@ table 60009 "YNS Italy E-Invoice"
 
     trigger OnDelete()
     begin
+        if "Source Type" = "Source Type"::Vendor then begin
+            TestField("Document No.", '');
+            TestField("Purchase Document No.", '');
+            TestField("SdI Number", '');
+        end;
+
         if "File Path" > '' then
             FSMgmt.DeleteFile("File Path");
     end;

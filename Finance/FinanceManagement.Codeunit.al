@@ -352,6 +352,27 @@ codeunit 60000 "YNS Finance Management"
     begin
         CustLedgEntry."YNS Company Bank Account" := FromCustLedgEntry."YNS Company Bank Account";
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Vend. Entry-Edit", 'OnBeforeVendLedgEntryModify', '', false, false)]
+    local procedure OnBeforeVendLedgEntryModify(var VendLedgEntry: Record "Vendor Ledger Entry"; FromVendLedgEntry: Record "Vendor Ledger Entry")
+    begin
+        VendLedgEntry."YNS Company Bank Account" := FromVendLedgEntry."YNS Company Bank Account";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnPostCustOnAfterInitCustLedgEntry', '', false, false)]
+    local procedure OnPostCustOnAfterInitCustLedgEntry(var GenJournalLine: Record "Gen. Journal Line"; var CustLedgEntry: Record "Cust. Ledger Entry"; Cust: Record Customer; CustPostingGr: Record "Customer Posting Group")
+    begin
+        CustLedgEntry."YNS Company Bank Account" := Cust."YNS Company Bank Account";
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnBeforeVendLedgEntryInsert', '', false, false)]
+    local procedure OnBeforeVendLedgEntryInsert(var VendorLedgerEntry: Record "Vendor Ledger Entry"; var GenJournalLine: Record "Gen. Journal Line"; GLRegister: Record "G/L Register"; PaymentTermsLine: Record "Payment Lines")
+    var
+        Vend: Record Vendor;
+    begin
+        Vend.Get(VendorLedgerEntry."Vendor No.");
+        VendorLedgerEntry."YNS Company Bank Account" := Vend."YNS Company Bank Account";
+    end;
 #endif
 
 #if W1FN004A

@@ -69,6 +69,10 @@ page 60021 "YNS Italy Purchases E-Invoices"
                 {
                     ApplicationArea = All;
                 }
+                field("Purchase Document No."; Rec."Purchase Document No.")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }
@@ -102,7 +106,7 @@ page 60021 "YNS Italy Purchases E-Invoices"
                 trigger OnAction()
                 begin
                     if Rec."Entry No." > 0 then
-                        ItInvFmt.CreateDocuementFromInvoice(Rec);
+                        ItInvFmt.CreateDocumentFromInvoice(Rec);
                 end;
             }
             action(htmlexport)

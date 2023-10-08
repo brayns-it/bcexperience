@@ -97,16 +97,10 @@ codeunit 60004 "YNS Functions"
     /// </summary>
     procedure GetXmlChildAsDecimal(Name: Text; var XmlNod: XmlNode) Result: Decimal
     var
-        TypeHelp: Codeunit "Type Helper";
         XmlNod2: XmlNode;
-        ResVar: Variant;
-        InvalidErr: Label 'Invalid decimal %1';
     begin
-        ResVar := Result;
         if XmlNod.SelectSingleNode(Name, XmlNod2) then
-            if not TypeHelp.Evaluate(ResVar, XmlNod2.AsXmlElement().InnerText, '', 'en-US') then
-                Error(InvalidErr, XmlNod2.AsXmlElement().InnerText);
-        Result := ResVar;
+            exit(ConvertTextToDecimal(XmlNod2.AsXmlElement().InnerText));
     end;
 
     /// <summary>
@@ -232,7 +226,57 @@ codeunit 60004 "YNS Functions"
     end;
     #endregion
 
+    #region TEXT
+    /// <summary>
+    /// Pad a text to specifiedn length wid padding char to the left of the string
+    /// </summary>
+    procedure PadLeft(TextToPad: Text; Length: Integer; PadChar: Char) Result: Text
+    begin
+        Result := CopyStr(TextToPad, 1, Length);
+        if StrLen(Result) < Length then
+            Result := PadStr('', Length - StrLen(Result), PadChar) + Result;
+    end;
+    #endregion
+
     #region CONVERT
+    /// <summary>
+    /// Convert text to date format (yyyy-MM-dd)
+    /// </summary>
+    procedure ConvertTextToDate(InputText: Text) Result: Date
+    begin
+        Result := ConvertTextToDate(InputText, 'yyyy-MM-dd');
+    end;
+
+    /// <summary>
+    /// Convert text to date format (.NET format)
+    /// </summary>
+    procedure ConvertTextToDate(InputText: Text; FormatString: Text) Result: Date
+    var
+        TypeHelp: Codeunit "Type Helper";
+        ResVar: Variant;
+        InvalidErr: Label 'Invalid date %1';
+    begin
+        ResVar := Result;
+        if not TypeHelp.Evaluate(ResVar, InputText, FormatString, '') then
+            Error(InvalidErr, InputText);
+        Result := ResVar;
+    end;
+
+    /// <summary>
+    /// Convert text to decimal with dot as decimal separator
+    /// </summary>
+    procedure ConvertTextToDecimal(InputText: Text) Result: Decimal
+    var
+        TypeHelp: Codeunit "Type Helper";
+        ResVar: Variant;
+        InvalidErr: Label 'Invalid decimal %1';
+    begin
+        ResVar := Result;
+        if not TypeHelp.Evaluate(ResVar, InputText, '', 'en-US') then
+            Error(InvalidErr, InputText);
+        Result := ResVar;
+    end;
+
     /// <summary>
     /// Convert string contained in a BLOB to text (UTF8)
     /// </summary>

@@ -15,6 +15,11 @@ interface "YNS Doc. Exchange Transport"
     procedure SetProfile(var ExProfile: Record "YNS Doc. Exchange Profile")
 
     /// <summary>
+    /// Receive a stream via transport
+    /// </summary>
+    procedure Receive(StreamName: Text; StreamType: Text): Text;
+
+    /// <summary>
     /// Send a stream via transport
     /// </summary>
     procedure Send(StreamName: Text; StreamType: Text; StreamContent: Text);

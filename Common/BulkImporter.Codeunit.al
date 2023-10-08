@@ -3,8 +3,36 @@
 /// Bulk data import from JSON structured objects.
 /// Create one codeunit instance for each import.
 /// </summary>
-codeunit 60005 "YNS Bulk Importer"
+codeunit 60005 "YNS Bulk Importer" implements "YNS Generic API"
 {
+    #region PERMISSIONS
+    Permissions = tabledata "G/L Entry" = RIMD,
+        tabledata "Cust. Ledger Entry" = RIMD,
+        tabledata "Detailed Cust. Ledg. Entry" = RIMD,
+        tabledata "Vendor Ledger Entry" = RIMD,
+        tabledata "Detailed Vendor Ledg. Entry" = RIMD,
+        tabledata "Item Ledger Entry" = RIMD,
+        tabledata "Bank Account Ledger Entry" = RIMD,
+        tabledata "VAT Entry" = RIMD,
+        tabledata "G/L Entry - VAT Entry Link" = RIMD,
+        tabledata "G/L Register" = RIMD,
+        tabledata "FA Ledger Entry" = RIMD,
+        tabledata "FA Register" = RIMD,
+        tabledata "Sales Invoice Header" = RIMD,
+        tabledata "Sales Invoice Line" = RIMD,
+        tabledata "Sales Cr.Memo Header" = RIMD,
+        tabledata "Sales Cr.Memo Line" = RIMD,
+        tabledata "Purch. Inv. Header" = RIMD,
+        tabledata "Purch. Inv. Line" = RIMD,
+        tabledata "Purch. Cr. Memo Hdr." = RIMD,
+        tabledata "Purch. Cr. Memo Line" = RIMD,
+        tabledata "Dimension Set Entry" = RIMD,
+        tabledata "Dimension Set Tree Node" = RIMD,
+        tabledata "Issued Fin. Charge Memo Header" = RIMD,
+        tabledata "Issued Fin. Charge Memo Line" = RIMD,
+        tabledata "Reminder/Fin. Charge Entry" = RIMD;
+    #endregion
+
     var
         Functions: Codeunit "YNS Functions";
         PropertyMap: Dictionary of [Text, Integer];
@@ -188,12 +216,21 @@ codeunit 60005 "YNS Bulk Importer"
                     FieldType::Date:
                         begin
                             TmpDate := FldRef.Value;
-                            JValue.SetValue(TmpDate);
+                            if TmpDate = 0D then
+                                JValue.SetValue('')
+                            else
+                                if TmpDate <> NormalDate(TmpDate) then
+                                    JValue.SetValue('C' + Format(TmpDate, 0, '<Year4>-<Month,2>-<Day,2>'))
+                                else
+                                    JValue.SetValue(TmpDate);
                         end;
                     FieldType::Time:
                         begin
                             TmpTime := FldRef.Value;
-                            JValue.SetValue(TmpTime);
+                            if TmpTime = 0T then
+                                JValue.SetValue('')
+                            else
+                                JValue.SetValue(TmpTime);
                         end;
                     FieldType::DateFormula:
                         begin
@@ -213,8 +250,13 @@ codeunit 60005 "YNS Bulk Importer"
                     FieldType::DateTime:
                         begin
                             TmpDateTime := FldRef.Value;
-                            JValue.SetValue(TmpDateTime);
+                            if TmpDateTime = 0DT then
+                                JValue.SetValue('')
+                            else
+                                JValue.SetValue(TmpDateTime);
                         end;
+                    FieldType::RecordId,
+                    FieldType::Blob,
                     FieldType::Media,
                     FieldType::MediaSet:
                         SkipField := true;
@@ -260,9 +302,15 @@ codeunit 60005 "YNS Bulk Importer"
                         if JToken.AsValue().AsText() = '' then
                             FldRef.Value := 0D
                         else
-                            FldRef.Value := JToken.AsValue().AsDate();      // yyyy-MM-dd
+                            if JToken.AsValue().AsText().StartsWith('C') then          // Cyyyy-MM-dd
+                                FldRef.Value := ClosingDate(Functions.ConvertTextToDate(JToken.AsValue().AsText().Substring(2)))
+                            else
+                                FldRef.Value := JToken.AsValue().AsDate();             // yyyy-MM-dd
                     FieldType::Time:
-                        FldRef.Value := JToken.AsValue().AsTime();      // HH:mm:ss.FFFFFFF
+                        if JToken.AsValue().AsText() = '' then
+                            FldRef.Value := 0T
+                        else
+                            FldRef.Value := JToken.AsValue().AsTime();      // HH:mm:ss.FFFFFFF
                     FieldType::Decimal:
                         FldRef.Value := JToken.AsValue().AsDecimal();
                     FieldType::Option:
@@ -280,13 +328,48 @@ codeunit 60005 "YNS Bulk Importer"
                     FieldType::Boolean:
                         FldRef.Value := JToken.AsValue().AsBoolean();
                     FieldType::DateTime:
-                        FldRef.Value := JToken.AsValue().AsDecimal();   // 2009-06-15T13:45:30.0000000-07:00
+                        if JToken.AsValue().AsText() = '' then
+                            FldRef.Value := 0DT
+                        else
+                            FldRef.Value := JToken.AsValue().AsDateTime();   // 2009-06-15T13:45:30.0000000-07:00
                     else
                         Error(UnsupportedErr, FldRef.Type());
                 end;
         end;
 
         OnAfterCopyObject(JObject, RecRef);
+    end;
+
+    /// <summary>
+    /// Api implementation
+    /// </summary>
+    procedure Invoke(ProcedureName: Text; Request: JsonObject): JsonObject
+    var
+        Objs: Record AllObj;
+        RecRef: RecordRef;
+        JItem: JsonObject;
+        InvalidProcedureErr: Label 'Invalid procedure %1';
+    begin
+        Objs.Reset();
+        Objs.SetRange("Object Type", Objs."Object Type"::Table);
+        Objs.SetRange("Object Name", Functions.GetJsonPropertyAsText(Request, 'tableName'));
+        Objs.FindFirst();
+
+        RecRef.Open(Objs."Object ID");
+
+        case ProcedureName of
+            'TRUNCATE':
+                RecRef.DeleteAll();
+            'APPEND':
+                foreach JItem in Functions.GetJsonPropertyAsObjectArray(Request, 'items') do begin
+                    CopyJsonObjectToRecordRef(JItem, RecRef);
+                    RecRef.Insert();
+                end;
+            else
+                Error(InvalidProcedureErr, ProcedureName);
+        end;
+
+        RecRef.Close();
     end;
 
     [InternalEvent(true)]

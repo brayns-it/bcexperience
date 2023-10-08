@@ -3,6 +3,7 @@ codeunit 60013 "YNS Download/Upload Transport" implements "YNS Doc. Exchange Tra
 {
     var
         GlobalProfile: Record "YNS Doc. Exchange Profile";
+        Functions: Codeunit "YNS Functions";
         NotSupportedErr: Label 'Not supported';
 
     procedure BatchAllowed(): Boolean
@@ -15,9 +16,14 @@ codeunit 60013 "YNS Download/Upload Transport" implements "YNS Doc. Exchange Tra
         GlobalProfile := ExProfile;
     end;
 
+    procedure Receive(StreamName: Text; StreamType: Text) Result: Text
+    begin
+        Functions.UploadText('', Functions.GetFileFilter(StreamType), StreamName, Result);
+    end;
+
     procedure Send(StreamName: Text; StreamType: Text; StreamContent: Text);
     begin
-
+        Functions.DownloadText('', Functions.GetFileFilter(StreamType), StreamName, StreamContent);
     end;
 
     procedure OpenSetup()

@@ -2,6 +2,7 @@
 codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format"
 {
     var
+        GlobalLog: Record "YNS Doc. Exchange Log";
         GlobalProfile: Record "YNS Doc. Exchange Profile";
         GlobalEInvoice: Record "YNS Italy E-Invoice";
         EInvSetup: Record "YNS Italy E-Invoice Setup";
@@ -21,6 +22,11 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         end;
     end;
 
+    procedure SetLog(var Log: Record "YNS Doc. Exchange Log")
+    begin
+        GlobalLog := Log;
+    end;
+
     procedure OpenSetup()
     begin
         Page.Run(Page::"YNS Italy E-Invoice Setup");
@@ -30,7 +36,7 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
     var
         ITransport: Interface "YNS Doc. Exchange Transport";
         ExportSdiLbl: Label 'Export Italy E-Invoice';
-        DownloadFromSdiLbl: Label 'Receive Invoices via %1';
+        DownloadFromSdiLbl: Label 'Receive Italy E-Invoices via %1';
     begin
         case DocRefs.Number of
             Database::"Sales Invoice Header",
@@ -53,10 +59,11 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         GlobalProfile := ExProfile;
     end;
 
-    procedure Process(ProcessAction: Text; var DocRefs: RecordRef)
+    procedure Process(Parameters: List of [Text]; var DocRefs: RecordRef)
     var
         N: Integer;
         C: Integer;
+        ProcessAction: Text;
     begin
         if GuiAllowed then begin
             Progress.Open('#1####\#2####');
@@ -65,6 +72,8 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
             C := 0;
         end;
 
+        Parameters.Get(1, ProcessAction);
+
         case ProcessAction of
             'EXPORT':
                 begin
@@ -72,7 +81,7 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
                     if DocRefs.FindSet() then
                         repeat
                             N += 1;
-                            Progress.Update(2, Format(Round((N * 10000) / C, 1)) + '%');
+                            Progress.Update(2, Format(Round((N * 100) / C, 1)) + '%');
                             ExportEInvoice(DocRefs);
                         until DocRefs.Next() = 0;
                 end;
@@ -272,7 +281,7 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         GlobalEInvoice."Document Type" := CopyStr(Functions.GetXmlChildAsText('TipoDocumento', DatiGeneraliDocumento), 1, MaxStrLen(GlobalEInvoice."Document Type"));
 
         GlobalEInvoice."External Document No." := CopyStr(Functions.GetXmlChildAsText('Numero', DatiGeneraliDocumento), 1, MaxStrLen(GlobalEInvoice."External Document No."));
-        GlobalEInvoice."Document Date" := Functions.GetXmlChildAsDate('Data', DatiGeneraliDocumento);
+        GlobalEInvoice."Document Date" := GetSafeXmlChildAsDate('Data', DatiGeneraliDocumento);
         GlobalEInvoice."Currency Code" := CopyStr(Functions.GetXmlChildAsText('Divisa', DatiGeneraliDocumento), 1, MaxStrLen(GlobalEInvoice."Currency Code"));
         GlobalEInvoice.Amount := Functions.GetXmlChildAsDecimal('ImportoTotaleDocumento', DatiGeneraliDocumento);
 
@@ -1154,7 +1163,16 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         Page.Run(page::"Vendor Card", Vendor);
     end;
 
-    procedure CreateDocuementFromInvoice(var ItInvoice: Record "YNS Italy E-Invoice")
+    local procedure GetSafeXmlChildAsDate(Name: Text; var XmlNod: XmlNode) Result: Date
+    var
+        DateTxt: Text;
+    begin
+        DateTxt := Functions.GetXmlChildAsText(Name, XmlNod);
+        DateTxt := DateTxt.Substring(1, 10);
+        Result := Functions.ConvertTextToDate(DateTxt);
+    end;
+
+    procedure CreateDocumentFromInvoice(var ItInvoice: Record "YNS Italy E-Invoice")
     var
         PurchHead: Record "Purchase Header";
         XmlDoc: XmlDocument;
@@ -1172,43 +1190,51 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         if ItInvoice."Document No." > '' then
             exit;
 
-        if not Confirm(CreateDocQst, false, ItInvoice."External Document No.") then
-            exit;
+        if ItInvoice."Purchase Document No." = '' then begin
+            if not Confirm(CreateDocQst, false, ItInvoice."External Document No.") then
+                exit;
 
-        ItInvoice.TestField("File Path");
-        XmlDocument.ReadFrom(FileStorMgmt.GetFileAsText(ItInvoice."File Path"), XmlDoc);
-        XmlDoc.GetRoot(XmlRoot);
-        XmlRootNode := XmlRoot.AsXmlNode();
+            ItInvoice.TestField("File Path");
+            XmlDocument.ReadFrom(FileStorMgmt.GetFileAsText(ItInvoice."File Path"), XmlDoc);
+            XmlDoc.GetRoot(XmlRoot);
+            XmlRootNode := XmlRoot.AsXmlNode();
 
-        XmlRootNode.SelectNodes('FatturaElettronicaBody', XmlLst);
-        XmlLst.Get(ItInvoice."File Lot No.", FatturaElettronicaBody);
+            XmlRootNode.SelectNodes('FatturaElettronicaBody', XmlLst);
+            XmlLst.Get(ItInvoice."File Lot No.", FatturaElettronicaBody);
 
-        FatturaElettronicaBody.SelectSingleNode('DatiGenerali/DatiGeneraliDocumento', DatiGeneraliDocumento);
-        TipoDocumento := Functions.GetXmlChildAsText('TipoDocumento', DatiGeneraliDocumento);
-        TotalAmount := Functions.GetXmlChildAsDecimal('ImportoTotaleDocumento', DatiGeneraliDocumento);
+            FatturaElettronicaBody.SelectSingleNode('DatiGenerali/DatiGeneraliDocumento', DatiGeneraliDocumento);
+            TipoDocumento := Functions.GetXmlChildAsText('TipoDocumento', DatiGeneraliDocumento);
+            TotalAmount := Functions.GetXmlChildAsDecimal('ImportoTotaleDocumento', DatiGeneraliDocumento);
 
-        DocumentType := DocumentType::Invoice;
-        if (TipoDocumento = 'TD04') or (TotalAmount < 0) then
-            DocumentType := DocumentType::"Credit Memo";
+            DocumentType := DocumentType::Invoice;
+            if (TipoDocumento = 'TD04') or (TotalAmount < 0) then
+                DocumentType := DocumentType::"Credit Memo";
 
-        PurchHead.Init();
-        PurchHead."Document Type" := DocumentType;
-        PurchHead."No." := '';
-        PurchHead.Insert(true);
+            PurchHead.Init();
+            PurchHead."Document Type" := DocumentType;
+            PurchHead."No." := '';
+            PurchHead.Insert(true);
 
-        PurchHead.Validate("Buy-from Vendor No.", ItInvoice."Source No.");
-        PurchHead."Document Date" := Functions.GetXmlChildAsDate('Data', DatiGeneraliDocumento);
+            PurchHead.Validate("Buy-from Vendor No.", ItInvoice."Source No.");
+            PurchHead."Document Date" := GetSafeXmlChildAsDate('Data', DatiGeneraliDocumento);
 
-        if DocumentType = DocumentType::Invoice then
-            PurchHead."Vendor Invoice No." := CopyStr(Functions.GetXmlChildAsText('Numero', DatiGeneraliDocumento), 1, MaxStrLen(PurchHead."Vendor Invoice No."))
-        else
-            PurchHead."Vendor Cr. Memo No." := CopyStr(Functions.GetXmlChildAsText('Numero', DatiGeneraliDocumento), 1, MaxStrLen(PurchHead."Vendor Cr. Memo No."));
+            if DocumentType = DocumentType::Invoice then
+                PurchHead."Vendor Invoice No." := CopyStr(Functions.GetXmlChildAsText('Numero', DatiGeneraliDocumento), 1, MaxStrLen(PurchHead."Vendor Invoice No."))
+            else
+                PurchHead."Vendor Cr. Memo No." := CopyStr(Functions.GetXmlChildAsText('Numero', DatiGeneraliDocumento), 1, MaxStrLen(PurchHead."Vendor Cr. Memo No."));
 
-        PurchHead."Check Total" := Abs(TotalAmount);
-        PurchHead.Modify(true);
-        Commit();
+            PurchHead."Check Total" := Abs(TotalAmount);
+            PurchHead.Modify(true);
 
-        if DocumentType = DocumentType::Invoice then
+            ItInvoice."Purchase Document No." := PurchHead."No.";
+            ItInvoice."Purchase Document Type" := DocumentType;
+            ItInvoice.Modify();
+
+            Commit();
+        end else
+            PurchHead.Get(ItInvoice."Purchase Document Type", ItInvoice."Purchase Document No.");
+
+        if PurchHead."Document Type" = PurchHead."Document Type"::Invoice then
             page.Run(Page::"Purchase Invoice", PurchHead)
         else
             page.Run(Page::"Purchase Credit Memo", PurchHead);

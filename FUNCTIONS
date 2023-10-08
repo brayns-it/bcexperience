@@ -11,8 +11,11 @@ W1FN003A	Finance	        Company Bank Account
 W1FN004A	Finance	        Original Due Date	
 W1FN005A    Finance         Edit document posting nos.
 W1FN006A    Finance         Always suppress commit
+W1FN007A    Finance         * Preferred company bank account
+W1FN008A    Finance         * Enhanced Fiscal Report
 
 W1WH001A    Warehouse       Negative bins
 
 ITXX001A	Finance	        Activity Code	
 ITXX002A    Finance         Electronic Invoice                                      deps: W1XX004A, W1XX007A
+ITXX003A    Finance         * Enhanced Fiscal Report                

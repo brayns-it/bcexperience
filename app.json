@@ -2,7 +2,7 @@
   "id": "7937ece2-4881-45ee-8c55-aec9e91ad468",
   "name": "Experience",
   "publisher": "Brayns", 
-  "version": "22.0.30907.0",
+  "version": "23.0.31001.0",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -14,7 +14,7 @@
   "dependencies": [],
   "screenshots": [],
   "platform": "1.0.0.0",
-  "application": "22.0.0.0",
+  "application": "23.0.0.0",
   "idRanges": [
     {
       "from": 60000,
@@ -38,15 +38,18 @@
     "W1XX005A",
     "W1XX006A",
     "W1XX007A",
-    "W1FN005A",
-    "W1FN006A",
     "W1FN001A",
     "W1FN002A",
     "W1FN003A",
     "W1FN004A",
+    "W1FN005A",
+    "W1FN006A",
+    "W1FN007A",
+    "W1FN008A",
     "W1WH001A",
     "ITXX001A",
     "ITXX002A",
+    "ITXX003A",
     "LOCALEIT"
   ],
   "suppressWarnings": [

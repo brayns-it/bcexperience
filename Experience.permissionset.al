@@ -28,9 +28,11 @@ permissionset 60000 YNSExperience
         tabledata "YNS Doc. Exchange Reference" = RIMD,
         tabledata "YNS Doc. Exchange Ref. Line" = RIMD,
         tabledata "YNS Doc. Exchange Profile" = RIMD,
+        tabledata "YNS Doc. Exchange Log" = RIMD,
         table "YNS Doc. Exchange Reference" = X,
         table "YNS Doc. Exchange Ref. Line" = X,
         table "YNS Doc. Exchange Profile" = X,
+        table "YNS Doc. Exchange Log" = X,
 #endif        
 #if ITXX002A
         tabledata "YNS Italy E-Invoice Setup" = RIMD,

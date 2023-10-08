@@ -3,6 +3,66 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="Experience">
     <body>
       <group id="body">
+        <trans-unit id="Table 344794631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Exchange Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 415900525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activity Date/Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Activity Date/Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 2768131332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activity ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Activity ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 3186634526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activity Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Activity Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 2410600852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exchange Format</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Exchange Format - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 432433305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Message</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Log Message - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 2034429472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Log Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 2034429472 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Information,Warning,Error</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Log Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 684242166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Parameters</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Parameters - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 3498366530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Profile Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field Profile Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 344794631 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Log - Field User ID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2194592550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Exchange Profile</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -523,6 +583,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice - Field Progressive No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1538729968 - Field 4160287109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice - Field Purchase Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1538729968 - Field 1117131368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Document Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice - Field Purchase Document Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1538729968 - Field 1652067759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SdI Number</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -983,6 +1053,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Bulk Importer - Method CopyRecordRefToJsonObject - NamedType UnsupportedErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 739365586 - Method 3376258228 - NamedType 3366302283" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid procedure %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Bulk Importer - Method Invoke - NamedType InvalidProcedureErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2346182326 - Method 1206611487 - NamedType 4232864538" size-unit="char" translate="yes" xml:space="preserve">
           <source>No profile available for %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1023,25 +1098,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Finance Management - Method ApplyArrangedCustomerEntriesYesNo - NamedType ApplyQst</note>
         </trans-unit>
+        <trans-unit id="Codeunit 780260615 - Method 4074226743 - NamedType 3177803720" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid date %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Functions - Method ConvertTextToDate - NamedType InvalidErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 780260615 - Method 1923963110 - NamedType 3177803720" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid decimal %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Functions - Method ConvertTextToDecimal - NamedType InvalidErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 780260615 - Method 1801150485 - NamedType 3177803720" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invalid date %1 format %2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Functions - Method GetXmlChildAsDate - NamedType InvalidErr</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 780260615 - Method 3785700184 - NamedType 3177803720" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Invalid decimal %1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Functions - Method GetXmlChildAsDecimal - NamedType InvalidErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 4000974969 - NamedType 3688673860" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invalid record number %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - NamedType InvalidRecErr</note>
         </trans-unit>
-        <trans-unit id="Codeunit 4000974969 - Method 1191591395 - NamedType 2263094942" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 4000974969 - Method 2097867520 - NamedType 2263094942" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create document %1?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method CreateDocuementFromInvoice - NamedType CreateDocQst</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method CreateDocumentFromInvoice - NamedType CreateDocQst</note>
         </trans-unit>
         <trans-unit id="Codeunit 4000974969 - Method 3484208369 - NamedType 1986902160" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor %1 not exists, create it?</source>
@@ -1054,7 +1134,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method GetManualProcessOptions - NamedType ExportSdiLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 4000974969 - Method 747089753 - NamedType 1929659442" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Receive Invoices via %1</source>
+          <source>Receive Italy E-Invoices via %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method GetManualProcessOptions - NamedType DownloadFromSdiLbl</note>
         </trans-unit>
@@ -1133,10 +1213,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Arrange CV Entries - Action applyentr - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 344794631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Exchange Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Doc. Exchange Log - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1446163827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Exchange Profiles</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Doc. Exchange Profiles - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1446163827 - Action 1942843056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activity Log</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Doc. Exchange Profiles - Action log - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1446163827 - Action 638403516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Format Setup</source>
@@ -1458,6 +1548,166 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page YNS Repayment Setup - Control general - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1225725111 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Book - Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - NamedType 392547388" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Entries %1 - %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - NamedType EntriesLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - NamedType 1476375616" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 - Fiscal Code %2 - VAT Registration No. %3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - NamedType ReportHeadLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - NamedType 3040577680" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Book - Page %1 / {page}</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - NamedType ReportTitleLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - NamedType 1203059444" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Totals at %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - NamedType StartingTotalLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - NamedType 2416167595" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Totals %1 - %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - NamedType TotalPrintLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Method 2736589801 - NamedType 311573688" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Marking GL entries...</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Method OnPostReport - NamedType GLMarkingLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Method 2736589801 - NamedType 3163221943" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The G/L entries printed have been marked.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Method OnPostReport - NamedType GLMarkedLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Method 1544076788 - NamedType 3489319311" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not printed entries before %1 exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Method OnPreReport - NamedType PrevEntryNotPrintedErr</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Method 1544076788 - NamedType 615205982" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not printed entries between %1 and %2 exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Method OnPreReport - NamedType EntriesNotPrintedErr</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Method 1544076788 - NamedType 3945176725" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Book already printed (%1)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Method OnPreReport - NamedType AlreadyPrintedErr</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Method 624189019 - NamedType 1226282926" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buffering...</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Method PrepareBuffer - NamedType BufferingLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Method 624189019 - NamedType 2179951347" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document numbering...</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Method PrepareBuffer - NamedType DocNumberingLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Method 624189019 - NamedType 1074011102" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document no. %1 of %2 is inconsistent %3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Method PrepareBuffer - NamedType InconsistendDocErr</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 2141525479" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Credit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel Credit</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 84647506" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Debit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel Debit</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 703885045" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel Descr</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 3820200120" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Doc. Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel DocDate</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 2738103555" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel DocNo</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 3506904539" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ext. Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel ExtDoc</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 437998425" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Totals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel GeneralTotals</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 3388086878" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Acc. No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel GLAcc</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 1684621731" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Number of Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel NumberOfRegs</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 3437453232" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Post. Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel PostDate</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - ReportLabel 45723723" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reg. No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - ReportLabel RegNo</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Control 237909356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Control EndDateCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Control 962315381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Page No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Control LastPageNoCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Control 1843200595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Headings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Control PrintHeadingsCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Control 2081208519 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Control ReportTypeCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Control 2081208519 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test Print,Final Print,Reprint</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Control ReportTypeCtl - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 1225725111 - Control 3704078113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS G/L Book - Print - Control StartDateCtl - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2721258919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Repayment Summary</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1538,10 +1788,205 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report YNS Suggest Repayment Inst. - Control StartingDateCtl - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3580448830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Register - Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - NamedType 392547388" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Entries %1 - %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - NamedType EntriesLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - NamedType 613701941" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entries of period %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - NamedType OtherPeriodLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - NamedType 3528245045" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unrealized VAT payments %1 - %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - NamedType PaymentsLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - NamedType 1476375616" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 - Fiscal Code %2 - VAT Registration No. %3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - NamedType ReportHeadLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - NamedType 3040577680" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Register %1 - Page %2 / {page}</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - NamedType ReportTitleLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - NamedType 3337375434" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT summary by identifier %1 - %2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - NamedType SummaryLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - NamedType 3210029359" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Totals %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - NamedType TotalCodeLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - NamedType 3581749453" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unrealized totals %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - NamedType UnrealizedTotalLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Method 1544076788 - NamedType 4167919147" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Execute report in final mode?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Method OnPreReport - NamedType FinalModeQst</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportDataItem 3848355751 - Method 72583909 - NamedType 3945176725" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Final registry already printed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportDataItem RegisterLoop - Method OnPreDataItem - NamedType AlreadyPrintedErr</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportDataItem 3848355751 - Method 72583909 - NamedType 532031473" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Final registry never printed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportDataItem RegisterLoop - Method OnPreDataItem - NamedType NeverPrintedErr</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportDataItem 2183608762 - Method 3245603402 - NamedType 2086495168" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Previous not printed entries exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportDataItem NoSeriesLoop - Method OnAfterGetRecord - NamedType UnprintedEntriesErr</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 2587701375" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel Base</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 3820200120" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Doc. date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel DocDate</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 2738103555" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Doc. no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel DocNo</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 828606694" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Doc. total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel DocTotal</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 1025263928" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General totals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel GeneralTotal</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 2961552353" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel Name</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 461876328" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Non ded. tax</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel NonDeductAmount</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 1931845058" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Off. no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel OffNo</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 3437453232" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Post. date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel PostDate</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 4025233019" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax amt.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel TaxAmount</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 3665806578" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unreal. tax</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel UnrealizAmount</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 880556457" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unreal. base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel UnrealizBase</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 4184654091" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unrealized totals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel UnrealizedTotal</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 2012984004" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT descr.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel VatDescr</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - ReportLabel 2903792395" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT id.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - ReportLabel VatIdent</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Control 237909356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Control EndDateCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Control 962315381 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Page No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Control LastPageNoCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Control 1843200595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Headings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Control PrintHeadingsCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Control 1312216942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Printing Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Control PrintingTypeCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Control 1312216942 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test,Final,Reprint</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Control PrintingTypeCtl - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Control 3704078113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Control StartDateCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3580448830 - Control 1950657656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Register</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS VAT Register - Print - Control VATRegisterCodeCtl - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2370094057 - Action 989000910 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Arrange Entries</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSCustomerLedgerEntries - Action YNSArrangeEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2370094057 - Action 92419153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Document Exchange</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSCustomerLedgerEntries - Action YNSDocExchange - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3351669510 - Action 92419153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
+          <source>Document Exchange</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSCustomerList - Action YNSDocExchange - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2418956429 - Action 92419153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Document Exchange</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSGeneralJournal - Action YNSDocExchange - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1207320105 - Action 92419153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Document Exchange</source>
@@ -1557,6 +2002,11 @@
           <source>Allow Negative Quantity</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSBin - Field YNS Allow Negative Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4183769345 - Field 3986077266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Preferred Bank Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSCompanyInformation - Field YNS Preferred Bank Account - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3598888480 - Field 2607307984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2733917450">
           <source>Company Bank Account</source>
@@ -1578,6 +2028,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSCustomer - Field YNS Send E-Invoice via PEC - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2933724428 - Field 1479705277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Last General Journal Reg. No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSGeneralLedgerSetup - Field YNS Last Gen. Jnl. Reg. No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1286518614 - Field 3330386958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 986200290">
+          <source>Registration No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSGLBookEntry - Field YNS Registration No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4039971989 - Field 482502022 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 342727057">
+          <source>Ending Credit Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSReprintInfoFiscalReports - Field YNS Ending Credit Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4039971989 - Field 3595365131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 342727057">
+          <source>Ending Debit Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSReprintInfoFiscalReports - Field YNS Ending Debit Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3187835524 - Field 2607307984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Company Bank Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSVendor - Field YNS Company Bank Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1628813995 - Field 2607307984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
+          <source>Company Bank Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSVendorLedgerEntry - Field YNS Company Bank Account - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 4242845574 - EnumValue 4000974969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Italy E-Invoice</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1587,6 +2067,11 @@
           <source>Download/Upload</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum YNS Doc. Exchange Transport - EnumValue Download/Upload - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3959139631 - EnumValue 739365586 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulk Importer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum YNS Generic API - EnumValue YNS Bulk Importer - Property Caption</note>
         </trans-unit>
       </group>
     </body>
