@@ -6,6 +6,7 @@ page 60022 "YNS Remote Functions"
     UsageCategory = Administration;
     SourceTable = "YNS Remote Functions";
     Caption = 'Remote Functions';
+    ContextSensitiveHelpPage = '/page/remote-functions';
 
     layout
     {

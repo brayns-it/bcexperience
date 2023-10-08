@@ -2,7 +2,7 @@
   "id": "7937ece2-4881-45ee-8c55-aec9e91ad468",
   "name": "Experience",
   "publisher": "Brayns", 
-  "version": "23.0.31001.0",
+  "version": "23.0.31004.0",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -26,7 +26,7 @@
     "allowDownloadingSource": true,
     "includeSourceInSymbolFile": true
   },
-  "runtime": "11.0",
+  "runtime": "12.0",
   "features": [
     "NoImplicitWith",
     "TranslationFile"

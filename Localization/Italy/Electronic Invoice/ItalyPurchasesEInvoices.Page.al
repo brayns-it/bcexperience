@@ -9,6 +9,7 @@ page 60021 "YNS Italy Purchases E-Invoices"
     InsertAllowed = false;
     ModifyAllowed = false;
     DeleteAllowed = true;
+    ContextSensitiveHelpPage = '/page/electronic-invoicing-it';
 
     layout
     {

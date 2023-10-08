@@ -6,6 +6,7 @@ page 60018 "YNS Italy E-Invoice Setup"
     UsageCategory = Administration;
     SourceTable = "YNS Italy E-Invoice Setup";
     Caption = 'Italy E-Invoice Setup';
+    ContextSensitiveHelpPage = '/page/electronic-invoicing-it';
 
     layout
     {

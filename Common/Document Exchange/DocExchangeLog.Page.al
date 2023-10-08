@@ -5,6 +5,7 @@ page 60024 "YNS Doc. Exchange Log"
     PageType = List;
     Editable = false;
     SourceTable = "YNS Doc. Exchange Log";
+    ContextSensitiveHelpPage = '/page/document-exchange';
 
     layout
     {
