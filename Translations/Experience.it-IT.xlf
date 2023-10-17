@@ -1658,11 +1658,6 @@
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Functions - Method ConvertTextToDecimal - NamedType InvalidErr</note>
         </trans-unit>
-        <trans-unit id="Codeunit 4000974969 - Method 2097867520 - NamedType 2263094942" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create document %1?</source><target>Creare documento %1?</target>
-          <note from="Developer" annotates="general" priority="2" />
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method CreateDocumentFromInvoice - NamedType CreateDocQst</note>
-        </trans-unit>
         <trans-unit id="Page 344794631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Exchange Log</source><target>Log scambio documenti</target>
           <note from="Developer" annotates="general" priority="2" />
@@ -2262,6 +2257,276 @@
           <source>Incoming Line</source><target>Riga in ingresso</target>
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension YNSPurchaseLineType - EnumValue YNS Incoming Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Field 1698537316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive Received Files</source><target>Archivia file ricevuti</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Field Archive Received Files - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Field 4053467424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receving Base Path (archive)</source><target>Percorso base ricezione (archivio)</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Field Receving Base Path (archive) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1538729968 - Field 505334587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Partner Group</source><target>Gruppo partner</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice - Field Partner Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1538729968 - Field 598154150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SdI Status</source><target>Stato SdI</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice - Field SdI Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1538729968 - Field 598154150 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Sent,Delivered to SdI,Delivered to Recipient,Error</source><target> ,Inviato,Consegnato a SdI,Consegnato a destinatario,Errore</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice - Field SdI Status - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 1538729968 - Field 1409601131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SdI Status Message</source><target>Messaggio stato SdI</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice - Field SdI Status Message - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1538729968 - Field 664864458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Transport ID</source><target>ID trasporto</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice - Field Transport ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2873281495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Partner Group</source><target>Gruppo partner</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Partner Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2873281495 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source><target>Codice</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Partner Group - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2873281495 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source><target>Descrizione</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Partner Group - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 2353336809 - NamedType 1709501306" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 must be numeric</source><target>%1 deve essere numerico</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method ExportCBIBill - NamedType NumericErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 2353336809 - NamedType 1999850565" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inv.</source><target>Fatt.</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method ExportCBIBill - NamedType InvLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 747089753 - NamedType 3998698672" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import CBI Dishonored</source><target>Importa insoluti CBI</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method GetManualProcessOptions - NamedType ImportDishonoredLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 747089753 - NamedType 98129490" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export CBI Customer Bill</source><target>Esporta distinta cliente CBI</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method GetManualProcessOptions - NamedType ExportCbiLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 611357548 - NamedType 3351274" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2 not found</source><target>%1 %2 non trovato</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method ImportCBIDishonoredLine - NamedType NotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 611357548 - NamedType 972774031" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer %1 bill %2 not found</source><target>Cliente %1 distinta %2 non trovata</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method ImportCBIDishonoredLine - NamedType BillNotFoundErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 611357548 - NamedType 3415169125" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer %1 payment bill %2 must be %3</source><target>Cliente %1 pagamento distinta %2 deve essere %3</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method ImportCBIDishonoredLine - NamedType PaymentMismatchErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 611357548 - NamedType 179703229" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dishonored %1 %2 %3</source><target>Insoluto %1 %2 %3</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method ImportCBIDishonoredLine - NamedType DishonoredTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 1354443714 - NamedType 2311440607" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid Italian VAT No. %1</source><target>Partita IVA italiana %1 non valida</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method StripCountryVatNo - NamedType NotItalianVatErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1643406716 - Method 3975194594 - NamedType 1568517836" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer %1 no VAT or Fiscal Code specified</source><target>Cliente %1 partita IVA o codice fiscale non specificato</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Customer Bill Format - Method WriteCBI30 - NamedType NoVatFiscalCodeErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4000974969 - Method 4236453683 - NamedType 2263094942" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create document %1?</source><target>Creare documento %1?</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method CreateDocumentFromEInvoice - NamedType CreateDocQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4000974969 - Method 747089753 - NamedType 213146029" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send Italy E-Invoices via %1</source><target>Inviare fatture elettroniche IT via %1</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method GetManualProcessOptions - NamedType SendToSdiLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4000974969 - Method 747089753 - NamedType 2437543365" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receive Italy E-Invoices Notifications via %1</source><target>Ricevere notifiche fatture elettroniche IT via %1</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method GetManualProcessOptions - NamedType ReceiveNotifFromSdiLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4000974969 - Method 2416860063 - NamedType 1228050280" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receiving notifications...</source><target>Ricezione notifiche...</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy E-Invoice Format - Method ReceiveSalesNotifications - NamedType ReceivingLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 55185098 - Method 3405647299 - NamedType 2822545874" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Only declare stamp,Declare and apply stamp refund</source><target>Solo dichiarazione timbro,Dichiara ed applica rimborso timbro</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Italy Management - Method SalesFatturaStampAssistEdit - NamedType StampModeQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 617802671 - Method 1104608809 - NamedType 2367821945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete %1 %2?</source><target>Eliminare %1 %2?</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Ledger Deletion - Method DeleteFinChargeMemoYN - NamedType DeleteQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 617802671 - Method 2231775155 - NamedType 1832387362" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete first %1 %2</source><target>Cancellare prima %1 %2</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Ledger Deletion - Method DeleteGLEntryYN - NamedType DeleteFirstErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 617802671 - Method 2231775155 - NamedType 2367821945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete %1 %2?</source><target>Cancellare %1 %2?</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Ledger Deletion - Method DeleteGLEntryYN - NamedType DeleteQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 617802671 - Method 2466648537 - NamedType 3376079614" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inconsistent G/L Entry</source><target>Movimenti C/G inconsistenti</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Ledger Deletion - Method DeleteLedgers - NamedType InconsistentErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 617802671 - Method 978634625 - NamedType 2367821945" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete %1 %2?</source><target>Cancellare %1 %2?</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS Ledger Deletion - Method DeleteSalesInvoiceYN - NamedType DeleteQst</note>
+        </trans-unit>
+        <trans-unit id="Page 2249556505 - Action 92419153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Exchange</source><target>Scambio documenti</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Italy Sales E-Invoices - Action YNSDocExchange - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2873281495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Partner Group</source><target>Gruppo partner</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Partner Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - Control 198641044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Options</source><target>Opzioni</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - Control options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - Control 2617798735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show applied entries</source><target>Mostra movimenti collegati</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - Control ShowAppliedCtl - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2668943292 - Action 92419153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Document Exchange</source><target>Scambio documenti</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSCashReceiptJournal - Action YNSDocExchange - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1403747575 - Action 3809501687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Delete Document</source><target>Cancella documento</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSGeneralLedgerEntries - Action YNSDeleteDoc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3230897838 - Action 92419153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4254430346">
+          <source>Document Exchange</source><target>Scambio documenti</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSIssuedCustomerBillCard - Action YNSDocExchange - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3425395499 - Action 3809501687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3088327135">
+          <source>Delete Document</source><target>Cancella documento</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSIssuedFinanceChargeMemo - Action YNSDeleteDoc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1406297064 - Action 3809501687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Delete Document</source><target>Cancella documento</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSPostedSalesInvoice - Action YNSDeleteDoc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1523869720 - Control 2932551690 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Fattura Stamp</source><target>Timbro fattura</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSSalesReceivablesSetup - Control YNSFatturaStamp - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2893117417 - Field 2476682729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 40327205">
+          <source>Dishonored Acc. No.</source><target>Nr. conto insoluti</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSBill - Field YNS Dishonored Acc. No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2893117417 - Field 39100670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 40327205">
+          <source>Dishonored Payment Method</source><target>Metodo pagamento insoluto</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSBill - Field YNS Dishonored Payment Method - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1828516444 - Field 2873281495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Partner Group</source><target>Gruppo partner</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSCustomer - Field YNS Partner Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3503685333 - Field 3154550709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>System-Created Job Contract</source><target>Contratto comm. aut. di sistema</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSSalesInvoiceLine - Field YNS Sys.-Created Job Contract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3503685333 - Field 3420307515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>System-Created Source</source><target>Origine aut. di sistema</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSSalesInvoiceLine - Field YNS System-Created Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3095926982 - Field 3154550709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>System-Created Job Contract</source><target>Contratto comm. aut. di sistema</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSSalesLine - Field YNS Sys.-Created Job Contract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3095926982 - Field 3420307515 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>System-Created Source</source><target>Origine aut. di sistema</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSSalesLine - Field YNS System-Created Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1523869720 - Field 1772109141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Default Fattura Stamp Amount</source><target>Importo default timbro fattura</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSSalesReceivablesSetup - Field YNS Def. Fattura Stamp Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1523869720 - Field 2511671348 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Fattura Stamp Description</source><target>Descrizione timbro fattura</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSSalesReceivablesSetup - Field YNS Fattura Stamp Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1523869720 - Field 2053615439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Fattura Stamp G/L Account</source><target>Conto C/G timbro fattura</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSSalesReceivablesSetup - Field YNS Fattura Stamp G/L Acc. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1523869720 - Field 2160706563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Fattura Stamp Threshold</source><target>Soglia timbro fattura</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSSalesReceivablesSetup - Field YNS Fattura Stamp Threshold - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2648708702 - Field 3539242792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Allow Ledger Deletion</source><target>Consenti cancellazione contabilità</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSUserSetup - Field YNS Allow Ledger Deletion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3187835524 - Field 2873281495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Partner Group</source><target>Gruppo partner</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSVendor - Field YNS Partner Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4242845574 - EnumValue 1643406716 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Bill</source><target>Distinta cliente</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Enum YNS Doc. Exchange Format - EnumValue YNS Customer Bill Format - Property Caption</note>
         </trans-unit>
       </group>
     </body>
