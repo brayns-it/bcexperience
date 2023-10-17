@@ -3,7 +3,6 @@ page 60015 "YNS Doc. Exchange Ref. Values"
 {
     Caption = 'Document Exchange Reference Values';
     PageType = List;
-    ApplicationArea = All;
     AutoSplitKey = true;
     SourceTable = "YNS Doc. Exchange Ref. Line";
     SourceTableView = sorting("Reference Code", "Reference Type", "Value Type", "Value 1", "Value 2")

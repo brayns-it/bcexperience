@@ -17,5 +17,13 @@ tableextension 60000 YNSCustomer extends Customer
             Caption = 'Send E-Invoice via PEC';
         }
 #endif
+#if W1XX009A
+        field(60005; "YNS Partner Group"; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Partner Group';
+            TableRelation = "YNS Partner Group";
+        }
+#endif
     }
 }

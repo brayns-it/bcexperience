@@ -10,7 +10,11 @@ permissionset 60000 YNSExperience
 #if W1FN001A      
         codeunit "YNS Finance Management" = X,
         page "YNS Arrange CV Entries" = X,
-#endif            
+#endif   
+#if W1XX009A
+        tabledata "YNS Partner Group" = RIMD,
+        table "YNS Partner Group" = X,
+#endif        
 #if W1FN002A
         tabledata "YNS Issued Repayment Header" = RIMD,
         tabledata "YNS Issued Repayment Line" = RIMD,
@@ -29,10 +33,12 @@ permissionset 60000 YNSExperience
         tabledata "YNS Doc. Exchange Ref. Line" = RIMD,
         tabledata "YNS Doc. Exchange Profile" = RIMD,
         tabledata "YNS Doc. Exchange Log" = RIMD,
+        tabledata "YNS FileSystem Transport Setup" = RIMD,
         table "YNS Doc. Exchange Reference" = X,
         table "YNS Doc. Exchange Ref. Line" = X,
         table "YNS Doc. Exchange Profile" = X,
         table "YNS Doc. Exchange Log" = X,
+        table "YNS FileSystem Transport Setup" = X,
 #endif        
 #if ITXX002A
         tabledata "YNS Italy E-Invoice Setup" = RIMD,

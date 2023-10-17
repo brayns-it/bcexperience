@@ -2,6 +2,15 @@ pageextension 60005 YNSCustomerCard extends "Customer Card"
 {
     layout
     {
+#if W1XX009A
+        addlast(General)
+        {
+            field("YNS Partner Group"; Rec."YNS Partner Group")
+            {
+                ApplicationArea = All;
+            }
+        }
+#endif        
 #if W1FN003A
         addafter("Preferred Bank Account Code")
         {

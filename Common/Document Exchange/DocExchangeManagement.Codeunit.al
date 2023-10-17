@@ -4,6 +4,15 @@
 /// </summary>
 codeunit 60007 "YNS Doc. Exchange Management"
 {
+    TableNo = "Job Queue Entry";
+
+    trigger OnRun()
+    var
+        DocRefs: RecordRef;
+    begin
+        ProcessDocuments(Rec."Parameter String", DocRefs);
+    end;
+
     /// <summary>
     /// Add a process option to choises temporary table avoiding duplicates
     /// </summary>
@@ -42,11 +51,9 @@ codeunit 60007 "YNS Doc. Exchange Management"
         TempOptions: Record "Name/Value Buffer" temporary;
         ListSelect: Page "YNS List Select";
         ExFormat: Interface "YNS Doc. Exchange Format";
+        ActivityID: Guid;
         NoProfileAvailableErr: Label 'No profile available for %1';
         CaptionLbl: Label 'Document Exchange';
-        TempI: Integer;
-        Param: Text;
-        Params: List of [Text];
     begin
         ExchProf.Reset();
         ExchProf.SetRange(Enabled, true);
@@ -72,7 +79,25 @@ codeunit 60007 "YNS Doc. Exchange Management"
         if ListSelect.RunModal() <> Action::LookupOK then
             exit;
 
-        Params := ListSelect.GetSelectedNo().Split(',');
+        ActivityID := ProcessDocuments(ListSelect.GetSelectedNo(), DocRefs);
+
+        log.Reset();
+        log.FilterGroup(2);
+        log.SetRange("Activity ID", ActivityID);
+        if not log.IsEmpty() then
+            page.Run(Page::"YNS Doc. Exchange Log", Log);
+    end;
+
+    procedure ProcessDocuments(Parameters: Text; var DocRefs: RecordRef): Guid
+    var
+        Log: Record "YNS Doc. Exchange Log";
+        ExchProf: Record "YNS Doc. Exchange Profile";
+        ExFormat: Interface "YNS Doc. Exchange Format";
+        TempI: Integer;
+        Param: Text;
+        Params: List of [Text];
+    begin
+        Params := Parameters.Split(',');
 
         Params.Get(2, Param);
         Evaluate(TempI, Param);
@@ -89,7 +114,7 @@ codeunit 60007 "YNS Doc. Exchange Management"
         Log."Profile Code" := ExchProf.Code;
         log."User ID" := CopyStr(UserId, 1, MaxStrLen(log."User ID"));
         log."Activity ID" := CreateGuid();
-        log.Parameters := CopyStr(ListSelect.GetSelectedNo(), 1, MaxStrLen(log.Parameters));
+        log.Parameters := CopyStr(Parameters, 1, MaxStrLen(log.Parameters));
         log."Exchange Format" := Enum::"YNS Doc. Exchange Format".FromInteger(TempI);
         ExFormat.SetLog(log);
 
@@ -97,11 +122,7 @@ codeunit 60007 "YNS Doc. Exchange Management"
         Params.RemoveAt(1);
         ExFormat.Process(Params, DocRefs);
 
-        log.Reset();
-        log.FilterGroup(2);
-        log.SetRange("Activity ID", log."Activity ID");
-        if not log.IsEmpty() then
-            page.Run(Page::"YNS Doc. Exchange Log", Log);
+        exit(log."Activity ID");
     end;
 }
 #endif

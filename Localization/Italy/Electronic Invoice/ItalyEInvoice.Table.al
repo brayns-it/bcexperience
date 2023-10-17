@@ -32,6 +32,12 @@ table 60009 "YNS Italy E-Invoice"
             DataClassification = CustomerContent;
             Caption = 'Source Description';
         }
+        field(13; "Partner Group"; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Partner Group';
+            TableRelation = "YNS Partner Group";
+        }
         field(15; "Document Type"; Code[20])
         {
             Caption = 'Document Type';
@@ -88,10 +94,27 @@ table 60009 "YNS Italy E-Invoice"
             DataClassification = CustomerContent;
             Caption = 'Progressive No.';
         }
-        field(52; "SdI Number"; Code[10])
+        field(52; "SdI Number"; Text[20])
         {
             DataClassification = CustomerContent;
             Caption = 'SdI Number';
+        }
+        field(53; "Transport ID"; Text[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Transport ID';
+        }
+        field(55; "SdI Status"; Option)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'SdI Status';
+            OptionMembers = " ","Sent","Delivered to SdI","Delivered to Recipient","Error";
+            OptionCaption = ' ,Sent,Delivered to SdI,Delivered to Recipient,Error';
+        }
+        field(56; "SdI Status Message"; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'SdI Status Message';
         }
         field(60; "Amount"; Decimal)
         {
@@ -143,6 +166,10 @@ table 60009 "YNS Italy E-Invoice"
             TestField("Purchase Document No.", '');
             TestField("SdI Number", '');
         end;
+
+        if "Source Type" = "Source Type"::Customer then
+            if not ("SdI Status" in ["SdI Status"::" ", "SdI Status"::Error]) then
+                FieldError("SdI Status");
 
         if "File Path" > '' then
             FSMgmt.DeleteFile("File Path");

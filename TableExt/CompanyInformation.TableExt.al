@@ -2,7 +2,7 @@ tableextension 60003 YNSCompanyInformation extends "Company Information"
 {
     fields
     {
-#if W1FN007A
+#if W1FN003A
         field(60000; "YNS Preferred Bank Account"; Code[20])
         {
             DataClassification = CustomerContent;

@@ -62,6 +62,15 @@ page 60018 "YNS Italy E-Invoice Setup"
                     ApplicationArea = All;
                 }
             }
+            group(inbound)
+            {
+                Caption = 'Inbound Documents';
+
+                field("Receiving Exchange Reference"; Rec."Receiving Exchange Reference")
+                {
+                    ApplicationArea = All;
+                }
+            }
         }
     }
 

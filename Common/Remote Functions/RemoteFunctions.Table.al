@@ -3,6 +3,7 @@ table 60010 "YNS Remote Functions"
 {
     DataClassification = CustomerContent;
     Caption = 'Remote Functions';
+    DataPerCompany = false;
 
     fields
     {
@@ -44,17 +45,17 @@ table 60010 "YNS Remote Functions"
 
     trigger OnDelete()
     begin
-        IsolatedStorage.Delete('YNS60010-RemoteFunctions-' + Rec.Code + '-Token', DataScope::Company);
+        IsolatedStorage.Delete('YNS60010-RemoteFunctions-' + Rec.Code + '-Token', DataScope::Module);
     end;
 
     procedure SetToken(NewToken: Text)
     begin
-        IsolatedStorage.Set('YNS60010-RemoteFunctions-' + Rec.Code + '-Token', NewToken, DataScope::Company);
+        IsolatedStorage.Set('YNS60010-RemoteFunctions-' + Rec.Code + '-Token', NewToken, DataScope::Module);
     end;
 
     procedure GetToken() Result: Text
     begin
-        if not IsolatedStorage.Get('YNS60010-RemoteFunctions-' + Rec.Code + '-Token', DataScope::Company, Result) then
+        if not IsolatedStorage.Get('YNS60010-RemoteFunctions-' + Rec.Code + '-Token', DataScope::Module, Result) then
             Result := '';
     end;
 

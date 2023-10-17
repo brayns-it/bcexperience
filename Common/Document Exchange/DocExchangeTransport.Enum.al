@@ -9,5 +9,10 @@ enum 60002 "YNS Doc. Exchange Transport" implements "YNS Doc. Exchange Transport
         Implementation = "YNS Doc. Exchange Transport" = "YNS Download/Upload Transport";
         Caption = 'Download/Upload';
     }
+    value(60018; "FileSystem")
+    {
+        Implementation = "YNS Doc. Exchange Transport" = "YNS FileSystem Transport";
+        Caption = 'FileSystem';
+    }
 }
 #endif

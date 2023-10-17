@@ -21,9 +21,14 @@ codeunit 60013 "YNS Download/Upload Transport" implements "YNS Doc. Exchange Tra
         Functions.UploadText('', Functions.GetFileFilter(StreamType), StreamName, Result);
     end;
 
-    procedure Send(StreamName: Text; StreamType: Text; StreamContent: Text);
+    procedure Send(StreamName: Text; StreamType: Text; StreamContent: Text) Result: Text
     begin
         Functions.DownloadText('', Functions.GetFileFilter(StreamType), StreamName, StreamContent);
+    end;
+
+    procedure ReceiveConfirm()
+    begin
+        // not necessary
     end;
 
     procedure OpenSetup()

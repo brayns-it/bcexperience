@@ -38,6 +38,95 @@ codeunit 60000 "YNS Finance Management"
         InstallAndUpgrade();
     end;
 
+    #region UTILITIES
+    /// <summary>
+    /// Returns temporary journal with applied customer entries and amount
+    /// Logic from page 9106 "Customer Ledger Entry FactBox"
+    /// </summary>
+    procedure GetCustomerAppliedEntries(var FromCustLedg: Record "Cust. Ledger Entry"; var TempJournal: Record "Gen. Journal Line" temporary)
+    var
+        CustLedgerEntry: Record "Cust. Ledger Entry";
+        DtldCustLedgEntry1: Record "Detailed Cust. Ledg. Entry";
+        DtldCustLedgEntry2: Record "Detailed Cust. Ledg. Entry";
+    begin
+        TempJournal.Reset();
+        TempJournal.DeleteAll();
+
+        DtldCustLedgEntry1.SetCurrentKey("Cust. Ledger Entry No.");
+        DtldCustLedgEntry1.SetRange("Cust. Ledger Entry No.", FromCustLedg."Entry No.");
+        DtldCustLedgEntry1.SetRange(Unapplied, false);
+        if DtldCustLedgEntry1.FindSet() then
+            repeat
+                if DtldCustLedgEntry1."Cust. Ledger Entry No." =
+                   DtldCustLedgEntry1."Applied Cust. Ledger Entry No."
+                then begin
+                    DtldCustLedgEntry2.Init();
+                    DtldCustLedgEntry2.SetCurrentKey("Applied Cust. Ledger Entry No.", "Entry Type");
+                    DtldCustLedgEntry2.SetRange(
+                      "Applied Cust. Ledger Entry No.", DtldCustLedgEntry1."Applied Cust. Ledger Entry No.");
+                    DtldCustLedgEntry2.SetRange("Entry Type", DtldCustLedgEntry2."Entry Type"::Application);
+                    DtldCustLedgEntry2.SetRange(Unapplied, false);
+                    if DtldCustLedgEntry2.Find('-') then
+                        repeat
+                            if DtldCustLedgEntry2."Cust. Ledger Entry No." <>
+                               DtldCustLedgEntry2."Applied Cust. Ledger Entry No."
+                            then begin
+                                CustLedgerEntry.SetCurrentKey("Entry No.");
+                                CustLedgerEntry.SetRange("Entry No.", DtldCustLedgEntry2."Cust. Ledger Entry No.");
+                                if CustLedgerEntry.FindFirst() then
+                                    InsertCustomerAppliedEntries(CustLedgerEntry, TempJournal, DtldCustLedgEntry2.Amount, DtldCustLedgEntry2."Amount (LCY)");
+                            end;
+                        until DtldCustLedgEntry2.Next() = 0;
+                end else begin
+                    CustLedgerEntry.SetCurrentKey("Entry No.");
+                    CustLedgerEntry.SetRange("Entry No.", DtldCustLedgEntry1."Applied Cust. Ledger Entry No.");
+                    if CustLedgerEntry.FindFirst() then
+                        InsertCustomerAppliedEntries(CustLedgerEntry, TempJournal, DtldCustLedgEntry1.Amount, DtldCustLedgEntry1."Amount (LCY)");
+                end;
+            until DtldCustLedgEntry1.Next() = 0;
+
+        CustLedgerEntry.SetCurrentKey("Entry No.");
+        CustLedgerEntry.SetRange("Entry No.");
+
+        if FromCustLedg."Closed by Entry No." <> 0 then begin
+            CustLedgerEntry.Get(FromCustLedg."Closed by Entry No.");
+            CustLedgerEntry.CalcFields(Amount, "Amount (LCY)");
+            InsertCustomerAppliedEntries(CustLedgerEntry, TempJournal, -CustLedgerEntry.Amount, -CustLedgerEntry."Amount (LCY)");
+        end;
+
+        CustLedgerEntry.SetCurrentKey("Closed by Entry No.");
+        CustLedgerEntry.SetRange("Closed by Entry No.", FromCustLedg."Entry No.");
+        if CustLedgerEntry.FindSet() then
+            repeat
+                CustLedgerEntry.CalcFields(Amount, "Amount (LCY)");
+                InsertCustomerAppliedEntries(CustLedgerEntry, TempJournal, -CustLedgerEntry.Amount, -CustLedgerEntry."Amount (LCY)");
+            until CustLedgerEntry.Next() = 0;
+    end;
+
+    local procedure InsertCustomerAppliedEntries(var ToCustLedg: Record "Cust. Ledger Entry";
+        var TempJournal: Record "Gen. Journal Line" temporary; Amount: Decimal; AmountLCY: Decimal)
+    begin
+        TempJournal.Reset();
+        TempJournal.SetRange("Dimension Set ID", ToCustLedg."Entry No.");
+        if not TempJournal.IsEmpty() then exit;
+
+        TempJournal.Reset();
+        if TempJournal.FindLast() then;
+
+        TempJournal.Init();
+        TempJournal."Line No." += 1;
+        TempJournal."Document Type" := ToCustLedg."Document Type";
+        TempJournal."Posting Date" := ToCustLedg."Posting Date";
+        TempJournal."Document Date" := ToCustLedg."Document Date";
+        TempJournal."Document No." := ToCustLedg."Document No.";
+        TempJournal.Description := ToCustLedg.Description;
+        TempJournal.Amount := Amount;
+        TempJournal."Amount (LCY)" := AmountLCY;
+        TempJournal."Dimension Set ID" := ToCustLedg."Entry No.";
+        TempJournal.Insert();
+    end;
+    #endregion
+
 #if ITXX001A
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterSetOperationType', '', false, false)]
     local procedure OnSalesHeaderAfterSetOperationType(var SalesHeader: Record "Sales Header")
@@ -70,20 +159,6 @@ codeunit 60000 "YNS Finance Management"
             if CompInfo.Get() then
                 if CompInfo."Activity Code" > '' then
                     FinanceChargeMemoHeader."Activity Code" := CompInfo."Activity Code";
-    end;
-#endif
-
-#if W1FN006A
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePostCommitPurchaseDoc', '', false, false)]
-    local procedure OnBeforePostCommitPurchaseDoc(var PurchaseHeader: Record "Purchase Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PreviewMode: Boolean; ModifyHeader: Boolean; var CommitIsSupressed: Boolean; var TempPurchLineGlobal: Record "Purchase Line" temporary)
-    begin
-        CommitIsSupressed := true;
-    end;
-
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnBeforePostCommitSalesDoc', '', false, false)]
-    local procedure OnBeforePostCommitSalesDoc(var SalesHeader: Record "Sales Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; PreviewMode: Boolean; var ModifyHeader: Boolean; var CommitIsSuppressed: Boolean; var TempSalesLineGlobal: Record "Sales Line" temporary)
-    begin
-        CommitIsSuppressed := true;
     end;
 #endif
 
@@ -347,6 +422,18 @@ codeunit 60000 "YNS Finance Management"
 #endif
 
 #if W1FN003A
+    [EventSubscriber(ObjectType::Table, database::"Sales Header", 'OnAfterSetCompanyBankAccount', '', false, false)]
+    local procedure OnAfterSetCompanyBankAccount(var SalesHeader: Record "Sales Header"; xSalesHeader: Record "Sales Header")
+    var
+        CompInfo: Record "Company Information";
+    begin
+        if SalesHeader."Company Bank Account Code" = '' then begin
+            CompInfo.Get();
+            if CompInfo."YNS Preferred Bank Account" > '' then
+                SalesHeader."Company Bank Account Code" := CompInfo."YNS Preferred Bank Account";
+        end;
+    end;
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Cust. Entry-Edit", 'OnBeforeCustLedgEntryModify', '', false, false)]
     local procedure OnCustEntryEditBeforeCustLedgEntryModify(var CustLedgEntry: Record "Cust. Ledger Entry"; FromCustLedgEntry: Record "Cust. Ledger Entry")
     begin
@@ -380,6 +467,22 @@ codeunit 60000 "YNS Finance Management"
     local procedure OnGenJnlPostLinePostCustOnBeforeResetCustLedgerEntryAppliesToFields(var CustLedgEntry: Record "Cust. Ledger Entry"; var IsHandled: Boolean)
     begin
         CustLedgEntry."YNS Original Due Date" := CustLedgEntry."Due Date";
+    end;
+#endif
+
+#if W1FN010A
+    [EventSubscriber(ObjectType::Table, database::"Purchase Header", 'OnBeforeInitPostingDescription', '', false, false)]
+    local procedure OnBeforeSalesInitPostingDescription(var PurchaseHeader: Record "Purchase Header"; var IsHandled: Boolean)
+    begin
+        IsHandled := true;
+        PurchaseHeader."Posting Description" := CopyStr(Format(PurchaseHeader."Document Type") + ' ' + PurchaseHeader."Pay-to Name", 1, MaxStrLen(PurchaseHeader."Posting Description"));
+    end;
+
+    [EventSubscriber(ObjectType::Table, database::"Sales Header", 'OnBeforeInitPostingDescription', '', false, false)]
+    local procedure OnBeforePurchaseInitPostingDescription(var SalesHeader: Record "Sales Header"; var IsHandled: Boolean)
+    begin
+        IsHandled := true;
+        SalesHeader."Posting Description" := CopyStr(Format(SalesHeader."Document Type") + ' ' + SalesHeader."Bill-to Name", 1, MaxStrLen(SalesHeader."Posting Description"));
     end;
 #endif
 }

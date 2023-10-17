@@ -12,17 +12,21 @@ table 60006 "YNS Doc. Exchange Ref. Line"
             Caption = 'Reference Code';
             TableRelation = "YNS Doc. Exchange Reference";
         }
-        field(2; "Reference Type"; Option)
+        field(2; "Reference Type"; Enum "YNS Doc. Exchange Ref. Type")
         {
             DataClassification = CustomerContent;
             Caption = 'Reference Type';
-            OptionMembers = Table,Value;
-            OptionCaption = 'Table,Value';
         }
         field(3; "Line No."; Integer)
         {
             DataClassification = CustomerContent;
             Caption = 'Line No.';
+        }
+        field(5; "Priority"; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Priority';
+            BlankZero = true;
         }
         field(20; "Table ID"; Integer)
         {
@@ -69,6 +73,12 @@ table 60006 "YNS Doc. Exchange Ref. Line"
             else
             if ("Source Type" = const(Vendor)) Vendor;
         }
+        field(100; "VAT Prod. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Prod. Posting Group';
+            TableRelation = "VAT Product Posting Group";
+            DataClassification = CustomerContent;
+        }
     }
 
     keys
@@ -79,6 +89,7 @@ table 60006 "YNS Doc. Exchange Ref. Line"
         }
         key(K1; "Reference Code", "Reference Type", "Table ID", "Primary Key 1", "Primary Key 2") { }
         key(K2; "Reference Code", "Reference Type", "Value Type", "Value 1", "Value 2") { }
+        key(K3; "Reference Code", "Reference Type", "Source Type", "Source No.", "Priority", "Value 1") { }
     }
 }
 #endif

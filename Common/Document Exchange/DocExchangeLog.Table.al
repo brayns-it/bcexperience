@@ -77,6 +77,14 @@ table 60013 "YNS Doc. Exchange Log"
     var
         LastMessages: List of [Text];
 
+    procedure HasLog(): Boolean
+    var
+        Log2: Record "YNS Doc. Exchange Log";
+    begin
+        Log2.SetRange("Activity ID", Rec."Activity ID");
+        exit(not Log2.IsEmpty());
+    end;
+
     procedure AppendInformation(ActivityName: Text; Message: Text)
     begin
         Rec."Log Type" := Rec."Log Type"::Information;

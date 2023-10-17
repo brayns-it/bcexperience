@@ -20,9 +20,15 @@ interface "YNS Doc. Exchange Transport"
     procedure Receive(StreamName: Text; StreamType: Text): Text;
 
     /// <summary>
+    /// Confirm to the endpoint the successful receving of last stream
+    /// </summary>
+    procedure ReceiveConfirm();
+
+    /// <summary>
     /// Send a stream via transport
     /// </summary>
-    procedure Send(StreamName: Text; StreamType: Text; StreamContent: Text);
+    /// <returns>Transport stream identifier</returns>
+    procedure Send(StreamName: Text; StreamType: Text; StreamContent: Text) Result: Text;
 
     /// <summary>
     /// Start the batch receiving process for the selected category

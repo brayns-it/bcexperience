@@ -36,6 +36,19 @@ page 60022 "YNS Remote Functions"
                     begin
                         Rec.SetToken(Token);
                     end;
+
+                    trigger OnAssistEdit()
+                    var
+                        GenerateQst: Label 'Generate new token?';
+                        ID: Guid;
+                    begin
+                        if Confirm(GenerateQst) then begin
+                            ID := CreateGuid();
+                            Token := Format(ID, 0, 9);
+                            Rec.SetToken(Token);
+                            Message(Token);
+                        end;
+                    end;
                 }
                 field(Preferred; Rec.Preferred)
                 {

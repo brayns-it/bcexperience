@@ -1043,11 +1043,6 @@
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Ref. Line - Field Reference Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 4230386548 - Field 1210188005 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Table,Value</source><target>Tabella,Valore</target>
-          <note from="Developer" annotates="general" priority="2" />
-          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Ref. Line - Field Reference Type - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 4230386548 - Field 1882905478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source No.</source><target>Nr. origine</target>
           <note from="Developer" annotates="general" priority="2" />
@@ -2072,6 +2067,201 @@
           <source>Bulk Importer</source><target>Bulk Importer</target>
           <note from="Developer" annotates="general" priority="2" />
           <note from="Xliff Generator" annotates="general" priority="3">Enum YNS Generic API - EnumValue YNS Bulk Importer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4230386548 - Field 4130293374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Priority</source><target>Priorità</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Ref. Line - Field Priority - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4230386548 - Field 236064653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Prod. Posting Group</source><target>Cat. reg. IVA art. servizio</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Doc. Exchange Ref. Line - Field VAT Prod. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FileSystem Transport Setup</source><target>Setup trasporto filesystem</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Field 3498366530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reference Code</source><target>Cod. riferimento</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Field Profile Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Field 3458496042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Protocol</source><target>Protocollo</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Field Protocol - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Field 3458496042 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FileSystem</source><target>FileSystem</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Field Protocol - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Field 1719260185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receving Base Path</source><target>Percorso base ricezione</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Field Receving Base Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Field 1456417780 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remote Functions Code</source><target>Cod. funzione remota</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Field Remote Functions Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1333830853 - Field 3662601568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sending Base Path</source><target>Percorso base invio</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS FileSystem Transport Setup - Field Sending Base Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2323456637 - Field 4086225674 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receiving Exchange Reference</source><target>Riferimento scambio ricezione</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Table YNS Italy E-Invoice Setup - Field Receiving Exchange Reference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3361977752 - NamedType 2164942842" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not supported</source><target>Non supportato</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS FileSystem Transport - NamedType NotSupportedErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3361977752 - NamedType 2330789082" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unsupported protocol %1</source><target>Protocollo %1 non supportato</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit YNS FileSystem Transport - NamedType UnsupportedProtoErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2007623262 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Exchange Reference Value to Account</source><target>Riferimento valori a conti C/G scambio documenti</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Doc. Ex. Ref. Val. Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1499793296 - Action 1655364555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Values to Accounts</source><target>Valori a Conti C/G</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Doc. Exchange Ref. List - Action valtoacc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1333830853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FileSystem Transport Setup</source><target>Setup trasporto filesystem</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS FileSystem Transport Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1333830853 - Control 872480034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source><target>Generale</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS FileSystem Transport Setup - Control general - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2323456637 - Control 3388074455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inbound Documents</source><target>Documenti in ingresso</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Italy E-Invoice Setup - Control inbound - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3860881611 - Control 4146460525 - Method 2699620902 - NamedType 1397144959" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generate new token?</source><target>Creare un nuovo token?</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Page YNS Remote Functions - Control Token - Method OnAssistEdit - NamedType GenerateQst</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Detailed Aging 2</source><target>Dettaglio scadenzario clienti 2</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - NamedType 2869536027" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entries at %1</source><target>Movimenti al %1</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - NamedType EndingDateLbl</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - ReportLabel 3606806740" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source><target>Nr. cliente</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - ReportLabel CustNo</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - ReportLabel 3683930538" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Total</source><target>Totale a scadere</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - ReportLabel DueTotal</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - ReportLabel 1025263928" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Total</source><target>Totale generale</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - ReportLabel GeneralTotal</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - ReportLabel 1520119636" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Past Due Total</source><target>Totale scaduto</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - ReportLabel PastDueTotal</note>
+        </trans-unit>
+        <trans-unit id="Report 2728299280 - ReportLabel 2295386186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Detailed Aging</source><target>Dettaglio scadenzario cliente</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Report YNS Customer Detailed Aging 2 - ReportLabel ReportTitle</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2370094057 - Action 64765250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Calculate Balance</source><target>Calcola saldo</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSCustomerLedgerEntries - Action YNSCalculateBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2370094057 - Control 235485678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Balance</source><target>Saldo</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSCustomerLedgerEntries - Control YNSBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1403747575 - Action 64765250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Calculate Balance</source><target>Calcola saldo</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSGeneralLedgerEntries - Action YNSCalculateBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1403747575 - Control 235485678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
+          <source>Balance</source><target>Saldo</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSGeneralLedgerEntries - Control YNSBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3336372599 - Action 3742262360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 437657539">
+          <source>Enable for All Customers</source><target>Abilita per tutti i clienti</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSStandardCustomerSalesCodes - Action YNSToggleForAll - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3336372599 - Action 3742262360 - Method 1377591017 - NamedType 172262481" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3336372599">
+          <source>Enable %1 for all customers?</source><target>Abilitare %1 per tutti i clienti?</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSStandardCustomerSalesCodes - Action YNSToggleForAll - Method OnAction - NamedType EnableQst</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1114400321 - Action 64765250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1567633909">
+          <source>Calculate Balance</source><target>Calcola saldo</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSVendorLedgerEntries - Action YNSCalculateBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1114400321 - Control 235485678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1567633909">
+          <source>Balance</source><target>Saldo</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension YNSVendorLedgerEntries - Control YNSBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1625687243 - Field 2173013880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Incoming Line</source><target>Riga in ingresso</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension YNSPurchaseLine - Field YNS Incoming Line - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1058942866 - EnumValue 1500409770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table</source><target>Tabella</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Enum YNS Doc. Exchange Ref. Type - EnumValue Table - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1058942866 - EnumValue 1131619133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value</source><target>Valore</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Enum YNS Doc. Exchange Ref. Type - EnumValue Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1058942866 - EnumValue 1142774979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value to Account</source><target>Valori a Conti C/G</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Enum YNS Doc. Exchange Ref. Type - EnumValue Value to Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 329543534 - EnumValue 2081911909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>FileSystem</source><target>FileSystem</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">Enum YNS Doc. Exchange Transport - EnumValue FileSystem - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3727494371 - EnumValue 2173013880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 691140679">
+          <source>Incoming Line</source><target>Riga in ingresso</target>
+          <note from="Developer" annotates="general" priority="2" />
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension YNSPurchaseLineType - EnumValue YNS Incoming Line - Property Caption</note>
         </trans-unit>
       </group>
     </body>

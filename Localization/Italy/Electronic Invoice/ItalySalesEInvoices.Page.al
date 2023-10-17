@@ -58,6 +58,14 @@ page 60020 "YNS Italy Sales E-Invoices"
                 {
                     ApplicationArea = All;
                 }
+                field("SdI Status"; Rec."SdI Status")
+                {
+                    ApplicationArea = All;
+                }
+                field("SdI Status Message"; Rec."SdI Status Message")
+                {
+                    ApplicationArea = All;
+                }
                 field("Progressive No."; Rec."Progressive No.")
                 {
                     Visible = false;
@@ -105,6 +113,26 @@ page 60020 "YNS Italy Sales E-Invoices"
                 begin
                     if Rec."Entry No." > 0 then
                         ItInvFmt.DownloadEInvoice(Rec);
+                end;
+            }
+            action(YNSDocExchange)
+            {
+                Image = SwitchCompanies;
+                Caption = 'Document Exchange';
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    EInvoice: Record "YNS Italy E-Invoice";
+                    DocXMgmt: Codeunit "YNS Doc. Exchange Management";
+                    RecRef: RecordRef;
+                begin
+                    CurrPage.SetSelectionFilter(EInvoice);
+                    RecRef.GetTable(Rec);
+                    DocXMgmt.ManualProcessDocuments(RecRef, Page::"YNS Italy Sales E-Invoices");
                 end;
             }
         }

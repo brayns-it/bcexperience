@@ -45,6 +45,10 @@ page 60021 "YNS Italy Purchases E-Invoices"
                 {
                     ApplicationArea = All;
                 }
+                field("Partner Group"; Rec."Partner Group")
+                {
+                    ApplicationArea = All;
+                }
                 field("Currency Code"; Rec."Currency Code")
                 {
                     ApplicationArea = All;
@@ -107,7 +111,7 @@ page 60021 "YNS Italy Purchases E-Invoices"
                 trigger OnAction()
                 begin
                     if Rec."Entry No." > 0 then
-                        ItInvFmt.CreateDocumentFromInvoice(Rec);
+                        ItInvFmt.CreateDocumentFromEInvoice(Rec);
                 end;
             }
             action(htmlexport)

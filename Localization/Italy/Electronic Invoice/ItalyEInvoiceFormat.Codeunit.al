@@ -37,6 +37,8 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         ITransport: Interface "YNS Doc. Exchange Transport";
         ExportSdiLbl: Label 'Export Italy E-Invoice';
         DownloadFromSdiLbl: Label 'Receive Italy E-Invoices via %1';
+        SendToSdiLbl: Label 'Send Italy E-Invoices via %1';
+        ReceiveNotifFromSdiLbl: Label 'Receive Italy E-Invoices Notifications via %1';
     begin
         case DocRefs.Number of
             Database::"Sales Invoice Header",
@@ -45,11 +47,19 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         end;
 
         case PageID of
+            Page::"YNS Italy Sales E-Invoices":
+                begin
+                    ITransport := SelectedProfile."Exchange Transport";
+                    if ITransport.BatchAllowed() then begin
+                        DocExMgmt.AddProcessOption(SelectedProfile.Code, SelectedProfile."Exchange Format", 'SEND', StrSubstNo(SendToSdiLbl, SelectedProfile."Exchange Transport"), TempOptions);
+                        DocExMgmt.AddProcessOption(SelectedProfile.Code, SelectedProfile."Exchange Format", 'RECEIVE_NOTIFICATIONS', StrSubstNo(ReceiveNotifFromSdiLbl, SelectedProfile."Exchange Transport"), TempOptions);
+                    end;
+                end;
             Page::"YNS Italy Purchases E-Invoices":
                 begin
                     ITransport := SelectedProfile."Exchange Transport";
                     if ITransport.BatchAllowed() then
-                        DocExMgmt.AddProcessOption(SelectedProfile.Code, SelectedProfile."Exchange Format", 'RECEIVE', StrSubstNo(DownloadFromSdiLbl, SelectedProfile."Exchange Transport"), TempOptions);
+                        DocExMgmt.AddProcessOption(SelectedProfile.Code, SelectedProfile."Exchange Format", 'RECEIVE_PURCHASE', StrSubstNo(DownloadFromSdiLbl, SelectedProfile."Exchange Transport"), TempOptions);
                 end;
         end;
     end;
@@ -85,12 +95,113 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
                             ExportEInvoice(DocRefs);
                         until DocRefs.Next() = 0;
                 end;
-            'RECEIVE':
+            'SEND':
+                begin
+                    C := DocRefs.Count;
+                    if DocRefs.FindSet() then
+                        repeat
+                            N += 1;
+                            Progress.Update(2, Format(Round((N * 100) / C, 1)) + '%');
+                            SendEInvoice(DocRefs);
+                        until DocRefs.Next() = 0;
+                end;
+            'RECEIVE_NOTIFICATIONS':
+                ReceiveSalesNotifications();
+            'RECEIVE_PURCHASE':
                 ReceiveEInvoices();
         end;
 
         if ProgressIsOpen then
             Progress.Close();
+    end;
+
+    procedure SendEInvoice(var DocRef: RecordRef)
+    var
+        ItInvoice: Record "YNS Italy E-Invoice";
+        ITransport: Interface "YNS Doc. Exchange Transport";
+        Content: Text;
+        FileName: Text;
+    begin
+        DocRef.SetTable(ItInvoice);
+        if ItInvoice."SdI Status" <> ItInvoice."SdI Status"::" " then exit;
+
+        ItInvoice.TestField("File Path");
+        Content := FileStorMgmt.GetFileAsText(ItInvoice."File Path");
+        FileName := FileStorMgmt.GetCurrentFileName();
+
+        if ProgressIsOpen then
+            Progress.Update(1, FileName);
+
+        ITransport := GlobalProfile."Exchange Transport";
+        ITransport.SetProfile(GlobalProfile);
+
+        ItInvoice."Transport ID" := CopyStr(ITransport.Send(FileName, 'text/xml', Content), 1, MaxStrLen(ItInvoice."Transport ID"));
+        ItInvoice."SdI Status" := ItInvoice."SdI Status"::Sent;
+        ItInvoice.Modify();
+        Commit();
+    end;
+
+    procedure ReceiveSalesNotifications()
+    var
+        ItInvoice: Record "YNS Italy E-Invoice";
+        ITransport: Interface "YNS Doc. Exchange Transport";
+        Streams: Dictionary of [Text, Text];
+        StreamTxt: Text;
+        TransportID: Text;
+        Metadata: JsonObject;
+        ReceivingLbl: Label 'Receiving notifications...';
+    begin
+        if ProgressIsOpen then
+            Progress.Update(1, ReceivingLbl);
+
+        ITransport := GlobalProfile."Exchange Transport";
+        ITransport.SetProfile(GlobalProfile);
+        ITransport.BatchReceiveStart('SALES_NOTIFICATIONS');
+
+        while ITransport.BatchReceive(Streams) do begin
+            if Streams.ContainsKey('metadata.json') then begin
+                Streams.Get('metadata.json', StreamTxt);
+                Metadata.ReadFrom(StreamTxt);
+
+                TransportID := Functions.GetJsonPropertyAsText(Metadata, 'IdentificativoTrasporto');
+
+                if ProgressIsOpen then
+                    Progress.Update(2, TransportID);
+
+                ItInvoice.Reset();
+                ItInvoice.SetRange("Source Type", ItInvoice."Source Type"::Customer);
+                ItInvoice.SetRange("Transport ID", TransportID);
+                if ItInvoice.FindFirst() then begin
+                    case Functions.GetJsonPropertyAsText(Metadata, 'TipoNotifica') of
+                        'CONSEGNA_SDI':
+                            begin
+                                ItInvoice."SdI Status" := ItInvoice."SdI Status"::"Delivered to SdI";
+                                ItInvoice."SdI Status Message" := '';
+                            end;
+                        'CONSEGNA_DESTINATARIO':
+                            begin
+                                ItInvoice."SdI Status" := ItInvoice."SdI Status"::"Delivered to Recipient";
+                                ItInvoice."SdI Status Message" := '';
+                                ItInvoice."Send/Receive Date/Time" := Functions.GetJsonPropertyAsDateTime(Metadata, 'DataOraRicezione');
+                            end;
+                        'SCARTO_SDI':
+                            begin
+                                ItInvoice."SdI Status" := ItInvoice."SdI Status"::Error;
+                                ItInvoice."SdI Status Message" := CopyStr(Functions.GetJsonPropertyAsText(Metadata, 'Errore'), 1, MaxStrLen(ItInvoice."SdI Status Message"));
+                            end;
+                    end;
+
+                    if Functions.GetJsonPropertyAsText(Metadata, 'IdentificativoSdI') > '' then
+                        ItInvoice."SdI Number" := CopyStr(Functions.GetJsonPropertyAsText(Metadata, 'IdentificativoSdI'), 1, MaxStrLen(ItInvoice."SdI Number"));
+
+                    ItInvoice.Modify();
+                end;
+            end;
+
+            ITransport.BatchReceiveConfirm();
+        end;
+
+        ITransport.BatchReceiveStop();
     end;
 
     procedure ReceiveEInvoices()
@@ -330,6 +441,7 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
 
         if EInvoice2."Source No." <> Vend."No." then begin
             EInvoice2."Source No." := Vend."No.";
+            EInvoice2."Partner Group" := Vend."YNS Partner Group";
             EInvoice2.Modify();
         end;
 
@@ -411,7 +523,6 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
     procedure CreateEInvoice(var DocRef: RecordRef; var XmlDoc: XmlDocument; var FileName: Text)
     var
         CompInfo: Record "Company Information";
-        Country: Record "Country/Region";
         TempSalesHeader: Record "Sales Header" temporary;
         TempSalesLine: Record "Sales Line" temporary;
         SalesInvoice: Record "Sales Invoice Header";
@@ -422,14 +533,14 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         XmlNod: XmlNode;
         FatturaElettronicaBody: XmlElement;
         DocType: Enum "Gen. Journal Document Type";
-        ProgrNo: Integer;
+        ProgrNo: Text;
     begin
         CompInfo.Get();
-        CompInfo.TestField("Country/Region Code");
-        CompInfo.TestField("Fiscal Code");
-
-        Country.Get(CompInfo."Country/Region Code");
-        Country.TestField("ISO Code");
+        CompInfo.TestField("VAT Registration No.");
+        if (not CompInfo."VAT Registration No.".StartsWith('IT')) or
+            (StrLen(CompInfo."VAT Registration No.") <> 13)
+        then
+            CompInfo.FieldError("VAT Registration No.");
 
         case DocRef.Number of
             database::"Sales Invoice Header":
@@ -487,27 +598,29 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         ProgrNo := AssignProgressiveNo(DocRef.Number, TempSalesHeader, TempSalesLine);
 
         XmlRoot.AsXmlNode().SelectSingleNode('FatturaElettronicaHeader/DatiTrasmissione/ProgressivoInvio', XmlNod);
-        XmlNod.AsXmlElement().Add(XmlText.Create(Format(ProgrNo, 0, 9)));
+        XmlNod.AsXmlElement().Add(XmlText.Create(ProgrNo));
 
-        FileName := Country."ISO Code" + '_' + CompInfo."Fiscal Code" + '_' + IntegerToString(ProgrNo).PadLeft(5, '0') + '.xml';
+        FileName := CompInfo."VAT Registration No." + '_' + IntegerToString(ProgrNo).PadLeft(5, '0') + '.xml';
     end;
 
-    procedure IntegerToString(Value: Integer) Result: Text
+    local procedure IntegerToString(ValueStr: Text) Result: Text
     var
+        ValueInt: Integer;
         Dict: Text;
         Ch: Text;
     begin
         Dict := '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         Result := '';
+        Evaluate(ValueInt, ValueStr);
 
         repeat
-            Ch := Dict.Substring((Value mod 36) + 1, 1);
+            Ch := Dict.Substring((ValueInt mod 36) + 1, 1);
             Result := Ch + Result;
-            Value := Round(Value / 36, 1, '<');
-        until Value <= 0;
+            ValueInt := Round(ValueInt / 36, 1, '<');
+        until ValueInt <= 0;
     end;
 
-    procedure AssignProgressiveNo(DocID: Integer; var TempSalesHeader: Record "Sales Header" temporary; var TempSalesLine: Record "Sales Line" temporary) Result: Integer
+    procedure AssignProgressiveNo(DocID: Integer; var TempSalesHeader: Record "Sales Header" temporary; var TempSalesLine: Record "Sales Line" temporary): Text
     var
         ItInvSetup: Record "YNS Italy E-Invoice Setup";
         GLSetup: Record "General Ledger Setup";
@@ -565,7 +678,7 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
             GlobalEInvoice.Insert();
         end;
 
-        Evaluate(Result, GlobalEInvoice."Progressive No.");
+        exit(GlobalEInvoice."Progressive No.");
     end;
 
     procedure GetCustVATIdentifier(var TempSalesHeader: Record "Sales Header" temporary; var FiscalCode: Text; var VatCountry: Text; var VatNumber: Text)
@@ -602,6 +715,7 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         DatiTrasmissione: XmlElement;
         IdTrasmittente: XmlElement;
         ContattiTrasmittente: XmlElement;
+        ContattiCedentePrestatore: XmlElement;
         CedentePrestatore: XmlElement;
         DatiAnagrafici: XmlElement;
         IdFiscaleIVA: XmlElement;
@@ -718,10 +832,30 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
 
             Functions.AppendXmlText('NumeroREA', IscrizioneREA, CompInfo."REA No.");
 
+            if CompInfo."Paid-In Capital" > 0 then
+                Functions.AppendXmlDecimal('CapitaleSociale', IscrizioneREA, CompInfo."Paid-In Capital", 2);
+
+            case CompInfo."Shareholder Status" of
+                CompInfo."Shareholder Status"::"Multiple Shareholders":
+                    Functions.AppendXmlText('SocioUnico', IscrizioneREA, 'SM');
+                CompInfo."Shareholder Status"::"One Shareholder":
+                    Functions.AppendXmlText('SocioUnico', IscrizioneREA, 'SU');
+            end;
+
             if CompInfo."Liquidation Status" = CompInfo."Liquidation Status"::"Not in Liquidation" then
                 Functions.AppendXmlText('StatoLiquidazione', IscrizioneREA, 'LN')
             else
                 Functions.AppendXmlText('StatoLiquidazione', IscrizioneREA, 'LS');
+        end;
+
+        if (CompInfo."Phone No." > '') or (CompInfo."E-Mail" > '') then begin
+            ContattiCedentePrestatore := Functions.AppendXmlElement('Contatti', CedentePrestatore);
+
+            if CompInfo."Phone No." > '' then
+                Functions.AppendXmlText('Telefono', ContattiCedentePrestatore, CompInfo."Phone No.");
+
+            if CompInfo."E-Mail" > '' then
+                Functions.AppendXmlText('Email', ContattiCedentePrestatore, CompInfo."E-Mail");
         end;
 
         CessionarioCommittente := Functions.AppendXmlElement('CessionarioCommittente', Result);
@@ -773,6 +907,7 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         GLSetup: Record "General Ledger Setup";
         DatiGenerali: XmlElement;
         DatiGeneraliDocumento: XmlElement;
+        DatiBollo: XmlElement;
         CurrencyFactor: Decimal;
         Amt: Decimal;
         I: Integer;
@@ -797,6 +932,12 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
 
         Functions.AppendXmlDate('Data', DatiGeneraliDocumento, TempSalesHeader."Operation Occurred Date");
         Functions.AppendXmlText('Numero', DatiGeneraliDocumento, DocumentNoStripChars(TempSalesHeader."No."));
+
+        if TempSalesHeader."Fattura Stamp" then begin
+            DatiBollo := Functions.AppendXmlElement('DatiBollo', DatiGeneraliDocumento);
+            Functions.AppendXmlText('BolloVirtuale', DatiBollo, 'SI');
+            Functions.AppendXmlDecimal('ImportoBollo', DatiBollo, TempSalesHeader."Fattura Stamp Amount", 2);
+        end;
 
         TempSalesLine.Reset();
         TempSalesLine.CalcSums("Amount Including VAT");
@@ -857,6 +998,8 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
     var
         CustLedg: Record "Cust. Ledger Entry";
         PayMeth: Record "Payment Method";
+        Bank: Record "Bank Account";
+        ABICAB: Record "ABI/CAB Codes";
         DatiPagamento: XmlElement;
         DettaglioPagamento: XmlElement;
         CondPag: Text;
@@ -886,6 +1029,20 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
                 Functions.AppendXmlDate('DataScadenzaPagamento', DettaglioPagamento, CustLedg."Due Date");
 
                 Functions.AppendXmlDecimal('ImportoPagamento', DettaglioPagamento, Round(CustLedg."Original Amt. (LCY)", 0.01), 2);
+
+                if (PayMeth."Fattura PA Payment Method" = 'MP05') and (CustLedg."YNS Company Bank Account" > '') then begin
+                    Bank.Get(CustLedg."YNS Company Bank Account");
+                    if (Bank.ABI > '') and (Bank.CAB > '') then begin
+                        ABICAB.Get(Bank.ABI, Bank.CAB);
+                        Functions.AppendXmlText('IstitutoFinanziario', DettaglioPagamento, ABICAB."Bank Description");
+                    end;
+
+                    if Bank.IBAN > '' then
+                        Functions.AppendXmlText('IBAN', DettaglioPagamento, Bank.IBAN);
+
+                    if Bank."SWIFT Code" > '' then
+                        Functions.AppendXmlText('BIC', DettaglioPagamento, Bank."SWIFT Code");
+                end;
             until CustLedg.Next() = 0;
     end;
 
@@ -1172,7 +1329,7 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         Result := Functions.ConvertTextToDate(DateTxt);
     end;
 
-    procedure CreateDocumentFromInvoice(var ItInvoice: Record "YNS Italy E-Invoice")
+    procedure CreateDocumentFromEInvoice(var ItInvoice: Record "YNS Italy E-Invoice")
     var
         PurchHead: Record "Purchase Header";
         XmlDoc: XmlDocument;
@@ -1193,6 +1350,8 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
         if ItInvoice."Purchase Document No." = '' then begin
             if not Confirm(CreateDocQst, false, ItInvoice."External Document No.") then
                 exit;
+
+            GetEInvoiceSetup();
 
             ItInvoice.TestField("File Path");
             XmlDocument.ReadFrom(FileStorMgmt.GetFileAsText(ItInvoice."File Path"), XmlDoc);
@@ -1226,6 +1385,9 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
             PurchHead."Check Total" := Abs(TotalAmount);
             PurchHead.Modify(true);
 
+            CreateDocumentLinesFromEInvoice(PurchHead, FatturaElettronicaBody);
+            CreatePaymentLinesFromEInvoice(PurchHead, FatturaElettronicaBody);
+
             ItInvoice."Purchase Document No." := PurchHead."No.";
             ItInvoice."Purchase Document Type" := DocumentType;
             ItInvoice.Modify();
@@ -1238,6 +1400,165 @@ codeunit 60009 "YNS Italy E-Invoice Format" implements "YNS Doc. Exchange Format
             page.Run(Page::"Purchase Invoice", PurchHead)
         else
             page.Run(Page::"Purchase Credit Memo", PurchHead);
+    end;
+
+    local procedure CreatePaymentLinesFromEInvoice(var PurchHead: Record "Purchase Header"; var XmlBody: XmlNode)
+    var
+        PaymLine2: Record "Payment Lines";
+        XmlLst: XmlNodeList;
+        DettaglioPagamento: XmlNode;
+        LineNo: Integer;
+    begin
+        XmlBody.SelectNodes('DatiPagamento/DettaglioPagamento', XmlLst);
+        if XmlLst.Count = 0 then exit;
+
+        PaymLine2.Reset();
+        PaymLine2.SetRange("Sales/Purchase", PaymLine2."Sales/Purchase"::Purchase);
+        if PurchHead."Document Type" = PurchHead."Document Type"::Invoice then
+            PaymLine2.SetRange(Type, PaymLine2.Type::Invoice)
+        else
+            PaymLine2.SetRange(Type, PaymLine2.Type::"Credit Memo");
+        PaymLine2.SetRange(Code, PurchHead."No.");
+        PaymLine2.DeleteAll();
+
+        LineNo := 10000;
+
+        foreach DettaglioPagamento in XmlLst do begin
+            PaymLine2.Init();
+            PaymLine2."Sales/Purchase" := PaymLine2."Sales/Purchase"::Purchase;
+            if PurchHead."Document Type" = PurchHead."Document Type"::Invoice then
+                PaymLine2.Type := PaymLine2.Type::Invoice
+            else
+                PaymLine2.Type := PaymLine2.Type::"Credit Memo";
+            PaymLine2.Code := PurchHead."No.";
+            PaymLine2."Due Date" := GetSafeXmlChildAsDate('DataScadenzaPagamento', DettaglioPagamento);
+            PaymLine2.Amount := Functions.GetXmlChildAsDecimal('ImportoPagamento', DettaglioPagamento);
+            PaymLine2."Line No." := LineNo;
+            PaymLine2.Insert();
+            LineNo += 10000;
+        end;
+
+        PaymLine2.YNSRecalculatePercent();
+    end;
+
+    local procedure DecodeTextToPurchaseLine(var PurchHead: Record "Purchase Header";
+        var PurchLine: Record "Purchase Line"; TextLine: Text): Boolean
+    var
+        ExRef: Record "YNS Doc. Exchange Ref. Line";
+    begin
+        if EInvSetup."Receiving Exchange Reference" = '' then
+            exit(false);
+
+        ExRef.Reset();
+        ExRef.SetCurrentKey(Priority);
+        ExRef.SetRange("Reference Code", EInvSetup."Receiving Exchange Reference");
+        ExRef.SetRange("Reference Type", ExRef."Reference Type"::"Value to Account");
+        ExRef.SetRange("Table ID", Database::"G/L Account");
+        ExRef.SetFilter("Primary Key 1", '>''''');
+        ExRef.SetRange("Source Type", ExRef."Source Type"::Vendor);
+        ExRef.SetRange("Source No.", PurchHead."Pay-to Vendor No.");
+        if ExRef.FindSet() then
+            repeat
+                if DecodeExReferenceToPurchaseLine(PurchLine, ExRef, TextLine) then
+                    exit(true);
+            until ExRef.Next() = 0;
+
+        ExRef.SetRange("Source Type", ExRef."Source Type"::Vendor);
+        ExRef.SetRange("Source No.", '');
+        if ExRef.FindSet() then
+            repeat
+                if DecodeExReferenceToPurchaseLine(PurchLine, ExRef, TextLine) then
+                    exit(true);
+            until ExRef.Next() = 0;
+
+        exit(false);
+    end;
+
+    local procedure DecodeExReferenceToPurchaseLine(var PurchLine: Record "Purchase Line";
+        var ExchangeRef: Record "YNS Doc. Exchange Ref. Line"; TextLine: Text): Boolean
+    begin
+        if (ExchangeRef."Value 1" = '') or (TextLine.ToLower().Contains(ExchangeRef."Value 1".ToLower())) then begin
+            PurchLine.Validate(Type, PurchLine.Type::"G/L Account");
+            PurchLine.Validate("No.", ExchangeRef."Primary Key 1");
+
+            if ExchangeRef."VAT Prod. Posting Group" > '' then
+                PurchLine.Validate("VAT Prod. Posting Group", ExchangeRef."VAT Prod. Posting Group");
+
+            exit(true);
+        end;
+
+        exit(false);
+    end;
+
+    local procedure CreateDocumentLinesFromEInvoice(var PurchHead: Record "Purchase Header"; var XmlBody: XmlNode)
+    var
+        PurchLine: Record "Purchase Line";
+        UoM: Record "Unit of Measure";
+        ItemUoM: Record "Item Unit of Measure";
+        LineNo: Integer;
+        XmlLst: XmlNodeList;
+        DettaglioLinee: XmlNode;
+        CalcAmt: Decimal;
+        LineDisc: Decimal;
+        Qty: Decimal;
+        UnitCost: Decimal;
+        TotalCost: Decimal;
+        UoMCode: Code[10];
+        Description: Text;
+
+    begin
+        LineNo := 10000;
+
+        XmlBody.SelectNodes('DatiBeniServizi/DettaglioLinee', XmlLst);
+        foreach DettaglioLinee in XmlLst do begin
+            Description := Functions.GetXmlChildAsText('Descrizione', DettaglioLinee);
+            UoMCode := CopyStr(Functions.GetXmlChildAsText('UnitaMisura', DettaglioLinee), 1, MaxStrLen(UoMCode));
+            Qty := Functions.GetXmlChildAsDecimal('Quantita', DettaglioLinee);
+            UnitCost := Functions.GetXmlChildAsDecimal('PrezzoUnitario', DettaglioLinee);
+            TotalCost := Functions.GetXmlChildAsDecimal('PrezzoTotale', DettaglioLinee);
+
+            LineDisc := 0;
+            CalcAmt := Qty * UnitCost;
+            if (CalcAmt <> TotalCost) and (CalcAmt <> 0) then
+                LineDisc := (1 - TotalCost / CalcAmt) * 100;
+
+            PurchLine.Init();
+            PurchLine."Document Type" := PurchHead."Document Type";
+            PurchLine."Document No." := PurchHead."No.";
+            PurchLine."Line No." := LineNo;
+
+            if (Qty = 0) and (UnitCost = 0) and (TotalCost = 0) then
+                PurchLine.Type := PurchLine.Type::" "
+            else
+                if DecodeTextToPurchaseLine(PurchHead, PurchLine, Description) then begin
+                    case PurchLine.type of
+                        PurchLine.type::Item:
+                            if ItemUoM.Get(UoMCode, PurchLine."Unit of Measure Code") then
+                                PurchLine.Validate("Unit of Measure Code", UoMCode);
+                        else
+                            if UoM.Get(UoMCode) then
+                                PurchLine.Validate("Unit of Measure Code", UoMCode);
+                    end;
+
+                    PurchLine.Validate(Quantity, Qty);
+                    PurchLine.Validate("Direct Unit Cost", UnitCost);
+                    PurchLine.Validate("Line Discount %", LineDisc);
+
+                end else begin
+                    PurchLine.Type := PurchLine.Type::"YNS Incoming Line";
+                    PurchLine."Unit of Measure Code" := UoMCode;
+                    PurchLine.Quantity := Qty;
+                    PurchLine."Direct Unit Cost" := UnitCost;
+                    PurchLine."Line Amount" := TotalCost;
+                    PurchLine."Line Discount %" := LineDisc;
+
+                end;
+
+            PurchLine."YNS Incoming Line" := true;
+            PurchLine.Description := CopyStr(Description, 1, MaxStrLen(PurchLine.Description));
+            PurchLine.Insert();
+            LineNo += 10000;
+        end;
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPostPurchaseDoc', '', false, false)]

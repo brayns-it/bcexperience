@@ -63,6 +63,12 @@ table 60008 "YNS Italy E-Invoice Setup"
             DataClassification = CustomerContent;
             Caption = 'Stylesheet Path';
         }
+        field(55; "Receiving Exchange Reference"; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Receiving Exchange Reference';
+            TableRelation = "YNS Doc. Exchange Reference";
+        }
     }
 
     keys

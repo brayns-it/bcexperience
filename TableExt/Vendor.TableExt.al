@@ -10,5 +10,13 @@ tableextension 60008 YNSVendor extends Vendor
             TableRelation = "Bank Account";
         }
 #endif
+#if W1XX009A
+        field(60005; "YNS Partner Group"; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Partner Group';
+            TableRelation = "YNS Partner Group";
+        }
+#endif
     }
 }

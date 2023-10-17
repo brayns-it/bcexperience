@@ -2,6 +2,17 @@ pageextension 60003 YNSSalesInvoice extends "Sales Invoice"
 {
     layout
     {
+#if ITXX006A
+        modify("Fattura Stamp Amount")
+        {
+            trigger OnAssistEdit()
+            var
+                ITMgmt: Codeunit "YNS Italy Management";
+            begin
+                ITMgmt.SalesFatturaStampAssistEdit(Rec);
+            end;
+        }
+#endif
         addlast("Invoice Details")
         {
 #if W1FN005A

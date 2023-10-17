@@ -91,6 +91,8 @@ codeunit 60002 "YNS Repayment Management"
             IssuedRepaCalc.SetRange("Issued Repayment No.", IssuedRepa."No.");
             IssuedRepaCalc.SetRange("Line Type", IssuedRepaLine."Line Type"::Calculation);
             IssuedRepaCalc.SetRange("Installment Line No.", IssuedRepaLine."Line No.");
+            if not IsFinCharge then
+                IssuedRepaCalc.SetFilter("Entry No.", CustLedgNoFilter);
             if IssuedRepaCalc.FindSet() then
                 repeat
                     if IsFinCharge then begin
@@ -108,8 +110,8 @@ codeunit 60002 "YNS Repayment Management"
         until IssuedRepaLine.Next() = 0;
 
         TempEntries.Reset();
-        TempEntries.FindSet();
-        FinMgmt.ApplyArrangedCustomerEntries(TempEntries, CustLedgNoFilter);
+        if TempEntries.FindSet() then
+            FinMgmt.ApplyArrangedCustomerEntries(TempEntries, CustLedgNoFilter);
     end;
 
     local procedure IssueCustomerRepayment(var IssuedRepa: Record "YNS Issued Repayment Header")
