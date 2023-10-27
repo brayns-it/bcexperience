@@ -115,7 +115,12 @@ codeunit 60018 "YNS FileSystem Transport" implements "YNS Doc. Exchange Transpor
         if FSSetup."Remote Functions Code" > '' then
             RemFunctions.SetProfile(FSSetup."Remote Functions Code");
 
+        case FSSetup."Text Encoding" of
+            FSSetup."Text Encoding"::"UTF-8":
         TempBlob := Functions.ConvertTextToBlob(StreamContent);
+            FSSetup."Text Encoding"::"UTF-8 with BOM":
+                TempBlob := Functions.ConvertTextToBlob(StreamContent, true);
+        end;
 
         case FSSetup.Protocol of
             FSSetup.Protocol::FileSystem:

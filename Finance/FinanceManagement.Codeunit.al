@@ -163,7 +163,7 @@ codeunit 60000 "YNS Finance Management"
 #endif
 
 #if W1FN001A or W1FN002A
-    procedure ApplyArrangedCustomerEntriesYesNo(var TempEntries: record "Gen. Journal Line" temporary; CustLedgNoFilter: Text)
+    procedure ApplyArrangedCustomerEntriesYesNo(var TempEntries: record "Gen. Journal Line" temporary; var CustLedgNoFilter: Text)
     var
         ApplyQst: Label 'Apply arranged entries?';
     begin
@@ -173,7 +173,7 @@ codeunit 60000 "YNS Finance Management"
         ApplyArrangedCustomerEntries(TempEntries, CustLedgNoFilter);
     end;
 
-    procedure ApplyArrangedCustomerEntries(var TempEntries: record "Gen. Journal Line" temporary; CustLedgNoFilter: Text)
+    procedure ApplyArrangedCustomerEntries(var TempEntries: record "Gen. Journal Line" temporary; var CustLedgNoFilter: Text)
     var
         xCustLedg2: Record "Cust. Ledger Entry";
         CustLedg2: Record "Cust. Ledger Entry";
@@ -471,18 +471,96 @@ codeunit 60000 "YNS Finance Management"
 #endif
 
 #if W1FN010A
-    [EventSubscriber(ObjectType::Table, database::"Purchase Header", 'OnBeforeInitPostingDescription', '', false, false)]
-    local procedure OnBeforeSalesInitPostingDescription(var PurchaseHeader: Record "Purchase Header"; var IsHandled: Boolean)
+    [EventSubscriber(ObjectType::Table, database::"Purchase Header", 'OnValidateBuyFromVendorNoOnAfterValidatePayToVendor', '', false, false)]
+    local procedure OnValidateBuyFromVendorNoOnAfterValidatePayToVendor(var PurchaseHeader: Record "Purchase Header")
     begin
-        IsHandled := true;
         PurchaseHeader."Posting Description" := CopyStr(Format(PurchaseHeader."Document Type") + ' ' + PurchaseHeader."Pay-to Name", 1, MaxStrLen(PurchaseHeader."Posting Description"));
     end;
 
-    [EventSubscriber(ObjectType::Table, database::"Sales Header", 'OnBeforeInitPostingDescription', '', false, false)]
-    local procedure OnBeforePurchaseInitPostingDescription(var SalesHeader: Record "Sales Header"; var IsHandled: Boolean)
+    [EventSubscriber(ObjectType::Table, database::"Purchase Header", 'OnBeforeInitPostingDescription', '', false, false)]
+    local procedure OnPurchHeadBeforeInitPostingDescription(var PurchaseHeader: Record "Purchase Header"; var IsHandled: Boolean)
     begin
         IsHandled := true;
+    end;
+
+    [EventSubscriber(ObjectType::Table, database::"Sales Header", 'OnValidateSellToCustomerNoOnBeforeUpdateSellToCont', '', false, false)]
+    local procedure OnValidateSellToCustomerNoOnBeforeUpdateSellToCont(var SalesHeader: Record "Sales Header"; xSalesHeader: Record "Sales Header"; SellToCustomer: Record Customer; var SkipSellToContact: Boolean)
+    begin
         SalesHeader."Posting Description" := CopyStr(Format(SalesHeader."Document Type") + ' ' + SalesHeader."Bill-to Name", 1, MaxStrLen(SalesHeader."Posting Description"));
     end;
+
+    [EventSubscriber(ObjectType::Table, database::"Sales Header", 'OnBeforeInitPostingDescription', '', false, false)]
+    local procedure OnSalesHeadBeforeInitPostingDescription(var SalesHeader: Record "Sales Header"; var IsHandled: Boolean)
+    begin
+        IsHandled := true;
+    end;
+#endif
+
+#if W1FN011A
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Gen. Jnl.-Check Line", 'OnBeforeErrorIfNegativeAmt', '', false, false)]
+    local procedure OnBeforeErrorIfNegativeAmt(GenJnlLine: Record "Gen. Journal Line"; var RaiseError: Boolean)
+    begin
+        if GenJnlLine."YNS Skip Pos./Neg. Error" then
+            RaiseError := false;
+    end;
+
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Gen. Jnl.-Check Line", 'OnBeforeErrorIfPositiveAmt', '', false, false)]
+    local procedure OnBeforeErrorIfPositiveAmt(GenJnlLine: Record "Gen. Journal Line"; var RaiseError: Boolean)
+    begin
+        if GenJnlLine."YNS Skip Pos./Neg. Error" then
+            RaiseError := false;
+    end;
+#endif
+
+#if W1FN012A
+    [EventSubscriber(ObjectType::Codeunit, codeunit::"Purch.-Post", 'OnCopyToTempLinesLoop', '', false, false)]
+    local procedure OnPurchPostCopyToTempLinesLoop(var PurchLine: Record "Purchase Line")
+    begin
+        if (PurchLine."YNS Accrual Starting Date" > 0D) and (PurchLine."YNS Accrual Ending Date" < PurchLine."YNS Accrual Starting Date") then
+            PurchLine.FieldError("YNS Accrual Ending Date");
+
+        if (PurchLine."YNS Accrual Ending Date" > 0D) and (PurchLine."YNS Accrual Starting Date" = 0D) then
+            PurchLine.FieldError("YNS Accrual Starting Date");
+
+        if (PurchLine."YNS Accrual Starting Date" > 0D) and (PurchLine.Type <> PurchLine.Type::"G/L Account") then
+            PurchLine.FieldError(Type);
+    end;
+
+    [EventSubscriber(ObjectType::Table, database::"G/L Entry", 'OnAfterCopyGLEntryFromGenJnlLine', '', false, false)]
+    local procedure OnAfterCopyGLEntryFromGenJnlLine(var GLEntry: Record "G/L Entry"; var GenJournalLine: Record "Gen. Journal Line")
+    begin
+        GLEntry."YNS Accrual Starting Date" := GenJournalLine."YNS Accrual Starting Date";
+        GLEntry."YNS Accrual Ending Date" := GenJournalLine."YNS Accrual Ending Date";
+    end;
+
+#pragma warning disable AL0432
+
+    // TODO (New Posting Buffer)
+    [EventSubscriber(ObjectType::Table, database::"Invoice Post. Buffer", 'OnAfterCopyToGenJnlLine', '', false, false)]
+    local procedure OnInvBuffAfterCopyToGenJnlLine(var GenJnlLine: Record "Gen. Journal Line"; InvoicePostBuffer: Record "Invoice Post. Buffer");
+    begin
+        GenJnlLine."YNS Accrual Starting Date" := InvoicePostBuffer."YNS Accrual Starting Date";
+        GenJnlLine."YNS Accrual Ending Date" := InvoicePostBuffer."YNS Accrual Ending Date";
+    end;
+
+    // TODO (New Posting Buffer)
+    [EventSubscriber(ObjectType::Table, database::"Invoice Post. Buffer", 'OnAfterInvPostBufferPreparePurchase', '', false, false)]
+    local procedure OnAfterInvPostBufferPreparePurchase(var PurchaseLine: Record "Purchase Line"; var InvoicePostBuffer: Record "Invoice Post. Buffer")
+    begin
+        InvoicePostBuffer."YNS Accrual Starting Date" := PurchaseLine."YNS Accrual Starting Date";
+        InvoicePostBuffer."YNS Accrual Ending Date" := PurchaseLine."YNS Accrual Ending Date";
+    end;
+
+#if LOCALEIT
+    // TODO (New Posting Buffer)
+    [EventSubscriber(ObjectType::Table, database::"Invoice Post. Buffer", 'OnAfterFillInvPostingBufferPrimaryKey', '', false, false)]
+    local procedure OnAfterFillInvPostingBufferPrimaryKey(var InvoicePostBuffer: Record "Invoice Post. Buffer")
+    begin
+        InvoicePostBuffer."Primary Key" += Format(InvoicePostBuffer."YNS Accrual Starting Date") +
+            Format(InvoicePostBuffer."YNS Accrual Ending Date");
+    end;
+#endif
+
+#pragma warning restore
 #endif
 }

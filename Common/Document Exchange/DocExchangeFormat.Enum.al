@@ -18,5 +18,12 @@ enum 60001 "YNS Doc. Exchange Format" implements "YNS Doc. Exchange Format"
         Caption = 'Customer Bill';
     }
 #endif
+#if ITXX008A
+    value(60022; "YNS Italy Periodic VAT Settl.")
+    {
+        Implementation = "YNS Doc. Exchange Format" = "YNS Italy Periodic VAT Settl.";
+        Caption = 'Italy Periodic VAT Settlement';
+    }
+#endif
 }
 #endif

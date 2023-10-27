@@ -392,7 +392,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
@@ -1168,7 +1167,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF(Fields!Additional_Amount.Value &gt; 0, Fields!Additional_Amount.Value, "")</Value>
+                                  <Value>=IIF(Fields!Additional_Amount.Value &lt;&gt; 0, Fields!Additional_Amount.Value, "")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>=Fields!Principal_AmountFormat.Value</Format>
@@ -1191,6 +1190,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -1363,7 +1363,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF(Fields!Delay_Days.Value&gt;0,Fields!Delay_Days.Value,"")</Value>
+                                  <Value>=IIF(Fields!Delay_Days.Value&lt;&gt;0,Fields!Delay_Days.Value,"")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -1396,7 +1396,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF(Fields!Remaining_Principal_Amount.Value&gt;0,Fields!Remaining_Principal_Amount.Value,"")</Value>
+                                  <Value>=IIF(Fields!Remaining_Principal_Amount.Value&lt;&gt;0,Fields!Remaining_Principal_Amount.Value,"")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>=Fields!Principal_AmountFormat.Value</Format>
@@ -1429,7 +1429,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF(Fields!Principal_Amount.Value&gt;0,Fields!Principal_Amount.Value,"")</Value>
+                                  <Value>=IIF(Fields!Principal_Amount.Value&lt;&gt;0,Fields!Principal_Amount.Value,"")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>=Fields!Principal_AmountFormat.Value</Format>
@@ -1462,7 +1462,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF((Fields!Interest_Amount.Value+Fields!Interest_Overflow.Value)&gt;0,(Fields!Interest_Amount.Value+Fields!Interest_Overflow.Value),"")</Value>
+                                  <Value>=IIF((Fields!Interest_Amount.Value+Fields!Interest_Overflow.Value)&lt;&gt;0,(Fields!Interest_Amount.Value+Fields!Interest_Overflow.Value),"")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>=Fields!Principal_AmountFormat.Value</Format>
@@ -1495,7 +1495,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF(Fields!Additional_Amount.Value&gt;0,Fields!Additional_Amount.Value,"")</Value>
+                                  <Value>=IIF(Fields!Additional_Amount.Value&lt;&gt;0,Fields!Additional_Amount.Value,"")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>=Fields!Principal_AmountFormat.Value</Format>

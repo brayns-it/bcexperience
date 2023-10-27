@@ -362,6 +362,7 @@ codeunit 60005 "YNS Bulk Importer" implements "YNS Generic API"
                 RecRef.DeleteAll();
             'APPEND':
                 foreach JItem in Functions.GetJsonPropertyAsObjectArray(Request, 'items') do begin
+                    RecRef.Init();
                     CopyJsonObjectToRecordRef(JItem, RecRef);
                     RecRef.Insert();
                 end;

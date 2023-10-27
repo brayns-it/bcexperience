@@ -24,6 +24,10 @@ page 60018 "YNS Italy E-Invoice Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("Company PA Code"; Rec."Company PA Code")
+                {
+                    ApplicationArea = All;
+                }
             }
             group(outbound)
             {
@@ -58,6 +62,10 @@ page 60018 "YNS Italy E-Invoice Setup"
                     ApplicationArea = All;
                 }
                 field("Sending Exchange Reference"; Rec."Sending Exchange Reference")
+                {
+                    ApplicationArea = All;
+                }
+                field("Create E-Invoice after Posting"; Rec."Create E-Invoice after Posting")
                 {
                     ApplicationArea = All;
                 }

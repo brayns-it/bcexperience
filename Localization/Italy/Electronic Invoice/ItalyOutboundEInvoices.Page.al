@@ -1,11 +1,11 @@
 #if ITXX002A
-page 60020 "YNS Italy Sales E-Invoices"
+page 60020 "YNS Italy Outbound E-Invoices"
 {
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "YNS Italy E-Invoice";
-    Caption = 'Italy Sales E-Invoices';
+    Caption = 'Italy Outbound E-Invoices';
     InsertAllowed = false;
     ModifyAllowed = false;
     DeleteAllowed = true;
@@ -17,6 +17,11 @@ page 60020 "YNS Italy Sales E-Invoices"
         {
             repeater(control1)
             {
+                field("Entry No."; Rec."Entry No.")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
                 field("Document Type"; Rec."Document Type")
                 {
                     ApplicationArea = All;
@@ -115,6 +120,17 @@ page 60020 "YNS Italy Sales E-Invoices"
                         ItInvFmt.DownloadEInvoice(Rec);
                 end;
             }
+            action(markassent)
+            {
+                Caption = 'Mark as delivered to recipient';
+                Image = SendConfirmation;
+
+                trigger OnAction()
+                begin
+                    if Rec."Entry No." > 0 then
+                        ItInvFmt.MarkEInvoiceAsDeliveredToRecipient(Rec);
+                end;
+            }
             action(YNSDocExchange)
             {
                 Image = SwitchCompanies;
@@ -132,7 +148,7 @@ page 60020 "YNS Italy Sales E-Invoices"
                 begin
                     CurrPage.SetSelectionFilter(EInvoice);
                     RecRef.GetTable(Rec);
-                    DocXMgmt.ManualProcessDocuments(RecRef, Page::"YNS Italy Sales E-Invoices");
+                    DocXMgmt.ManualProcessDocuments(RecRef, Page::"YNS Italy Outbound E-Invoices");
                 end;
             }
         }
@@ -144,7 +160,7 @@ page 60020 "YNS Italy Sales E-Invoices"
     trigger OnOpenPage()
     begin
         Rec.FilterGroup(2);
-        Rec.SetRange("Source Type", Rec."Source Type"::Customer);
+        Rec.SetRange(Direction, Rec.Direction::Outbound);
         Rec.FilterGroup(0);
     end;
 }

@@ -3,6 +3,8 @@ table 60002 "YNS Issued Repayment Header"
 {
     DataClassification = CustomerContent;
     Caption = 'Issued Repayment Header';
+    DrillDownPageId = "YNS Issued Repayment List";
+    LookupPageId = "YNS Issued Repayment List";
 
     fields
     {
@@ -114,6 +116,29 @@ table 60002 "YNS Issued Repayment Header"
             Editable = false;
             TableRelation = "No. Series";
             DataClassification = CustomerContent;
+        }
+        field(55; "Shortcut Dimension 1 Code"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,1';
+            Caption = 'Shortcut Dimension 1 Code';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1),
+                                                          Blocked = const(false));
+        }
+        field(56; "Shortcut Dimension 2 Code"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,2';
+            Caption = 'Shortcut Dimension 2 Code';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2),
+                                                          Blocked = const(false));
+        }
+        field(57; "Dimension Set ID"; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dimension Set ID';
+            Editable = false;
+            TableRelation = "Dimension Set Entry";
         }
         field(100; "Interest Amount"; Decimal)
         {

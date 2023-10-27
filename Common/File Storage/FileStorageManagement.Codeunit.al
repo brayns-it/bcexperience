@@ -39,7 +39,7 @@ codeunit 60012 "YNS File Storage Management"
     procedure FileExists(Path: Text): Boolean
     begin
         FileStorage.Reset();
-        FileStorage.SetRange(Path, Path);
+        FileStorage.SetRange(Path, NormalizePath(Path));
         FileStorage.SetRange(Type, FileStorage.Type::File);
         exit(not FileStorage.IsEmpty());
     end;
@@ -73,7 +73,7 @@ codeunit 60012 "YNS File Storage Management"
         IStream: InStream;
     begin
         FileStorage.Reset();
-        FileStorage.SetRange(Path, FileName);
+        FileStorage.SetRange(Path, NormalizePath(FileName));
         FileStorage.SetRange(Type, FileStorage.Type::File);
         FileStorage.SetAutoCalcFields(Content);
         FileStorage.FindFirst();
@@ -85,7 +85,7 @@ codeunit 60012 "YNS File Storage Management"
     procedure DeleteFile(FileName: Text)
     begin
         FileStorage.Reset();
-        FileStorage.SetRange(Path, FileName);
+        FileStorage.SetRange(Path, NormalizePath(FileName));
         FileStorage.SetRange(Type, FileStorage.Type::File);
         if FileStorage.FindFirst() then
             FileStorage.Delete();

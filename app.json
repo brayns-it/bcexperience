@@ -2,7 +2,7 @@
   "id": "7937ece2-4881-45ee-8c55-aec9e91ad468",
   "name": "Experience",
   "publisher": "Brayns", 
-  "version": "23.0.31012.0",
+  "version": "23.0.31015.0",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -40,18 +40,23 @@
     "W1XX007A",
     "W1XX008A",
     "W1XX009A",
-    "W1FN010A",
     "W1FN001A",
     "W1FN002A",
     "W1FN003A",
     "W1FN004A",
     "W1FN005A",
+    "W1FN007A",
     "W1FN008A",
     "W1FN009A",
+    "W1FN010A",
+    "W1FN011A",
+    "W1FN012A",
     "W1PU001A",
+    "W1PU002A",
     "W1JB001A",
     "W1SA001A",
     "W1SA002A",
+    "W1SA003A",
     "W1WH001A",
     "ITXX001A",
     "ITXX002A",
@@ -60,6 +65,8 @@
     "ITXX005A",
     "ITXX006A",
     "ITXX007A",    
+    "ITXX008A",    
+    "ITXX009A",    
     "LOCALEIT"
   ],
   "suppressWarnings": [
@@ -69,6 +76,7 @@
     "AS0092",
     "AS0084",
     "AS0051",
-    "AA0210"
+    "AA0210",
+    "AA0232"
   ]
 }

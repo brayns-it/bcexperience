@@ -2,6 +2,11 @@ pageextension 60003 YNSSalesInvoice extends "Sales Invoice"
 {
     layout
     {
+        addlast(General)
+        {
+
+        }
+
 #if ITXX006A
         modify("Fattura Stamp Amount")
         {

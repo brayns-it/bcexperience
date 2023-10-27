@@ -45,6 +45,13 @@ table 60015 "YNS FileSystem Transport Setup"
             Caption = 'Remote Functions Code';
             TableRelation = "YNS Remote Functions";
         }
+        field(30; "Text Encoding"; Option)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Text Encoding';
+            OptionMembers = "UTF-8","UTF-8 with BOM";
+            OptionCaption = 'UTF-8,UTF-8 with BOM';
+        }
     }
 
     keys

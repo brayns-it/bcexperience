@@ -74,7 +74,7 @@ pageextension 60001 YNSVendorLedgerEntries extends "Vendor Ledger Entries"
         if VendLedg.FindSet() then
             repeat
                 if VendLedg.GetFilter(Open) > '' then
-                    if not VendLedg.GetRangeMax(Open) then
+                    if VendLedg.GetRangeMax(Open) then
                         Amt += VendLedg."Remaining Amount"
                     else
                         Amt += VendLedg.Amount

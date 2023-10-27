@@ -12,6 +12,13 @@ table 60009 "YNS Italy E-Invoice"
             Caption = 'Entry No.';
             AutoIncrement = true;
         }
+        field(5; "Direction"; Option)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Direction';
+            OptionMembers = " ",Inbound,Outbound;
+            OptionCaption = ' ,Inbound,Outbound';
+        }
         field(10; "Source Type"; Option)
         {
             DataClassification = CustomerContent;
@@ -63,6 +70,11 @@ table 60009 "YNS Italy E-Invoice"
         {
             DataClassification = CustomerContent;
             Caption = 'External Document No.';
+        }
+        field(23; "Reverse Charge Document No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Reverse Charge Document No.';
         }
         field(30; "Document Date"; Date)
         {
@@ -161,13 +173,13 @@ table 60009 "YNS Italy E-Invoice"
 
     trigger OnDelete()
     begin
-        if "Source Type" = "Source Type"::Vendor then begin
+        if Direction = Direction::Inbound then begin
             TestField("Document No.", '');
             TestField("Purchase Document No.", '');
             TestField("SdI Number", '');
         end;
 
-        if "Source Type" = "Source Type"::Customer then
+        if Direction = Direction::Outbound then
             if not ("SdI Status" in ["SdI Status"::" ", "SdI Status"::Error]) then
                 FieldError("SdI Status");
 

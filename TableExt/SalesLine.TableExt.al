@@ -12,6 +12,7 @@ tableextension 60005 YNSSalesLine extends "Sales Line"
 #endif
             end;
         }
+
 #if W1SA002A
         field(60001; "YNS System-Created Source"; Code[35])
         {

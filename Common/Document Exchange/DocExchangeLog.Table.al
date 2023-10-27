@@ -85,6 +85,15 @@ table 60013 "YNS Doc. Exchange Log"
         exit(not Log2.IsEmpty());
     end;
 
+    procedure HasErrors(): Boolean
+    var
+        Log2: Record "YNS Doc. Exchange Log";
+    begin
+        Log2.SetRange("Activity ID", Rec."Activity ID");
+        Log2.SetRange("Log Type", Log2."Log Type"::Error);
+        exit(not Log2.IsEmpty());
+    end;
+
     procedure AppendInformation(ActivityName: Text; Message: Text)
     begin
         Rec."Log Type" := Rec."Log Type"::Information;

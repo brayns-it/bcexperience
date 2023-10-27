@@ -74,13 +74,16 @@ codeunit 60021 "YNS Customer Bill Format" implements "YNS Doc. Exchange Format"
     procedure ImportCBIDishonored(Parameters: List of [Text])
     var
         GenJnlLine: Record "Gen. Journal Line";
+        GenJnlLine2: Record "Gen. Journal Line";
         TempBlob: Codeunit "Temp Blob";
         IStream: InStream;
         TemplateName: Text;
         BatchName: Text;
         Stream: Text;
         Line: Text;
+        PostDateTxt: Text;
         LineNo: Integer;
+        StartingLineNo: Integer;
     begin
         Stream := GlobalTransport.Receive('INSOLUTI.TXT', 'text/plain');
         TempBlob := Functions.ConvertTextToBlob(Stream);
@@ -94,22 +97,36 @@ codeunit 60021 "YNS Customer Bill Format" implements "YNS Doc. Exchange Format"
         GenJnlLine.SetRange("Journal Batch Name", BatchName);
         GenJnlLine.DeleteAll(true);
 
+        GenJnlLine2.CopyFilters(GenJnlLine);
+
         GenJnlBatch.Get(TemplateName, BatchName);
 
         LineNo := 10000;
+        StartingLineNo := 0;
 
         while not IStream.EOS() do begin
             IStream.ReadText(Line);
             Line := PADSTR(Line, 120, ' ');
 
-            ImportCBIDishonoredLine(GenJnlLine, LineNo, Line);
+            if ImportCBIDishonoredLine(GenJnlLine, LineNo, Line) then begin
+                if StartingLineNo = 0 then
+                    StartingLineNo := GenJnlLine."Line No.";
+            end else
+                if Line.StartsWith(' 1') then begin
+                    PostDateTxt := Line.Substring(11, 6).Trim();
+                    if PostDateTxt > '' then begin
+                        GenJnlLine2.SetRange("Line No.", StartingLineNo, GenJnlLine."Line No.");
+                        GenJnlLine2.ModifyAll("Posting Date", Functions.ConvertTextToDate(PostDateTxt, 'ddMMyy'));
+                    end;
+                    StartingLineNo := 0;
+                end;
         end;
 
-        if not GlobalLog.HasLog() then
+        if not GlobalLog.HasErrors() then
             GlobalTransport.ReceiveConfirm();
     end;
 
-    procedure ImportCBIDishonoredLine(var GenJnlLine: Record "Gen. Journal Line"; var LineNo: Integer; Line: Text)
+    procedure ImportCBIDishonoredLine(var GenJnlLine: Record "Gen. Journal Line"; var LineNo: Integer; Line: Text): Boolean
     var
         CustLedg: Record "Cust. Ledger Entry";
         DirectDebit: Record "SEPA Direct Debit Mandate";
@@ -122,15 +139,17 @@ codeunit 60021 "YNS Customer Bill Format" implements "YNS Doc. Exchange Format"
         BillNotFoundErr: Label 'Customer %1 bill %2 not found';
         PaymentMismatchErr: Label 'Customer %1 payment bill %2 must be %3';
         DishonoredTxt: Label 'Dishonored %1 %2 %3';
+        DoNotApply: Boolean;
     begin
         if Line.StartsWith(' 10') then begin
             Clear(Customer);
             DirectID := Line.Substring(98, 16).Trim();
             if DirectID = '' then
-                exit;
+                exit(false);
+
             if not DirectDebit.Get(DirectID) then begin
                 GlobalLog.AppendError(ProcessAction, StrSubstNo(NotFoundErr, DirectDebit.TableCaption, DirectID));
-                exit;
+                exit(false);
             end;
 
             Customer.Get(DirectDebit."Customer No.");
@@ -142,32 +161,33 @@ codeunit 60021 "YNS Customer Bill Format" implements "YNS Doc. Exchange Format"
             Clear(Customer);
             CustomerNo := Line.Substring(98, 16).Trim();
             if CustomerNo = '' then
-                exit;
+                exit(false);
             if not Customer.Get(CustomerNo) then begin
                 GlobalLog.AppendError(ProcessAction, StrSubstNo(NotFoundErr, Customer.TableCaption, CustomerNo));
-                exit;
+                exit(false);
             end;
             Evaluate(DishonoredAmount, Line.Substring(34, 13).Trim());
             DishonoredAmount := DishonoredAmount / 100;
         end;
 
-        if Line.StartsWith(' 70') and (Customer."No." > '') then begin
+        if (Line.StartsWith(' 70') or (Line.StartsWith(' 51'))) and (Customer."No." > '') then begin
             BillNo := Line.Substring(11, 10).Trim();
             if BillNo = '' then
-                exit;
+                exit(false);
 
-            if not FindCustLedgerByBillNo(BillNo, CustLedg) then begin
+            if not FindPaymentCustLedgerByBillNo(BillNo, CustLedg) then begin
                 GlobalLog.AppendError(ProcessAction, StrSubstNo(BillNotFoundErr, Customer."No.", BillNo));
-                exit;
+                exit(false);
             end;
 
+            DoNotApply := false;
             CustLedg.CalcFields("Remaining Amount");
             if CustLedg."Remaining Amount" <> -DishonoredAmount then begin
-                GlobalLog.AppendError(ProcessAction, StrSubstNo(PaymentMismatchErr, Customer."No.", BillNo, DishonoredAmount));
-                exit;
+                GlobalLog.AppendWarning(ProcessAction, StrSubstNo(PaymentMismatchErr, Customer."No.", BillNo, DishonoredAmount));
+                DoNotApply := true;
             end;
 
-            IssuedCustBill.Get(CustLedg."Bank Receipts List No.");
+            IssuedCustBill.Get(CustLedg."Document No.");
             PaymMethod.Get(IssuedCustBill."Payment Method Code");
             PaymMethod.TestField("Bill Code");
             Bill.Get(PaymMethod."Bill Code");
@@ -184,9 +204,13 @@ codeunit 60021 "YNS Customer Bill Format" implements "YNS Doc. Exchange Format"
             GenJnlLine.Description := CopyStr(StrSubstNo(DishonoredTxt, CustLedg."Document Type to Close", CustLedg."Document No. to Close", Customer.Name), 1, MaxStrLen(GenJnlLine.Description));
             GenJnlLine."Document Type" := GenJnlLine."Document Type"::Dishonored;
             GenJnlLine.Validate(Amount, DishonoredAmount);
-            GenJnlLine."Applies-to Doc. Type" := CustLedg."Document Type";
-            GenJnlLine."Applies-to Doc. No." := CustLedg."Document No.";
-            GenJnlLine."Applies-to Occurrence No." := CustLedg."Document Occurrence";
+
+            if not DoNotApply then begin
+                GenJnlLine."Applies-to Doc. Type" := CustLedg."Document Type";
+                GenJnlLine."Applies-to Doc. No." := CustLedg."Document No.";
+                GenJnlLine."Applies-to Occurrence No." := CustLedg."Document Occurrence";
+            end;
+
             GenJnlLine."Gen. Posting Type" := GenJnlLine."Gen. Posting Type"::" ";
             GenJnlLine."Gen. Bus. Posting Group" := '';
             GenJnlLine."Gen. Prod. Posting Group" := '';
@@ -203,25 +227,45 @@ codeunit 60021 "YNS Customer Bill Format" implements "YNS Doc. Exchange Format"
 
             GenJnlLine.Insert();
             LineNo += 10000;
+            exit(true);
         end;
     end;
 
-    local procedure FindCustLedgerByBillNo(BillNo: Text; var CustLedg: Record "Cust. Ledger Entry"): Boolean
+    local procedure FindPaymentCustLedgerByBillNo(BillNo: Text; var CustLedg: Record "Cust. Ledger Entry"): Boolean
     var
         FilterTxt: Text;
-        I: Integer;
     begin
         BillNo := DelChr(BillNo, '<', '0');
-        for I := StrLen(BillNo) to 10 do begin
+        FilterTxt := '';
+
+        while StrLen(BillNo) <= 10 do begin
             if FilterTxt > '' then FilterTxt += '|';
-            FilterTxt += PadStr('', 10 - I, '0') + BillNo;
+            FilterTxt += BillNo;
+            BillNo := '0' + BillNo;
+        end;
+
+        CustLedg.Reset();
+        CustLedg.SetRange("Customer No.", Customer."No.");
+        CustLedg.SetRange(Positive, true);
+        CustLedg.SetFilter("Customer Bill No.", FilterTxt);     // bill on invoice
+        if not CustLedg.FindFirst() then begin
+            CustLedg.Reset();
+            CustLedg.SetRange("Customer No.", Customer."No.");
+            CustLedg.SetRange("Document Type", CustLedg."Document Type"::Payment);
+            CustLedg.SetFilter("Customer Bill No.", FilterTxt);     // bill on payment
+            if CustLedg.FindFirst() then
+                exit(true)
+            else
+                exit(false);
         end;
 
         CustLedg.Reset();
         CustLedg.SetRange("Customer No.", Customer."No.");
         CustLedg.SetRange("Document Type", CustLedg."Document Type"::Payment);
-        CustLedg.SetRange(Open, true);
-        CustLedg.SetFilter("Customer Bill No.", FilterTxt);
+        CustLedg.SetRange("Document Type to Close", CustLedg."Document Type");
+        CustLedg.SetRange("Document No. to Close", CustLedg."Document No.");
+        CustLedg.SetRange("Document Occurrence to Close", CustLedg."Document Occurrence");
+        CustLedg.SetRange("Document No.", CustLedg."Bank Receipts List No.");
         if not CustLedg.FindFirst() then
             exit(false);
 

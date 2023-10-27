@@ -66,8 +66,9 @@ codeunit 60002 "YNS Repayment Management"
         exit(IssuedRepa);
     end;
 
-    local procedure SplitCustomerEntry(var IssuedRepa: Record "YNS Issued Repayment Header"; CustLedgNoFilter: Text; IsFinCharge: Boolean)
+    local procedure SplitCustomerEntry(var IssuedRepa: Record "YNS Issued Repayment Header"; var CustLedgNoFilter: Text; IsFinCharge: Boolean)
     var
+        CustLedg: Record "Cust. Ledger Entry";
         TempEntries: record "Gen. Journal Line" temporary;
         IssuedRepaLine: Record "YNS Issued Repayment Line";
         IssuedRepaCalc: Record "YNS Issued Repayment Line";
@@ -112,6 +113,10 @@ codeunit 60002 "YNS Repayment Management"
         TempEntries.Reset();
         if TempEntries.FindSet() then
             FinMgmt.ApplyArrangedCustomerEntries(TempEntries, CustLedgNoFilter);
+
+        CustLedg.Reset();
+        CustLedg.SetFilter("Entry No.", CustLedgNoFilter);
+        CustLedg.ModifyAll("YNS Last Repayment No.", IssuedRepa."No.");
     end;
 
     local procedure IssueCustomerRepayment(var IssuedRepa: Record "YNS Issued Repayment Header")
@@ -124,7 +129,7 @@ codeunit 60002 "YNS Repayment Management"
         IssuedRepa.CalcFields("Charges Amount");
 
         Clear(IssuedFinChg);
-        if (IssuedRepa."Charges Amount" > 0) or (IssuedRepa."Interest Amount" > 0) then begin
+        if (IssuedRepa."Charges Amount" <> 0) or (IssuedRepa."Interest Amount" > 0) then begin
             IssuedFinChg := IssueFinanceCharge(IssuedRepa);
 
             IssuedRepa."Issued Fin. Charge Memo No." := IssuedFinChg."No.";
@@ -197,6 +202,7 @@ codeunit 60002 "YNS Repayment Management"
         FinCharge."VAT Reporting Date" := IssuedRepa."Posting Date";
         FinCharge."Fin. Charge Terms Code" := IssuedRepa."Finance Charge Terms";
         FinCharge.Validate("Currency Code", IssuedRepa."Currency Code");
+        FinCharge.Validate("Dimension Set ID", IssuedRepa."Dimension Set ID");
 
         // avoid commit
         FinCharge.TestField("Issuing No. Series");

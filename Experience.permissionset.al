@@ -40,6 +40,24 @@ permissionset 60000 YNSExperience
         table "YNS Doc. Exchange Log" = X,
         table "YNS FileSystem Transport Setup" = X,
 #endif        
+#if W1SA003A
+        tabledata "YNS Store Document" = RIMD,
+        tabledata "YNS Store Document Line" = RIMD,
+        tabledata "YNS Store Document Payment" = RIMD,
+        tabledata "YNS Store Setup" = RIMD,
+        table "YNS Store Document" = X,
+        table "YNS Store Document Line" = X,
+        table "YNS Store Document Payment" = X,
+        table "YNS Store Setup" = X,
+#endif     
+#if W1PU002A
+        tabledata "YNS Purchases Source" = RIMD,
+        tabledata "YNS Purchases Source Line" = RIMD,
+        tabledata "YNS Purchases Repository" = RIMD,
+        table "YNS Purchases Source" = X,
+        table "YNS Purchases Source Line" = X,
+        table "YNS Purchases Repository" = X,
+#endif
 #if ITXX002A
         tabledata "YNS Italy E-Invoice Setup" = RIMD,
         tabledata "YNS Italy E-Invoice" = RIMD,

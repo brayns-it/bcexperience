@@ -63,6 +63,16 @@ table 60008 "YNS Italy E-Invoice Setup"
             DataClassification = CustomerContent;
             Caption = 'Stylesheet Path';
         }
+        field(40; "Company PA Code"; Code[7])
+        {
+            Caption = 'Company PA Code';
+            DataClassification = CustomerContent;
+        }
+        field(41; "Create E-Invoice after Posting"; Boolean)
+        {
+            Caption = 'Create E-Invoice after Posting';
+            DataClassification = CustomerContent;
+        }
         field(55; "Receiving Exchange Reference"; Code[10])
         {
             DataClassification = CustomerContent;

@@ -11,7 +11,13 @@ codeunit 60019 "YNS Ledger Deletion"
         tabledata "Issued Fin. Charge Memo Header" = rimd,
         tabledata "Issued Fin. Charge Memo Line" = rimd,
         tabledata "Sales Invoice Header" = rimd,
-        tabledata "Sales Invoice Line" = rimd;
+        tabledata "Sales Invoice Line" = rimd,
+        tabledata "Purch. Inv. Header" = rimd,
+        tabledata "Purch. Inv. Line" = rimd,
+        tabledata "Item Ledger Entry" = rimd,
+        tabledata "Value Entry" = rimd,
+        tabledata "Warehouse Entry" = rimd,
+        tabledata "Item Application Entry" = rimd;
 
     procedure AssertPermission()
     var
@@ -159,6 +165,15 @@ codeunit 60019 "YNS Ledger Deletion"
         VatEntry.SetRange("Posting Date", GLEntry."Posting Date");
         VatEntry.SetRange("Transaction No.", GLEntry."Transaction No.");
         DeleteVatEntry(VatEntry);
+
+        VatEntry.Reset();
+        VatEntry.SetRange("Bill-to/Pay-to No.", GLEntry."Source No.");
+        VatEntry.SetRange("External Document No.", GLEntry."External Document No.");
+        VatEntry.SetRange("Document Type", GLEntry."Document Type");
+        VatEntry.SetRange("Posting Date", GLEntry."Posting Date");
+        VatEntry.SetRange("Reverse Sales VAT", true);
+        VatEntry.SetRange("Transaction No.", GLEntry."Transaction No.");
+        DeleteVatEntry(VatEntry);
     end;
 
     procedure DeleteVatEntry(var VatEntry: Record "VAT Entry")
@@ -179,6 +194,58 @@ codeunit 60019 "YNS Ledger Deletion"
 #endif
                 VatEntry.Delete();
             until VatEntry.Next() = 0;
+    end;
+
+    procedure DeletePurchaseInvoiceYN(var PurchInvHeader: Record "Purch. Inv. Header")
+    var
+        DeleteQst: Label 'Delete %1 %2?';
+    begin
+        if not Confirm(DeleteQst, false, PurchInvHeader.TableCaption, PurchInvHeader."No.") then
+            Error('');
+
+        DeletePurchaseInvoice(PurchInvHeader);
+    end;
+
+    procedure DeletePurchaseInvoice(var PurchInvHeader: Record "Purch. Inv. Header")
+    var
+        VendLedg: Record "Vendor Ledger Entry";
+        PurchInvLine: Record "Purch. Inv. Line";
+#if LOCALEIT        
+        PostedPaym: Record "Posted Payment Lines";
+#endif        
+        TransNo: Integer;
+    begin
+        AssertPermission();
+
+        VendLedg.Reset();
+        VendLedg.SetRange("Vendor No.", PurchInvHeader."Pay-to Vendor No.");
+        VendLedg.SetRange("Document No.", PurchInvHeader."No.");
+        VendLedg.SetRange("Document Type", VendLedg."Document Type"::Invoice);
+        VendLedg.SetRange("Posting Date", PurchInvHeader."Posting Date");
+        VendLedg.FindFirst();
+        TransNo := VendLedg."Transaction No.";
+
+        PurchInvLine.Reset();
+        PurchInvLine.SetRange("Document No.", PurchInvHeader."No.");
+        if PurchInvLine.FindSet() then
+            repeat
+                if not (PurchInvLine.Type in [PurchInvLine.Type::" ", PurchInvLine.Type::"G/L Account", PurchInvLine.Type::Item]) then
+                    PurchInvLine.FieldError(Type);
+                PurchInvLine.Delete();
+            until PurchInvLine.Next() = 0;
+
+        DeleteLedgers(PurchInvHeader."No.", Enum::"Gen. Journal Document Type"::Invoice, PurchInvHeader."Posting Date", TransNo);
+        DeleteInventoryLedgers(PurchInvHeader."No.", Enum::"Item Ledger Document Type"::"Purchase Invoice", PurchInvHeader."Posting Date");
+
+#if LOCALEIT
+        PostedPaym.Reset();
+        PostedPaym.SetRange("Sales/Purchase", PostedPaym."Sales/Purchase"::Purchase);
+        PostedPaym.SetRange(Type, PostedPaym.Type::Invoice);
+        PostedPaym.SetRange(Code, PurchInvHeader."No.");
+        PostedPaym.DeleteAll();
+#endif  
+
+        PurchInvHeader.Delete();
     end;
 
     procedure DeleteSalesInvoiceYN(var SalesInvHeader: Record "Sales Invoice Header")
@@ -214,12 +281,13 @@ codeunit 60019 "YNS Ledger Deletion"
         SalesInvLine.SetRange("Document No.", SalesInvHeader."No.");
         if SalesInvLine.FindSet() then
             repeat
-                if not (SalesInvLine.Type in [SalesInvLine.Type::" ", SalesInvLine.Type::"G/L Account"]) then
+                if not (SalesInvLine.Type in [SalesInvLine.Type::" ", SalesInvLine.Type::"G/L Account", SalesInvLine.Type::Item]) then
                     SalesInvLine.FieldError(Type);
                 SalesInvLine.Delete();
             until SalesInvLine.Next() = 0;
 
         DeleteLedgers(SalesInvHeader."No.", Enum::"Gen. Journal Document Type"::Invoice, SalesInvHeader."Posting Date", TransNo);
+        DeleteInventoryLedgers(SalesInvHeader."No.", Enum::"Item Ledger Document Type"::"Sales Invoice", SalesInvHeader."Posting Date");
 
 #if LOCALEIT
         PostedPaym.Reset();
@@ -265,6 +333,69 @@ codeunit 60019 "YNS Ledger Deletion"
         DeleteLedgers(IssuedFinCharge."No.", Enum::"Gen. Journal Document Type"::"Finance Charge Memo", IssuedFinCharge."Posting Date", TransNo);
 
         IssuedFinCharge.Delete();
+    end;
+
+    procedure DeleteInventoryLedgers(DocumentNo: Code[20]; DocumentType: Enum "Item Ledger Document Type"; PostingDate: Date)
+    var
+        ValueEntry: Record "Value Entry";
+        ItemLedg: Record "Item Ledger Entry";
+        ItemAppl: Record "Item Application Entry";
+        WhseEntry: Record "Warehouse Entry";
+    begin
+        ValueEntry.Reset();
+        ValueEntry.SetRange("Document No.", DocumentNo);
+        ValueEntry.SetRange("Posting Date", PostingDate);
+        ValueEntry.SetRange("Document Type", DocumentType);
+        if ValueEntry.FindSet() then
+            repeat
+                if ValueEntry."Item Ledger Entry Quantity" = 0 then
+                    ValueEntry.FieldError(ValueEntry."Item Ledger Entry Quantity")     // TODO
+                else begin
+                    ItemLedg.Get(ValueEntry."Item Ledger Entry No.");
+                    ItemLedg.Delete();
+
+                    ItemAppl.Reset();
+                    ItemAppl.SetRange("Outbound Item Entry No.", ValueEntry."Item Ledger Entry No.");
+                    if ItemAppl.FindSet() then
+                        repeat
+                            if ItemLedg.Get(ItemAppl."Inbound Item Entry No.") then begin
+                                ItemLedg.Open := true;
+                                ItemLedg."Remaining Quantity" -= ItemAppl.Quantity;
+                                ItemLedg.Modify();
+                            end;
+
+                            ItemAppl.Delete();
+                        until ItemAppl.Next() = 0;
+
+                    ItemAppl.Reset();
+                    ItemAppl.SetRange("Inbound Item Entry No.", ValueEntry."Item Ledger Entry No.");
+                    if ItemAppl.FindSet() then
+                        repeat
+                            if ItemLedg.Get(ItemAppl."Outbound Item Entry No.") then begin
+                                ItemLedg.Open := true;
+                                ItemLedg."Remaining Quantity" += ItemAppl.Quantity;
+                                ItemLedg.Modify();
+                            end;
+
+                            ItemAppl.Delete();
+                        until ItemAppl.Next() = 0;
+
+                    WhseEntry.Reset();
+                    WhseEntry.SetRange("Reference No.", DocumentNo);
+                    WhseEntry.SetRange("Registering Date", PostingDate);
+                    case DocumentType of
+                        Enum::"Item Ledger Document Type"::"Sales Invoice":
+                            WhseEntry.SetRange("Reference Document", Enum::"Whse. Reference Document Type"::"Posted S. Inv.");
+                        Enum::"Item Ledger Document Type"::"Purchase Invoice":
+                            WhseEntry.SetRange("Reference Document", Enum::"Whse. Reference Document Type"::"Posted P. Inv.");
+                        else
+                            ValueEntry.FieldError("Document Type");
+                    end;
+                    WhseEntry.DeleteAll();
+                end;
+
+                ValueEntry.Delete();
+            until ValueEntry.Next() = 0;
     end;
 }
 #endif

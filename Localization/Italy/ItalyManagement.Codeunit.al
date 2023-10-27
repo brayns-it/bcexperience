@@ -95,9 +95,9 @@ codeunit 60015 "YNS Italy Management"
         Bill: Record Bill;
     begin
         if (not IsUnApply) and (CustLedgEntry."Document Type" = CustLedgEntry."Document Type"::Payment) and
-            OldCustLedgEntry2.Open and (not CustLedgEntry.Open) and (CustLedgEntry."Bank Receipts List No." > '')
+            OldCustLedgEntry2.Open and (not CustLedgEntry.Open) and (OldCustLedgEntry2."Bank Receipts List No." > '')
         then begin
-            IssuedCustBill.Get(CustLedgEntry."Bank Receipts List No.");
+            IssuedCustBill.Get(OldCustLedgEntry2."Bank Receipts List No.");
 
             PaymMethod.Get(IssuedCustBill."Payment Method Code");
             PaymMethod.TestField("Bill Code");
@@ -125,5 +125,55 @@ codeunit 60015 "YNS Italy Management"
             CustomerBillLine."Customer Bank Acc. No." := SEPADirectDebitMandate."Customer Bank Account Code";
         end;
     end;
-#endif    
+
+    [EventSubscriber(ObjectType::Table, Database::"Customer Bill Line", 'OnAfterValidateEvent', 'Customer Bank Acc. No.', false, false)]
+    local procedure CustBillBankOnAfterValidate(var Rec: Record "Customer Bill Line"; var xRec: Record "Customer Bill Line"; CurrFieldNo: Integer)
+    var
+        PaymMethod: Record "Payment Method";
+        CustomerBillHeader: Record "Customer Bill Header";
+        SEPADirectDebitMandate: Record "SEPA Direct Debit Mandate";
+    begin
+        if (Rec."Customer Bank Acc. No." <> xRec."Customer Bank Acc. No.") and (rec."Customer Bank Acc. No." > '') then begin
+            CustomerBillHeader.get(Rec."Customer Bill No.");
+            if CustomerBillHeader."Payment Method Code" > '' then begin
+                PaymMethod.Get(CustomerBillHeader."Payment Method Code");
+                if PaymMethod."Direct Debit" then begin
+                    SEPADirectDebitMandate.Reset();
+                    SEPADirectDebitMandate.SetRange("Customer No.", Rec."Customer No.");
+                    SEPADirectDebitMandate.SetRange("Customer Bank Account Code", rec."Customer Bank Acc. No.");
+                    SEPADirectDebitMandate.SetRange(Blocked, false);
+                    if SEPADirectDebitMandate.FindFirst() then
+                        rec."Direct Debit Mandate ID" := SEPADirectDebitMandate.ID;
+                end;
+            end;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Report, report::"Suggest Customer Bills", 'OnCreateLineOnBeforeInsert', '', false, false)]
+    local procedure OnCreateLineOnBeforeInsert(var CustomerBillLine: Record "Customer Bill Line"; CustLedgerEntry: Record "Cust. Ledger Entry"; CustomerBillHeader: Record "Customer Bill Header")
+    var
+        PaymMethod: Record "Payment Method";
+        SEPADirectDebitMandate: Record "SEPA Direct Debit Mandate";
+        Cust: Record Customer;
+    begin
+        if CustomerBillHeader."Payment Method Code" > '' then begin
+            PaymMethod.Get(CustomerBillHeader."Payment Method Code");
+
+            if PaymMethod."Direct Debit" then begin
+                if CustomerBillLine."Direct Debit Mandate ID" = '' then begin
+                    SEPADirectDebitMandate.Reset();
+                    SEPADirectDebitMandate.SetRange("Customer No.", CustomerBillLine."Customer No.");
+                    SEPADirectDebitMandate.SetRange(Blocked, false);
+                    if SEPADirectDebitMandate.FindFirst() then
+                        CustomerBillLine.Validate("Direct Debit Mandate ID", SEPADirectDebitMandate.id);
+                end;
+            end else
+                if CustomerBillLine."Customer Bank Acc. No." = '' then begin
+                    Cust.Get(CustomerBillLine."Customer No.");
+                    if Cust."Preferred Bank Account Code" > '' then
+                        CustomerBillLine."Customer Bank Acc. No." := Cust."Preferred Bank Account Code";
+                end;
+        end;
+    end;
+#endif
 }

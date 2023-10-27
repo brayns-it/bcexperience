@@ -83,6 +83,7 @@ report 60004 "YNS Customer Detailed Aging 2"
                 dataitem(TempAppliedEntries; "Gen. Journal Line")
                 {
                     DataItemTableView = sorting("Journal Template Name", "Journal Batch Name", "Line No.");
+                    UseTemporary = true;
 
                     column(AppliedDocType; "Document Type") { }
                     column(AppliedDocNo; "Document No.") { }

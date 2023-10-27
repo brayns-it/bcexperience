@@ -17,5 +17,14 @@ tableextension 60001 YNSCustLedgerEntry extends "Cust. Ledger Entry"
             Caption = 'Original Due Date';
         }
 #endif
+#if W1FN002A
+        field(60003; "YNS Last Repayment No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Last Repayment No.';
+            TableRelation = "YNS Issued Repayment Header";
+            Editable = false;
+        }
+#endif
     }
 }

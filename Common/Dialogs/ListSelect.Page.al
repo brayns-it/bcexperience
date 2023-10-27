@@ -6,7 +6,7 @@
 page 60016 "YNS List Select"
 {
     PageType = StandardDialog;
-    SourceTable = Item;
+    SourceTable = "Name/Value Buffer";
     SourceTableTemporary = true;
     Caption = 'Select';
     DataCaptionExpression = GetCaption();
@@ -18,18 +18,18 @@ page 60016 "YNS List Select"
         {
             repeater(control1)
             {
-                field("Search Description"; Rec."Search Description")
+                field("Value Long"; Rec."Value Long")
                 {
                     Caption = 'Code';
                     ApplicationArea = All;
                     Visible = NoVisible;
                 }
-                field(Description; Rec.Description)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                     Visible = DescriptionVisible;
                 }
-                field("Description 2"; Rec."Description 2")
+                field(Value; Rec.Value)
                 {
                     ApplicationArea = All;
                     Visible = Description2Visible;
@@ -40,7 +40,7 @@ page 60016 "YNS List Select"
 
     procedure GetSelectedNo(): Text
     begin
-        exit(Rec."Search Description");
+        exit(Rec."Value Long");
     end;
 
     local procedure GetCaption(): Text
@@ -89,20 +89,17 @@ page 60016 "YNS List Select"
     procedure AddOption(OptNo: Text; OptDescription: Text; OptDescription2: Text)
     begin
         Rec.Reset();
-        Rec.SetRange("Search Description", OptNo);
+        Rec.SetRange("Value Long", OptNo);
         if not Rec.IsEmpty() then
             exit;
 
-        if ID = '' then
-            ID := '000001'
-        else
-            ID := IncStr(ID);
+        ID += 1;
 
         Rec.Init();
-        Rec."No." := ID;
-        Rec."Search Description" := CopyStr(OptNo, 1, MaxStrLen(Rec."Search Description"));
-        Rec.Description := CopyStr(OptDescription, 1, MaxStrLen(Rec."Description"));
-        Rec."Description 2" := CopyStr(OptDescription2, 1, MaxStrLen(Rec."Description 2"));
+        Rec.ID := ID;
+        Rec."Value Long" := CopyStr(OptNo, 1, MaxStrLen(Rec."Value Long"));
+        Rec.Name := CopyStr(OptDescription, 1, MaxStrLen(Rec.Name));
+        Rec.Value := CopyStr(OptDescription2, 1, MaxStrLen(Rec.Value));
         Rec.Insert();
     end;
 
@@ -113,7 +110,7 @@ page 60016 "YNS List Select"
 
     var
         PageCapt: Text;
-        ID: Code[20];
+        ID: Integer;
         NoVisible: Boolean;
         DescriptionVisible: Boolean;
         Description2Visible: Boolean;

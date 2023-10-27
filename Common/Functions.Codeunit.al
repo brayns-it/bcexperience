@@ -125,6 +125,18 @@ codeunit 60004 "YNS Functions"
     end;
 
     /// <summary>
+    /// Append a new element to parent with specified text content
+    /// </summary>
+    procedure AppendXmlText(Name: Text; Parent: XmlElement; Content: Text; NamespaceUri: Text)
+    var
+        XmlEl: XmlElement;
+    begin
+        XmlEl := XmlElement.Create(Name, NamespaceUri);
+        XmlEl.Add(XmlText.Create(Content));
+        Parent.Add(XmlEl);
+    end;
+
+    /// <summary>
     /// Append a new element to parent with specified date content (format YYYY-MM-DD)
     /// </summary>
     procedure AppendXmlDate(Name: Text; Parent: XmlElement; DateValue: Date)
@@ -144,6 +156,18 @@ codeunit 60004 "YNS Functions"
         XmlEl: XmlElement;
     begin
         XmlEl := XmlElement.Create(Name);
+        XmlEl.Add(XmlText.Create(Format(IntValue, 0, 9)));
+        Parent.Add(XmlEl);
+    end;
+
+    /// <summary>
+    /// Append a new element to parent with specified integer content
+    /// </summary>
+    procedure AppendXmlInteger(Name: Text; Parent: XmlElement; IntValue: Integer; NamespaceUri: Text)
+    var
+        XmlEl: XmlElement;
+    begin
+        XmlEl := XmlElement.Create(Name, NamespaceUri);
         XmlEl.Add(XmlText.Create(Format(IntValue, 0, 9)));
         Parent.Add(XmlEl);
     end;
@@ -188,6 +212,30 @@ codeunit 60004 "YNS Functions"
     end;
 
     /// <summary>
+    /// Returns a JSON object property as date (round trip format)
+    /// </summary>
+    /// <returns>Empty date if the property does not exists</returns>
+    procedure GetJsonPropertyAsDate(JObject: JsonObject; KeyName: Text) Result: Date
+    var
+        JToken: JsonToken;
+    begin
+        if JObject.Get(KeyName, JToken) then
+            exit(DT2Date(JToken.AsValue().AsDateTime()));
+    end;
+
+    /// <summary>
+    /// Returns a JSON object property as time (round trip format)
+    /// </summary>
+    /// <returns>Empty time if the property does not exists</returns>
+    procedure GetJsonPropertyAsTime(JObject: JsonObject; KeyName: Text) Result: Time
+    var
+        JToken: JsonToken;
+    begin
+        if JObject.Get(KeyName, JToken) then
+            exit(DT2Time(JToken.AsValue().AsDateTime()));
+    end;
+
+    /// <summary>
     /// Returns a JSON object property as text
     /// </summary>
     /// <returns>Empty string if the property does not exists</returns>
@@ -197,6 +245,42 @@ codeunit 60004 "YNS Functions"
     begin
         if JObject.Get(KeyName, JToken) then
             exit(JToken.AsValue().AsText());
+    end;
+
+    /// <summary>
+    /// Returns a JSON object property as integer
+    /// </summary>
+    /// <returns>Zero if the property does not exists</returns>
+    procedure GetJsonPropertyAsInteger(JObject: JsonObject; KeyName: Text): Integer
+    var
+        JToken: JsonToken;
+    begin
+        if JObject.Get(KeyName, JToken) then
+            exit(JToken.AsValue().AsInteger());
+    end;
+
+    /// <summary>
+    /// Returns a JSON object property as decimal
+    /// </summary>
+    /// <returns>Zero if the property does not exists</returns>
+    procedure GetJsonPropertyAsDecimal(JObject: JsonObject; KeyName: Text): Decimal
+    var
+        JToken: JsonToken;
+    begin
+        if JObject.Get(KeyName, JToken) then
+            exit(ConvertTextToDecimal(JToken.AsValue().AsText()));
+    end;
+
+    /// <summary>
+    /// Returns a JSON object property as boolean
+    /// </summary>
+    /// <returns>False if the property does not exists</returns>
+    procedure GetJsonPropertyAsBoolean(JObject: JsonObject; KeyName: Text): Boolean
+    var
+        JToken: JsonToken;
+    begin
+        if JObject.Get(KeyName, JToken) then
+            exit(JToken.AsValue().AsBoolean());
     end;
 
     /// <summary>
@@ -263,6 +347,16 @@ codeunit 60004 "YNS Functions"
     end;
 
     /// <summary>
+    /// Convert date to text (.NET format)
+    /// </summary>
+    procedure ConvertDateToText(InputDate: Date; FormatString: Text) Result: Text
+    var
+        TypeHelp: Codeunit "Type Helper";
+    begin
+        Result := TypeHelp.FormatDate(InputDate, FormatString, '');
+    end;
+
+    /// <summary>
     /// Convert text to decimal with dot as decimal separator
     /// </summary>
     procedure ConvertTextToDecimal(InputText: Text) Result: Decimal
@@ -292,11 +386,36 @@ codeunit 60004 "YNS Functions"
     /// Convert a text in a BLOB (UTF8)
     /// </summary>
     procedure ConvertTextToBlob(InputText: Text) Result: Codeunit "Temp Blob"
-    var
-        OStream: OutStream;
     begin
-        OStream := Result.CreateOutStream(TextEncoding::UTF8);
-        OStream.WriteText(InputText);
+        exit(ConvertTextToBlob(InputText, false));
+    end;
+
+    /// <summary>
+    /// Convert a text in a BLOB (UTF8)
+    /// </summary>
+    procedure ConvertTextToBlob(InputText: Text; AddBOM: Boolean) Result: Codeunit "Temp Blob"
+    var
+        Encoding: Codeunit DotNet_Encoding;
+        NetString: Codeunit DotNet_String;
+        InNetArray: Codeunit DotNet_Array;
+        OutNetArray: Codeunit DotNet_Array;
+        NetStream: Codeunit DotNet_Stream;
+    begin
+        NetString.Set(InputText);
+        NetString.ToCharArray(0, NetString.Length(), InNetArray);
+
+        Encoding.UTF8();
+        Encoding.GetBytes(InNetArray, 0, InNetArray.Length(), OutNetArray);
+
+        NetStream.FromOutStream(Result.CreateOutStream());
+
+        if AddBOM then begin
+            NetStream.WriteByte(239);
+            NetStream.WriteByte(187);
+            NetStream.WriteByte(191);
+        end;
+
+        NetStream.Write(OutNetArray, 0, OutNetArray.Length());
     end;
 
     /// <summary>
@@ -320,6 +439,10 @@ codeunit 60004 "YNS Functions"
     var
         Base64Convert: Codeunit "Base64 Convert";
     begin
+        // remove BOM
+        if Base64String.StartsWith('77u/') then
+            Base64String := Base64String.Substring(5);
+
         exit(Base64Convert.FromBase64(Base64String, TextEncoding::UTF8));
     end;
 

@@ -10,7 +10,6 @@ table 60000 "YNS Repayment Header"
         {
             DataClassification = CustomerContent;
             Caption = 'No.';
-            TableRelation = "YNS Repayment Header";
 
             trigger OnValidate()
             begin
@@ -197,6 +196,44 @@ table 60000 "YNS Repayment Header"
             Editable = false;
             DataClassification = CustomerContent;
         }
+        field(55; "Shortcut Dimension 1 Code"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,1';
+            Caption = 'Shortcut Dimension 1 Code';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1),
+                                                          Blocked = const(false));
+
+            trigger OnValidate()
+            begin
+                DimMgt.ValidateShortcutDimValues(1, "Shortcut Dimension 1 Code", "Dimension Set ID");
+            end;
+        }
+        field(56; "Shortcut Dimension 2 Code"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            CaptionClass = '1,2,2';
+            Caption = 'Shortcut Dimension 2 Code';
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2),
+                                                          Blocked = const(false));
+
+            trigger OnValidate()
+            begin
+                DimMgt.ValidateShortcutDimValues(2, "Shortcut Dimension 2 Code", "Dimension Set ID");
+            end;
+        }
+        field(57; "Dimension Set ID"; Integer)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dimension Set ID';
+            Editable = false;
+            TableRelation = "Dimension Set Entry";
+
+            trigger OnValidate()
+            begin
+                DimMgt.UpdateGlobalDimFromDimSetID("Dimension Set ID", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code");
+            end;
+        }
         field(100; "Interest Amount"; Decimal)
         {
             DataClassification = CustomerContent;
@@ -231,6 +268,7 @@ table 60000 "YNS Repayment Header"
     var
         RepaSetup: Record "YNS Repayment Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        DimMgt: Codeunit DimensionManagement;
 
     trigger OnInsert()
     begin

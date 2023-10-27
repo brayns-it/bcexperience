@@ -26,6 +26,12 @@ pageextension 60000 YNSCustomerLedgerEntries extends "Customer Ledger Entries"
                 Editable = false;
             }
 #endif
+#if W1FN002A
+            field("YNS Last Repayment No."; Rec."YNS Last Repayment No.")
+            {
+                ApplicationArea = All;
+            }
+#endif
         }
     }
     actions
@@ -105,7 +111,7 @@ pageextension 60000 YNSCustomerLedgerEntries extends "Customer Ledger Entries"
         if CustLedg.FindSet() then
             repeat
                 if CustLedg.GetFilter(Open) > '' then
-                    if not CustLedg.GetRangeMax(Open) then
+                    if CustLedg.GetRangeMax(Open) then
                         Amt += CustLedg."Remaining Amount"
                     else
                         Amt += CustLedg.Amount

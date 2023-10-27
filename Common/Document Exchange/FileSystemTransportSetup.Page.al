@@ -26,6 +26,10 @@ page 60026 "YNS FileSystem Transport Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("Text Encoding"; Rec."Text Encoding")
+                {
+                    ApplicationArea = All;
+                }
                 field("Receving Base Path"; Rec."Receving Base Path")
                 {
                     ApplicationArea = All;

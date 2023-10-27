@@ -41,6 +41,26 @@ codeunit 60007 "YNS Doc. Exchange Management"
     end;
 
     /// <summary>
+    /// Get all processing option indipendent from recordref
+    /// </summary>
+    procedure GetAllProcessOptions(var TempOptions: Record "Name/Value Buffer" temporary)
+    var
+        ExchProf: Record "YNS Doc. Exchange Profile";
+        DocRefs: RecordRef;
+        ExFormat: Interface "YNS Doc. Exchange Format";
+    begin
+        ExchProf.Reset();
+        ExchProf.SetRange(Enabled, true);
+        ExchProf.SetFilter("Exchange Format", '>0');
+        ExchProf.SetFilter("Exchange Transport", '>0');
+        if ExchProf.FindSet() then
+            repeat
+                ExFormat := ExchProf."Exchange Format";
+                ExFormat.GetManualProcessOptions(ExchProf, TempOptions, DocRefs, 0);
+            until ExchProf.Next() = 0;
+    end;
+
+    /// <summary>
     /// Show to the user the document exchange choices for the selected documents
     /// Use it in varius page as Posted Sales Invoice passing SETSELECTIONFILTER as RECORDREF
     /// </summary>

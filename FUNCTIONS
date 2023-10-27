@@ -15,20 +15,26 @@ W1FN005A    Finance         Edit document posting nos.
 W1FN008A    Finance         Enhanced Fiscal Reports
 W1FN009A    Finance         Calculate balance in entries pages
 W1FN010A    Finance         Better posting description
+W1FN011A    Finance         * Allow skip error negative amount by journal
+W1FN012A    Finance         * Improved accruals
 
 W1PU001A    Purchases       * Incoming document lines
+W1PU002A    Purchases       * Purchase sources
 
 W1JB001A    Job             Automatic creation of Planning Line from Sales Invoice
 
 W1SA001A    Sales           * Standard Sales Code for all customers
 W1SA002A    Sales           * Automatic lines (source)
+W1SA003A    Sales           * Store Documents
 
 W1WH001A    Warehouse       Negative bins
 
 ITXX001A	Finance	        Activity Code	
 ITXX002A    Finance         * Electronic Invoice                                      deps: W1XX004A, W1XX007A, W1PU001A
 ITXX003A    Finance         * Enhanced Fiscal Report                
-ITXX004A    Finance         * Payment % from amount
-ITXX005A    Finance         * Check external document no by year
-ITXX006A    Finance         * Enhanced Stamp management
+ITXX004A    Finance         Recalculate payment % from amount
+ITXX005A    Finance         Check external document no by year
+ITXX006A    Finance         Enhanced "Fattura Stamp" Management
 ITXX007A    Finance         * Enhanced RIBA/RID
+ITXX008A    Finance         * Electronic VAT Settlement
+ITXX009A    Finance         * Fiscal code on salesperson
